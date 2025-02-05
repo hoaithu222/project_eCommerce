@@ -1,0 +1,94 @@
+export const baseURL = import.meta.env.VITE_SERVER_API;
+
+
+const SummaryApi= {
+    login:{
+        url:`${baseURL}/auth/login`,
+        method:"post",
+    },
+    logout:{
+        url:`${baseURL}/auth/logout`,
+        method:"post",
+    },
+    getProfile:{
+        url:`${baseURL}/auth/profile`,
+        method:`get`,
+    },
+    refreshToken:{
+        url:`${baseURL}/auth/refresh-token`,
+        method:"post",
+    },
+    uploadImage:{
+        url:`${baseURL}/upload/image`,
+        method:'post',
+    },
+    updateProfile:{
+        url:`${baseURL}/users/update`,
+        method:'PATCH',
+    },
+    //category 
+    getCategory:{
+        url:`${baseURL}/category`,
+        method:'get',
+    },
+    getAllCategory:{
+        url:`${baseURL}/category/all`,
+        method:'get',
+    },
+    addCategory:{
+         url:`${baseURL}/category`,
+        method:'post',
+    },
+    editCategory:{
+         url:`${baseURL}/category`,
+        method:'PATCH',
+    },
+    deleteCategory:{
+         url:`${baseURL}/category`,
+        method:'delete',
+    },
+    // subcategory
+    getSubCategory:{
+         url:`${baseURL}/sub-category`,
+        method:'get',
+    },
+    addSubCategory:{
+         url:`${baseURL}/sub-category`,
+        method:'post',
+    },
+    editSubCategory:{
+         url:`${baseURL}/sub-category`,
+        method:'PATCH',
+    },
+    deleteSubCategory:{
+         url:`${baseURL}/sub-category`,
+        method:'delete',
+    },
+    //attributes-type
+     getAttributes:{
+         url:`${baseURL}/attributes`,
+        method:'get',
+    },
+    addAttributes:{
+         url:`${baseURL}/attributes`,
+        method:'post',
+    },
+    editAttributes:{
+        url:`${baseURL}/attributes`,
+        method:'PATCH',
+    },
+    deleteAttributes:{
+         url:`${baseURL}/attributes`,
+        method:'delete',
+    }, 
+    // shop
+    getShop:{
+        url:`${baseURL}/shop`,
+        method:"GET",
+    },
+    updateActiveShop:{
+        url:`${baseURL}/shop`,
+        method:"PATCH",
+    }
+}
+export default SummaryApi;
