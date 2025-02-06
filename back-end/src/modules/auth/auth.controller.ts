@@ -13,10 +13,9 @@ import { LoginDto } from './dto/login.dto';
 import Hash from 'src/utils/hashing';
 import JWT from 'src/utils/jwt';
 import { redis } from 'src/utils/redis';
-import e, { response, Response } from 'express';
+import { response, Response } from 'express';
 import generatedOtp from 'src/utils/generatedOtp';
 import { SendEmailService } from '../send-email/send-email.service';
-import { error } from 'console';
 import resetPasswordWithOtpTemplate from 'src/utils/resetPasswordTemplate';
 
 @Controller('auth')

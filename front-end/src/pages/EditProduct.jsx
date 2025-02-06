@@ -42,7 +42,6 @@ export default function EditProduct() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // Fetch product data when component mounts
   useEffect(() => {
     const fetchProductData = async () => {
       setLoading(true);

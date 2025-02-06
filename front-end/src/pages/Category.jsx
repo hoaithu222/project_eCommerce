@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import SummaryApi from "../common/SummaryApi";
-
+import ListSubCategory from "../components/ListSubCategory";
+import ListProduct from "../components/ListProduct";
 export default function Category() {
   const { categoryId } = useParams();
   const [categoryData, setCategoryData] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
 
   const fetchCategoryDetails = async () => {
     try {
+      setLoading(true);
       const response = await fetch(
         `${SummaryApi.getCategoryById.url}/${categoryId}`,
         {
@@ -24,10 +27,11 @@ export default function Category() {
       setProducts(allProducts);
     } catch (error) {
       console.error("Error fetching category details:", error);
+    } finally {
+      setLoading(false);
     }
   };
-  console.log("category", categoryData);
-  console.log("prodyuc", products);
+
   useEffect(() => {
     fetchCategoryDetails();
   }, [categoryId]);
@@ -40,6 +44,16 @@ export default function Category() {
           alt="hình ảnh"
           className="w-full h-full object-cover"
         />
+      </div>
+      <div className="mt-6">
+        <ListSubCategory
+          categoryData={categoryData}
+          loading={loading}
+          setProduct={setProducts}
+        />
+      </div>
+      <div className="mt-4">
+        <ListProduct products={products} />
       </div>
     </div>
   );
