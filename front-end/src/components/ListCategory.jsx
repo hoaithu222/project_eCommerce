@@ -55,7 +55,7 @@ const ListCategory = () => {
           <div className="animate-pulse">
             <div className="h-6 w-48 bg-blue-200/50 rounded mb-6"></div>
             <div className="flex space-x-6">
-              {[1, 2, 3, 4, 5].map((i) => (
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
                 <div key={i} className="flex flex-col items-center space-y-3">
                   <div className="w-24 h-24 bg-blue-100/50 rounded-full"></div>
                   <div className="h-4 w-20 bg-blue-100/50 rounded"></div>

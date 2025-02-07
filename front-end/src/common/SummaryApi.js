@@ -131,6 +131,10 @@ const SummaryApi= {
     updateProduct:{
         url:`${baseURL}/products`,
         method:"PATCH",
+    },
+    getProductWithSubCategory:{
+       url:`${baseURL}/products/sub-category`,
+       method:"POST",
     }
 }
 export default SummaryApi;

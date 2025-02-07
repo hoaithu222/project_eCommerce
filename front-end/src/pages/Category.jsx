@@ -6,9 +6,9 @@ import ListProduct from "../components/ListProduct";
 export default function Category() {
   const { categoryId } = useParams();
   const [categoryData, setCategoryData] = useState(null);
+  const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
-  const [products, setProducts] = useState([]);
-
+  const [subCategory, setSubCategory] = useState([]);
   const fetchCategoryDetails = async () => {
     try {
       setLoading(true);
@@ -20,11 +20,10 @@ export default function Category() {
       );
       const result = await response.json();
       setCategoryData(result.data);
-
-      const allProducts = result.data.sub_categories.flatMap(
-        (subCategory) => subCategory.products,
-      );
-      setProducts(allProducts);
+      const allSubCategory = result.data.sub_categories.map((subCategory) => {
+        return subCategory.id;
+      });
+      setSubCategory(allSubCategory);
     } catch (error) {
       console.error("Error fetching category details:", error);
     } finally {
@@ -49,11 +48,17 @@ export default function Category() {
         <ListSubCategory
           categoryData={categoryData}
           loading={loading}
-          setProduct={setProducts}
+          setSubCategory={setSubCategory}
+          setTitle={setTitle}
         />
       </div>
       <div className="mt-4">
-        <ListProduct products={products} />
+        <ListProduct
+          title={title}
+          fetchData={fetchCategoryDetails}
+          setTitle={setTitle}
+          subCategory={subCategory}
+        />
       </div>
     </div>
   );

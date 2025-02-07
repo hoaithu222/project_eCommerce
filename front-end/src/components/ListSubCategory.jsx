@@ -2,9 +2,14 @@ import { GiBallHeart } from "react-icons/gi";
 import { PiCursorClickBold } from "react-icons/pi";
 import colors from "../style/colors";
 
-export default function ListSubCategory({ categoryData, loading, setProduct }) {
+export default function ListSubCategory({
+  categoryData,
+  loading,
+  setSubCategory,
+  setTitle,
+}) {
   return (
-    <div className=" rounded-md p-4 flex items-center justify-center flex-col">
+    <div className="container rounded-md p-4 flex items-center justify-center flex-col">
       <div className="bg-white py-2 px-6 rounded-full flex items-center my-3 border-2 border-purple-100 border-dashed hover:shadow-purple-200 hover:shadow-2xl mb-4 ">
         <GiBallHeart
           className={`text-rose-400 text-4xl font-bold m-2 cursor-pointer hover:scale-110`}
@@ -15,12 +20,15 @@ export default function ListSubCategory({ categoryData, loading, setProduct }) {
           Tất cả danh mục con thuộc<strong> {categoryData?.name}</strong>
         </p>
       </div>
-      <div className="flex items-center justify-center gap-5 overflow-x-auto hidden-scrollbar">
+      <div className="flex  flex-wrap items-center justify-center gap-5 overflow-x-auto hidden-scrollbar">
         {categoryData?.sub_categories?.map((sub_category, index) => (
           <div
             key={`${sub_category}-${index}`}
             className="border-2 border-gray-200 rounded-xl overflow-hidden hover:shadow-2xl hover:bg-purple-100"
-            onClick={() => setProduct(sub_category?.products)}
+            onClick={() => {
+              setSubCategory([sub_category?.id]);
+              setTitle(sub_category?.name);
+            }}
           >
             <div className="w-56 h-56 overflow-hidden mx-auto">
               <img
