@@ -10,6 +10,7 @@ import {
 import Pagination from "./Pagination";
 import ProductItem from "./ProductItem";
 import SummaryApi from "../common/SummaryApi";
+import LoadingSkeleton from "./LoadingSkeleton";
 
 export default function ListProduct({
   title,
@@ -94,6 +95,15 @@ export default function ListProduct({
   };
 
   const totalPage = Math.ceil(count / limit);
+  if (loading) {
+    return (
+      <div className="container mx-auto py-4">
+        <div className="overflow-hidden">
+          <LoadingSkeleton />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white shadow-xl rounded-lg overflow-hidden">
@@ -141,11 +151,7 @@ export default function ListProduct({
           </div>
         </div>
 
-        {loading ? (
-          <div className="flex justify-center items-center py-10">
-            <FaSpinner className="animate-spin text-4xl text-blue-500" />
-          </div>
-        ) : products?.length ? (
+        {products?.length ? (
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {products.map((product) => (
               <ProductItem key={product.id} product={product} />
@@ -156,7 +162,6 @@ export default function ListProduct({
             Hiện tại chưa có sản phẩm
           </div>
         )}
-
         {totalPage > 1 && (
           <div className="mt-6 flex justify-center">
             <Pagination

@@ -2,8 +2,10 @@ import React from "react";
 import { PiStarThin } from "react-icons/pi";
 import { BsFillStarFill } from "react-icons/bs";
 import { formatPriceVND } from "../utils/formatPriceVND";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductItem({ product, loading }) {
+  const navigate = useNavigate();
   if (loading) {
     return (
       <div className="border border-gray-300 rounded-lg overflow-hidden p-3 animate-pulse">
@@ -15,7 +17,12 @@ export default function ProductItem({ product, loading }) {
     );
   }
   return (
-    <div className="group border border-gray-300 rounded-lg overflow-hidden relative transition-all duration-300 hover:shadow-lg">
+    <div
+      className="group border border-gray-300 rounded-lg overflow-hidden relative transition-all duration-300 hover:shadow-lg"
+      onClick={() => {
+        navigate(`/product/${product.id}`);
+      }}
+    >
       <div className="w-full h-72 overflow-hidden relative">
         <img
           src={product.product_images[0]?.image_url || "image.png"}
