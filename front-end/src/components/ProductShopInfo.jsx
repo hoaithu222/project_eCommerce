@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Star, Users, Store, Heart } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductShopInfo({ data }) {
   const [shop, setShop] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data?.id) {
@@ -33,7 +35,12 @@ export default function ProductShopInfo({ data }) {
               <Heart className="w-4 h-4" />
               Theo dõi
             </button>
-            <button className="px-6 py-2 border-2 border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition-colors duration-200 flex items-center gap-2">
+            <button
+              className="px-6 py-2 border-2 border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition-colors duration-200 flex items-center gap-2"
+              onClick={() => {
+                navigate(`/shop/${shop.id}`);
+              }}
+            >
               <Store className="w-4 h-4" />
               Xem shop
             </button>

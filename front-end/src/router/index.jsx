@@ -33,6 +33,7 @@ import AddProduct from "../pages/AddProduct";
 import EditProduct from "../pages/EditProduct";
 import Category from "../pages/Category";
 import ProductDetails from "../pages/ProductDetails";
+import PageShopInfo from "../pages/PageShopInfo";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
           {
             path: "product/:id",
             element: <ProductDetails />,
+          },
+          {
+            path: "shop/:id",
+            element: <PageShopInfo />,
           },
           {
             path: "search",

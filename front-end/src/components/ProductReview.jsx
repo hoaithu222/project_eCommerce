@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Star } from "lucide-react";
+import { Star, Image as ImageIcon, MessageSquare } from "lucide-react";
 
 export default function ProductReview({ data }) {
   const [reviews, setReviews] = useState([]);
@@ -48,6 +48,29 @@ export default function ProductReview({ data }) {
     </div>
   );
 
+  const getFilteredReviews = () => {
+    switch (selectedFilter) {
+      case "all":
+        return reviews;
+      case "with-comments":
+        return reviews.filter((r) => r.comment?.trim());
+      case "with-images":
+        return reviews.filter((r) => r.ReviewImage?.length > 0);
+      default:
+        const starRating = parseInt(selectedFilter);
+        return reviews.filter((r) => r.rating === starRating);
+    }
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("vi-VN", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
   return (
     <div className="bg-white p-5 shadow-lg rounded-xl my-4">
       <div>
@@ -78,7 +101,7 @@ export default function ProductReview({ data }) {
                   <FilterButton
                     key={star}
                     label={`${star} sao`}
-                    value={`${star}-star`}
+                    value={star}
                     count={getRatingCount(star)}
                   />
                 ))}
@@ -121,6 +144,64 @@ export default function ProductReview({ data }) {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mt-6 p-4">
+          {reviews.length > 0 ? (
+            <div className="space-y-6">
+              {getFilteredReviews().map((review) => (
+                <div key={review.id} className="border-b pb-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
+                      <span className="text-xl text-gray-600">
+                        {review.user?.name?.[0]?.toUpperCase() || "U"}
+                      </span>
+                    </div>
+
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <h3 className="font-medium">{review.user?.name}</h3>
+                        <span className="text-gray-400">•</span>
+                        <span className="text-sm text-gray-500">
+                          {formatDate(review.created_at)}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center gap-2 mt-1">
+                        <div className="flex">{renderStars(review.rating)}</div>
+                      </div>
+
+                      {review.comment && (
+                        <p className="mt-2 text-gray-700">{review.comment}</p>
+                      )}
+
+                      {review.ReviewImage && review.ReviewImage.length > 0 && (
+                        <div className="mt-3 flex gap-2 flex-wrap">
+                          {review.ReviewImage.map((image, index) => (
+                            <div
+                              key={image.id}
+                              className="w-24 h-24 rounded-lg overflow-hidden bg-gray-50"
+                            >
+                              <img
+                                src={image.url}
+                                alt={`Review ${index + 1}`}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center py-12 text-gray-500">
+              <Star size={48} className="mb-4" />
+              <p className="text-lg">Chưa có đánh giá</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

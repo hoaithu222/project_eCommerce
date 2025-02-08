@@ -89,7 +89,7 @@ const SummaryApi= {
         method:'POST',
     },
     getShop:{
-        url:`${baseURL}/shop/get-shop`,
+        url:`${baseURL}/shop`,
         method:'GET',
     },
     updateShop:{
