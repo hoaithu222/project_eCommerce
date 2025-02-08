@@ -46,6 +46,7 @@ export default function ProductDescription({ data }) {
                 <p className="text-gray-600 min-w-[100px]">
                   {attribute?.type?.name}:
                 </p>
+                {/* <p className="text-gray-800">{attribute?.values[0]?.value}</p> */}
               </div>
             ))}
           </div>
