@@ -40,13 +40,12 @@ export default function ProductDescription({ data }) {
             {/* Attributes */}
             {product?.product_attributes?.map((attribute, index) => (
               <div
-                key={`${attribute.id}-${index}`}
+                key={`${attribute?.id}-${index}`}
                 className="flex items-center space-x-4 p-2 hover:bg-gray-50 rounded-md"
               >
                 <p className="text-gray-600 min-w-[100px]">
                   {attribute?.type?.name}:
                 </p>
-                <p className="text-gray-800">{attribute?.values[0]?.value}</p>
               </div>
             ))}
           </div>
@@ -59,7 +58,7 @@ export default function ProductDescription({ data }) {
           </h2>
           <div className="px-2">
             <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
-              {product.description}
+              {product?.description}
             </p>
           </div>
         </div>

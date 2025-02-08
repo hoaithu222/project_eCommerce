@@ -107,7 +107,7 @@ export default function ProductGeneralInfo({ data }) {
           <div className="w-full h-[600px] rounded-lg overflow-hidden">
             <img
               src={productImageActive}
-              alt={data.name}
+              alt={data?.name}
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
             />
           </div>
@@ -123,17 +123,17 @@ export default function ProductGeneralInfo({ data }) {
             <div className="grid grid-cols-5 gap-4 px-10">
               {visibleImages.map((item, index) => (
                 <div
-                  key={`${item.id}-${index}`}
+                  key={`${item?.id}-${index}`}
                   className={`aspect-square rounded-md overflow-hidden cursor-pointer transition-all ${
-                    productImageActive === item.image_url
+                    productImageActive === item?.image_url
                       ? "ring-2 ring-blue-500"
                       : "hover:ring-2 hover:ring-gray-300"
                   }`}
-                  onClick={() => handleImageClick(item.image_url)}
+                  onClick={() => handleImageClick(item?.image_url)}
                 >
                   <img
-                    src={item.image_url}
-                    alt={data.name}
+                    src={item?.image_url}
+                    alt={data?.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -152,15 +152,15 @@ export default function ProductGeneralInfo({ data }) {
 
         <div className="space-y-6 my-auto">
           <h2 className="text-2xl font-semibold text-gray-800 leading-tight">
-            {data.name}
+            {data?.name}
           </h2>
 
           <div className="flex items-center gap-4">
             <div className="flex items-center">
-              <Rating rating={data.rating} />
+              <Rating rating={data?.rating} />
             </div>
             <span className="text-gray-600">
-              {data.Review?.length || 0} đánh giá
+              {data?.Review?.length || 0} đánh giá
             </span>
           </div>
 
@@ -226,9 +226,9 @@ export default function ProductGeneralInfo({ data }) {
 
           <div className="flex gap-4 pt-4">
             <button
-              disabled={variantAttributes.length > 0 && !selectedVariant}
+              disabled={variantAttributes?.length > 0 && !selectedVariant}
               className={`flex-1 px-6 py-3 rounded-lg font-medium transition-colors ${
-                variantAttributes.length === 0 || selectedVariant
+                variantAttributes?.length === 0 || selectedVariant
                   ? "bg-pink-100 text-pink-400 hover:bg-pink-200"
                   : "bg-gray-100 text-gray-400 cursor-not-allowed"
               }`}
@@ -236,7 +236,7 @@ export default function ProductGeneralInfo({ data }) {
               Thêm vào giỏ hàng
             </button>
             <button
-              disabled={variantAttributes.length > 0 && !selectedVariant}
+              disabled={variantAttributes?.length > 0 && !selectedVariant}
               className={`flex-1 px-6 py-3 rounded-lg font-medium transition-colors ${
                 variantAttributes.length === 0 || selectedVariant
                   ? "bg-pink-500 text-white hover:bg-pink-600"
