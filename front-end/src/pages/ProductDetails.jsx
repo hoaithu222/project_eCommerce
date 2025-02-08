@@ -3,6 +3,8 @@ import SummaryApi from "../common/SummaryApi";
 import { useEffect, useState } from "react";
 import ProductGeneralInfo from "../components/ProductGeneralInfo";
 import ProductShopInfo from "../components/ProductShopInfo";
+import ProductDescription from "../components/ProductDescription";
+import ProductReview from "../components/ProductReview";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -32,6 +34,8 @@ export default function ProductDetails() {
       <div>
         <ProductGeneralInfo data={product} />
         <ProductShopInfo data={product} />
+        <ProductDescription data={product} />
+        <ProductReview data={product} />
       </div>
     </div>
   );
