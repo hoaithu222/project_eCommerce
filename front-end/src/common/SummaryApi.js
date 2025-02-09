@@ -135,6 +135,15 @@ const SummaryApi= {
     getProductWithSubCategory:{
        url:`${baseURL}/products/sub-category`,
        method:"POST",
-    }
+    },
+    //shop-follow
+    followerShop:{
+        url:`${baseURL}/shop-follower`,
+        method:"POST",
+    },
+    unfollowerShop:{
+        url:`${baseURL}/shop-follower/unfollow`,
+        method:"POST",
+    },
 }
 export default SummaryApi;

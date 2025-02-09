@@ -12,13 +12,11 @@ export default function ProductDescription({ data }) {
   return (
     <div className="bg-white rounded-lg shadow-lg">
       <div className="p-6 space-y-6">
-        {/* Product Details Section */}
         <div>
           <h2 className="text-2xl font-semibold bg-slate-50 p-4 rounded-md mb-4 text-gray-800">
             Chi tiết sản phẩm
           </h2>
           <div className="space-y-4 px-2">
-            {/* Category */}
             <div className="flex items-center space-x-4 p-2 hover:bg-gray-50 rounded-md">
               <p className="text-gray-600 min-w-[100px]">Danh mục:</p>
               <p className="text-blue-500">
@@ -28,7 +26,6 @@ export default function ProductDescription({ data }) {
               </p>
             </div>
 
-            {/* Stock */}
             <div className="flex items-center space-x-4 p-2 hover:bg-gray-50 rounded-md">
               <p className="text-gray-600 min-w-[100px]">Kho:</p>
               <p className="text-gray-800">
@@ -37,7 +34,6 @@ export default function ProductDescription({ data }) {
               </p>
             </div>
 
-            {/* Attributes */}
             {product?.product_attributes?.map((attribute, index) => (
               <div
                 key={`${attribute?.id}-${index}`}
@@ -52,7 +48,6 @@ export default function ProductDescription({ data }) {
           </div>
         </div>
 
-        {/* Product Description Section */}
         <div>
           <h2 className="text-2xl font-semibold bg-slate-50 p-4 rounded-md mb-4 text-gray-800">
             Mô tả sản phẩm

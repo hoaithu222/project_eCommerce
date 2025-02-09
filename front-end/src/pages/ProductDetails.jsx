@@ -28,6 +28,7 @@ export default function ProductDetails() {
   };
   useEffect(() => {
     fetchDetailProduct();
+    window.scrollTo(0, 0);
   }, []);
   return (
     <div className="mx-auto  container my-4">

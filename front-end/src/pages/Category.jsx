@@ -33,6 +33,7 @@ export default function Category() {
 
   useEffect(() => {
     fetchCategoryDetails();
+    window.scrollTo(0, 0);
   }, [categoryId]);
 
   return (

@@ -8,9 +8,14 @@ export const fetchUser = () => {
     try {
       const response = await api.get(SummaryApi.getProfile.url);
       
+      
       if (response.data?.data?.id) {
         sessionStorage.setItem("isLogin", true);
-        dispatch({ type: "fetch_user_success", payload: response.data.data });
+        dispatch({ type: "fetch_user_success", payload: {
+          data:response.data.data,
+          follower_shop:response.data.data.ShopFollower,
+        } });
+        
         dispatch({ type: "get_shop", payload: response.data.data.Shop });
       }
     } catch (error) {
