@@ -32,8 +32,6 @@ export default function Category() {
     count,
   } = useSelector((state) => state.category);
 
-  console.log("category", category);
-
   const [deleteCategory, setDeleteCategory] = useState({ id: "" });
   const [categoryEdit, setCategoryEdit] = useState({
     id: "",

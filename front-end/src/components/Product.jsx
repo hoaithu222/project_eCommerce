@@ -7,6 +7,7 @@ import colors from "../style/colors";
 
 export default function Product() {
   const { data: products, loading } = useSelector((state) => state.product);
+
   if (loading) {
     return (
       <div className="container mx-auto py-4">
@@ -31,7 +32,7 @@ export default function Product() {
         </div>
         <div className="flex items-center justify-center">
           <Link
-            to=""
+            to="/products"
             className={`${colors.button.medium} ${colors.button.gradientRedToYellow} mx-auto my-4 `}
           >
             Xem thêm

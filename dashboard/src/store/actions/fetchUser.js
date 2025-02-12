@@ -28,7 +28,7 @@ export const fetchUser = (navigate) => {
           body:JSON.stringify({refreshToken:refreshToken})
         });
         const result = await responseRefreshToken.json();
-        console.log("result",result);
+
         if(result.error){
           localStorage.clear();
           sessionStorage.clear();
@@ -37,7 +37,7 @@ export const fetchUser = (navigate) => {
           
         }
       }
-      console.log("get useer",data);
+
 
 
        if (response.ok && data?.data?.id) {

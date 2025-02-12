@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import colors from "../style/colors";
 import { toast } from "react-toastify";
 import SummaryApi from "../common/SummaryApi";
-import InputField from "./InputField copy";
+import InputField from "./InputField";
 import { MdDescription } from "react-icons/md";
 import Loading from "../pages/Loading";
 import { uploadImage } from "../utils/imageUploader";

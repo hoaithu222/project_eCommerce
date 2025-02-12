@@ -10,7 +10,7 @@ export const fetchAttribute =({_page,_limit, _sort,
                 method:SummaryApi.getAttributes.method,
             });
             const result = await response.json();
-            console.log(result);
+
             if(response.ok){
                 dispatch({type:"fetch_attributes_success",payload:{
                     data:result.data,

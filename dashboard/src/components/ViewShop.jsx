@@ -1,6 +1,14 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
 const ViewShop = ({ close, data }) => {
+  const [shop, setShop] = useState({});
+  const [product, setProduct] = useState([]);
+  useEffect(() => {
+    if (data.id) {
+      setShop(data);
+      setProduct(data.products);
+    }
+  }, []);
   const formatDate = (date) => {
     const currentDate = new Date();
     const givenDate = new Date(date);
@@ -31,10 +39,10 @@ const ViewShop = ({ close, data }) => {
             <div
               className="absolute inset-0 bg-cover bg-center"
               style={{
-                backgroundImage: `url(${data.banner_url || ""})`,
+                backgroundImage: `url(${shop.banner_url || ""})`,
               }}
             >
-              {!data.banner_url && (
+              {!shop.banner_url && (
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400" />
               )}
             </div>
@@ -50,8 +58,8 @@ const ViewShop = ({ close, data }) => {
               <div className="ring-4 ring-white rounded-full">
                 <div className="w-32 h-32 rounded-full p-1 bg-gradient-to-r from-green-500 to-emerald-500">
                   <img
-                    src={data.logo_url || "https://via.placeholder.com/128"}
-                    alt={`${data.name} logo`}
+                    src={shop?.logo_url || "https://via.placeholder.com/128"}
+                    alt={`${shop?.name} logo`}
                     className="w-full h-full rounded-full object-cover bg-white"
                   />
                 </div>
@@ -59,7 +67,7 @@ const ViewShop = ({ close, data }) => {
 
               <div className="flex-1 mt-16">
                 <h4 className="text-3xl font-bold text-gray-900 mb-2">
-                  {data.name}
+                  {shop?.name}
                 </h4>
                 <div className="flex items-center gap-3 text-sm text-gray-600">
                   <span className="flex items-center gap-1">
@@ -67,10 +75,10 @@ const ViewShop = ({ close, data }) => {
                     Đang hoạt động
                   </span>
                   <span>•</span>
-                  <span>Tham gia {formatDate(data.created_at)}</span>
+                  <span>Tham gia {formatDate(shop?.created_at)}</span>
                   <span>•</span>
                   <span>
-                    {data?.followers?.toLocaleString()} người theo dõi
+                    {shop?.followers?.toLocaleString()} người theo dõi
                   </span>
                 </div>
               </div>
@@ -81,7 +89,7 @@ const ViewShop = ({ close, data }) => {
               <div className="text-center">
                 <div className="flex items-center justify-center gap-1 text-amber-500 mb-2">
                   <span className="text-2xl font-bold">★</span>
-                  <span className="font-bold text-2xl">{data.rating}</span>
+                  <span className="font-bold text-2xl">{shop?.rating}</span>
                 </div>
                 <p className="text-sm font-medium text-gray-600">
                   Đánh giá trung bình
@@ -90,7 +98,7 @@ const ViewShop = ({ close, data }) => {
 
               <div className="text-center border-x border-gray-200">
                 <div className="font-bold text-2xl text-gray-900 mb-2">
-                  {data.products || 0}
+                  {product.length || 0}
                 </div>
                 <p className="text-sm font-medium text-gray-600">
                   Tổng sản phẩm
@@ -99,7 +107,7 @@ const ViewShop = ({ close, data }) => {
 
               <div className="text-center">
                 <div className="font-bold text-2xl text-gray-900 mb-2">
-                  {data?.followers?.toLocaleString()}
+                  {shop?.followers?.toLocaleString()}
                 </div>
                 <p className="text-sm font-medium text-gray-600">
                   Người theo dõi
@@ -114,7 +122,7 @@ const ViewShop = ({ close, data }) => {
               </h5>
               <div className="p-4 bg-gray-50 rounded-xl">
                 <p className="text-gray-600 leading-relaxed">
-                  {data.description || "Shop chưa có mô tả chi tiết"}
+                  {shop?.description || "Shop chưa có mô tả chi tiết"}
                 </p>
               </div>
             </div>

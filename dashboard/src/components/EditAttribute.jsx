@@ -120,7 +120,6 @@ export default function EditAttribute({ onClose, dataAttributeId, onSuccess }) {
       category_id: prev.category_id.filter((id) => id !== categoryId),
     }));
   };
-  console.log(data);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -152,7 +151,6 @@ export default function EditAttribute({ onClose, dataAttributeId, onSuccess }) {
       );
 
       const dataResponse = await response.json();
-      console.log(dataResponse);
 
       if (dataResponse.success) {
         toast.success("Sửa thuộc tính thành công");
@@ -202,7 +200,7 @@ export default function EditAttribute({ onClose, dataAttributeId, onSuccess }) {
             </label>
 
             {/* Hiển thị danh mục đã chọn */}
-            <div className="flex flex-wrap gap-2 mb-2">
+            <div className="flex flex-wrap gap-2 mb-2 max-h-[150px] overflow-y-auto">
               {selectedCategories?.map((category) => (
                 <div
                   key={category.id}

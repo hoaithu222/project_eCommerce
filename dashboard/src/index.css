@@ -5,3 +5,26 @@
 body {
   @apply bg-gray-50;
 }
+.hidden-scrollbar::-webkit-scrollbar {
+  display: none; 
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* Độ rộng thanh cuộn */
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #f8a2a2, #598bf7); 
+  border-radius: 10px; /* Bo góc */
+  transition: background 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ecacb1, #91cbf8); 
+}

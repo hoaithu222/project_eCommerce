@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 export default function DefaultShop() {
-  const dispatch = useDispatch();
-  useEffect(() => {}, []);
   return (
     <div className="flex">
       <div>

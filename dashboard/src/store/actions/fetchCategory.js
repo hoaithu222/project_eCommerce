@@ -10,7 +10,7 @@ export const fetchCategory =({_page,_limit, _sort,
                 method:SummaryApi.getCategory.method,
             });
             const result = await response.json();
-            console.log(result);
+
             if(response.ok){
                 dispatch({type:"fetch_category_success",payload:{
                     data:result.data,

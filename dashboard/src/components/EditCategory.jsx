@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import colors from "../style/colors";
 import { toast } from "react-toastify";
 import SummaryApi from "../common/SummaryApi";
-import InputField from "./InputField copy";
+import InputField from "./InputField";
 import { MdDescription } from "react-icons/md";
 import Loading from "../pages/Loading";
 import { uploadImage } from "../utils/imageUploader";
@@ -102,7 +102,6 @@ export default function EditCategory({ onClose, dataCategoryId, onSuccess }) {
       setLoading(false);
     }
   };
-  console.log(data);
 
   return (
     <div className="fixed inset-0 bg-black/70 z-50 flex justify-center items-center px-4 md:px-52 lg:px-72">

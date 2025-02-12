@@ -21,7 +21,7 @@ export default function ProductDetails() {
         setProduct(result.data);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setLoading(false);
     }

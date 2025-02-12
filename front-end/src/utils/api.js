@@ -37,7 +37,7 @@ api.interceptors.response.use(
 
     if (error.response?.status === 401 && !originalRequest._retry) {
       if (isRefreshing) {
-        // Nếu đang refresh thì queue request lại
+      
         return new Promise((resolve, reject) => {
           failedQueue.push({ resolve, reject });
         })

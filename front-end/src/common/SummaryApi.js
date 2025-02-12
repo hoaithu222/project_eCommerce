@@ -145,5 +145,26 @@ const SummaryApi= {
         url:`${baseURL}/shop-follower/unfollow`,
         method:"POST",
     },
+    // cart
+    getCart:{
+        url:`${baseURL}/cart`,
+        method:"GET",
+    },
+    getCartWithShop:{
+        url:`${baseURL}/cart/shop`,
+        method:"GET",
+    },
+    addCart:{
+        url:`${baseURL}/cart/items`,
+        method:"POST",
+    },
+    updateCart:{
+        url:`${baseURL}/cart/items`,
+        method:"PATCH",
+    },
+    deleteCart:{
+        url:`${baseURL}/cart/items`,
+        method:"DELETE",
+    },
 }
 export default SummaryApi;

@@ -47,7 +47,6 @@ export default function ResetPassword() {
       });
 
       const result = await response.json();
-      console.log(result);
 
       if (response.ok) {
         setSuccess("Password reset successful!");
@@ -63,8 +62,6 @@ export default function ResetPassword() {
       setIsLoading(false);
     }
   };
-
-  console.log("data reset password", data);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-100 flex justify-center items-center">

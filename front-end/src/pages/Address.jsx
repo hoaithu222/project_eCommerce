@@ -36,7 +36,7 @@ export default function Address() {
         setData(dataResponse.data);
       }
     } catch (error) {
-      toast.error("Có lỗi xảy ra khi kết nối với máy chủ");
+      toast.error("Có lỗi xảy ra khi kết nối với máy chủ", error);
     }
   };
   const handleDelete = async (id) => {

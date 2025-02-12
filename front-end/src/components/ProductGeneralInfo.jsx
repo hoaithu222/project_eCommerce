@@ -3,6 +3,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { formatPriceVND } from "../utils/formatPriceVND";
 import Rating from "./Rating";
 import { BsCartPlus } from "react-icons/bs";
+import SummaryApi from "../common/SummaryApi";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function ProductGeneralInfo({ data }) {
   const [productImage, setProductImage] = useState([]);
@@ -15,8 +19,9 @@ export default function ProductGeneralInfo({ data }) {
   const [stock, setStock] = useState(0);
   const [price, setPrice] = useState(0);
   const [variantAttributes, setVariantAttributes] = useState([]);
+  const dispatch = useDispatch();
+  const { data: shop } = useSelector((state) => state.shop);
   const imagesPerPage = 5;
-
   useEffect(() => {
     if (data.id) {
       setProductImage(data.product_images);
@@ -99,6 +104,44 @@ export default function ProductGeneralInfo({ data }) {
   );
   const canScrollLeft = startIndex > 0;
   const canScrollRight = startIndex + imagesPerPage < productImage.length;
+  const handleAddToCart = async () => {
+    if (shop.id === data.shop_id) {
+      toast.error("Bạn không thể cho sản phẩm của mình bán vào giỏ");
+    } else {
+      const cartItem = {
+        product_id: data.id,
+        variant_id: selectedVariant?.id || null,
+        quantity: quantity,
+        shop_id: data.shop_id,
+        price_at_time: price,
+      };
+      console.log("cartItem");
+      const token = localStorage.getItem("accessToken");
+      const response = await fetch(SummaryApi.addCart.url, {
+        method: SummaryApi.addCart.method,
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cartItem),
+      });
+      const result = await response.json();
+      if (result.success) {
+        toast.success(result.message);
+        console.log("result", result);
+        if (result.action === "CREATE") {
+          dispatch({
+            type: "add_cart",
+          });
+        } else {
+          dispatch({
+            type: "update_cart",
+          });
+        }
+      }
+      console.log("Kết quả trả về sau khi thêm giỏ hàng", result);
+    }
+  };
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-xl">
@@ -232,6 +275,7 @@ export default function ProductGeneralInfo({ data }) {
                   ? "bg-pink-100 text-pink-400 hover:bg-pink-200"
                   : "bg-gray-100 text-gray-400 cursor-not-allowed"
               }`}
+              onClick={handleAddToCart}
             >
               Thêm vào giỏ hàng
             </button>

@@ -21,7 +21,7 @@ const ListCategory = () => {
         setCategory(result.data);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -37,7 +37,6 @@ const ListCategory = () => {
       element.scrollLeft < element.scrollWidth - element.clientWidth,
     );
   };
-  console.log(category);
 
   const scroll = (direction) => {
     const container = document.getElementById("category-container");

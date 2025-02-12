@@ -14,8 +14,6 @@ export default function SocialCallback() {
       const refreshToken = urlParams.get("refreshToken");
       const error = urlParams.get("error");
 
-      console.log("URL Params: ", { accessToken, refreshToken, error });
-
       if (error) {
         console.error("Social login failed:", { error });
         navigate("/login");

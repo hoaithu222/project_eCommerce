@@ -34,6 +34,10 @@ import EditProduct from "../pages/EditProduct";
 import Category from "../pages/Category";
 import ProductDetails from "../pages/ProductDetails";
 import PageShopInfo from "../pages/PageShopInfo";
+import { PrivateRoute } from "../components/PrivateRoute ";
+import AllProduct from "../pages/AllProduct";
+import NotAuthorized from "../components/NotAuthorized";
+import ShopRoute from "../components/ShopRoute";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +65,10 @@ const router = createBrowserRouter([
             element: <ProductDetails />,
           },
           {
+            path: "products",
+            element: <AllProduct />,
+          },
+          {
             path: "shop/:id",
             element: <PageShopInfo />,
           },
@@ -70,11 +78,21 @@ const router = createBrowserRouter([
           },
           {
             path: "register-shop",
-            element: <RegisterShop />,
+            element: (
+              <PrivateRoute>
+                <RegisterShop />
+              </PrivateRoute>
+            ),
           },
           {
             path: "shop-management",
-            element: <DefaultShop />,
+            element: (
+              <PrivateRoute>
+                <ShopRoute>
+                  <DefaultShop />
+                </ShopRoute>
+              </PrivateRoute>
+            ),
             children: [
               {
                 path: "shop",
@@ -105,7 +123,11 @@ const router = createBrowserRouter([
           },
           {
             path: "account",
-            element: <Account />,
+            element: (
+              <PrivateRoute>
+                <Account />
+              </PrivateRoute>
+            ),
             children: [
               {
                 path: "profile",
@@ -131,7 +153,11 @@ const router = createBrowserRouter([
           },
           {
             path: "cart",
-            element: <Cart />,
+            element: (
+              <PrivateRoute>
+                <Cart />
+              </PrivateRoute>
+            ),
           },
           {
             path: "user-menu",
@@ -174,6 +200,10 @@ const router = createBrowserRouter([
       {
         path: "resendVerifyEmail",
         element: <ResendVerifyEmail />,
+      },
+      {
+        path: "not-authorized",
+        element: <NotAuthorized />,
       },
     ],
   },

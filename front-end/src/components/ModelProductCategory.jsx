@@ -18,8 +18,7 @@ export default function ModelProductCategory({
   const [selectedSubCategory, setSelectedSubCategory] =
     useState(initialCategoryId);
   const [searchTerm, setSearchTerm] = useState("");
-  console.log(initialCategoryId);
-  console.log(selectedSubCategory);
+
   const fetchCategory = async () => {
     try {
       const response = await fetch(SummaryApi.getAllCategory.url, {

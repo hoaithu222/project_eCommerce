@@ -45,7 +45,7 @@ export default function PageShopInfo() {
         setProduct(result.data.products);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error("Không thể tải thông tin shop");
     } finally {
       setLoading(false);
@@ -83,7 +83,7 @@ export default function PageShopInfo() {
         toast.error(result.message || "Không thể theo dõi shop");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error("Đã xảy ra lỗi khi theo dõi shop");
     }
   };
@@ -113,7 +113,7 @@ export default function PageShopInfo() {
         toast.error(result.message || "Không thể hủy theo dõi shop");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error("Đã xảy ra lỗi khi hủy theo dõi shop");
     }
   };

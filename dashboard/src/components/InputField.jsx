@@ -12,7 +12,7 @@ const InputField = ({
   required = false,
   icon: Icon,
   error,
-  isReadOnly = false, // Prop mới để kiểm tra xem có ở chế độ chỉ hiển thị không
+  isReadOnly = false,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const isPassword = type === "password";

@@ -215,7 +215,6 @@ export default function ProductVariant({
 
   useEffect(() => {
     if (initialVariants?.length > 0 && variantGroups.length === 0) {
-      console.log("initialVariantslength", initialVariants);
       const firstVariant = initialVariants[0];
       const groups = Object.keys(firstVariant.combination).map((name) => ({
         name,

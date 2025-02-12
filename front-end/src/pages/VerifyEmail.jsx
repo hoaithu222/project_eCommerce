@@ -20,7 +20,6 @@ export default function VerifyEmail() {
           `${SummaryApi.verifyEmail.url}?token=${token}`,
         );
         const data = await response.json();
-        console.log("Verification response:", data);
 
         if (response.ok) {
           setVerificationStatus("success");

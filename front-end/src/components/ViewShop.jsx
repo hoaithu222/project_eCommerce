@@ -11,7 +11,6 @@ const ViewShop = ({ close, data, count }) => {
     if (totalMonthsDiff <= 0) return "Vừa mới tham gia";
     return `${totalMonthsDiff} tháng trước`;
   };
-  console.log(data);
 
   return (
     <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
@@ -25,10 +24,8 @@ const ViewShop = ({ close, data, count }) => {
           <span className="text-xl">&times;</span>
         </button>
 
-        {/* Banner Section */}
         <div className="grid grid-rows-[250px_auto]">
           <div className="relative">
-            {/* Banner Background */}
             <div
               className="absolute inset-0 bg-cover bg-center"
               style={{
@@ -40,7 +37,6 @@ const ViewShop = ({ close, data, count }) => {
               )}
             </div>
 
-            {/* Overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
           </div>
 

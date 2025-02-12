@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function AddProduct() {
   const { data: shop } = useSelector((state) => state.shop);
-  console.log("shop", shop);
+
   const [data, setData] = useState({
     shop_id: "",
     subcategory_id: "",
@@ -39,7 +39,7 @@ export default function AddProduct() {
   const [openCategory, setOpenCategory] = useState(false);
 
   const [attributes, setAttributes] = useState([]);
-  console.log("attribute", attributes);
+
   const [selectedPath, setSelectedPath] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -107,9 +107,8 @@ export default function AddProduct() {
         navigate("/shop-management/products");
       }
       setLoading(false);
-      console.log("dataResponse", dataResponse);
     } catch (error) {
-      console.log(error.message);
+      console.error(error.message);
     }
   };
 

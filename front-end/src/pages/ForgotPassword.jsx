@@ -19,8 +19,6 @@ const ForgotPassword = () => {
     setError("");
   };
 
-  console.log("Email", data);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!data.email) {
@@ -48,7 +46,7 @@ const ForgotPassword = () => {
       }
     } catch (error) {
       toast.success("Đã xảy ra lỗi vui lòng thử lại sau");
-      console.log("lỗi" + error);
+      console.error("lỗi" + error);
     } finally {
       setIsLoading(false);
     }

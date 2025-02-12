@@ -35,7 +35,7 @@ export default function RegisterShop() {
       body: JSON.stringify({ id: user.id }),
     });
     const dataResponse = await response.json();
-    console.log(dataResponse);
+
     if (dataResponse.error) {
       toast.warning(dataResponse.message);
       setCheckRegisterShop(true);
@@ -89,7 +89,7 @@ export default function RegisterShop() {
         body: JSON.stringify(data),
       });
       const dataResponse = await response.json();
-      console.log("dataResponse", dataResponse);
+
       if (dataResponse.success) {
         toast("Đã đăng kí thành công vui lòng chờ admin duyệt");
       } else if (dataResponse.error) {
@@ -101,7 +101,7 @@ export default function RegisterShop() {
       setIsLoading(false);
     }
   };
-  console.log("data", data);
+
   return (
     <div className="container mx-auto mt-3 ">
       <div className="bg-white shadow-2xl rounded-xl shadow-blue-100 p-5 ">

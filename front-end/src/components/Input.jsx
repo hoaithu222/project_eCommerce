@@ -11,7 +11,7 @@ const Input = ({
   required = false,
   icon: Icon,
   error,
-  isReadOnly = false, // Prop mới để kiểm tra xem có ở chế độ chỉ hiển thị không
+  isReadOnly = false,
   isView = false,
 }) => {
   return (

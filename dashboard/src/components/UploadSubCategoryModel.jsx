@@ -18,7 +18,6 @@ export default function UploadSubCategoryModal({ onClose, onSuccess }) {
     description: "",
     display_order: 1,
   });
-  console.log(formData);
 
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState({
@@ -50,7 +49,7 @@ export default function UploadSubCategoryModal({ onClose, onSuccess }) {
 
   const handleCategorySelect = (e) => {
     const selectedId = e.target.value;
-    console.log(selectedId);
+
     if (!selectedId) return;
 
     setFormData((prev) => ({ ...prev, category_id: Number(selectedId) }));
@@ -73,7 +72,7 @@ export default function UploadSubCategoryModal({ onClose, onSuccess }) {
       });
 
       const result = await response.json();
-      console.log(result);
+
       if (!result.success) throw new Error(result.message);
 
       dispatch({ type: "add_sub_category", payload: result.data });

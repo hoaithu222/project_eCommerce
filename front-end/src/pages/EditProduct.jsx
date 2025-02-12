@@ -35,6 +35,7 @@ export default function EditProduct() {
     weight: 0,
     is_active: true,
   });
+
   const [openCategory, setOpenCategory] = useState(false);
   const [attributes, setAttributes] = useState([]);
   const [selectedPath, setSelectedPath] = useState("");
@@ -60,7 +61,6 @@ export default function EditProduct() {
 
         if (productData.success) {
           setData(productData.data);
-          console.log("productData", productData);
 
           if (productData.data.subcategory_id) {
             const categoryResponse = await fetch(
@@ -97,7 +97,6 @@ export default function EditProduct() {
       fetchProductData();
     }
   }, [productId]);
-  console.log("data", data);
 
   useEffect(() => {
     if (shop?.id) {
@@ -153,7 +152,7 @@ export default function EditProduct() {
     }
     setLoading(false);
   };
-  console.log("data product_variant", data.product_variants);
+
   return (
     <div className="p-5 min-h-screen bg-gray-50">
       <div className="bg-white rounded-lg shadow-xl p-8 max-h-[96vh] custom-scrollbar overflow-y-auto mx-auto transition-all duration-300 hover:shadow-2xl">

@@ -45,7 +45,7 @@ export default function Register() {
         body: JSON.stringify(data),
       });
       const dataResponse = await response.json();
-      console.log(dataResponse);
+
       if (dataResponse.success) {
         localStorage.setItem("userId", dataResponse.data.id);
         setVerificationSent(true);
@@ -62,7 +62,7 @@ export default function Register() {
         });
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error(error);
     } finally {
       setIsLoading(false);

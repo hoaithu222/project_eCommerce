@@ -50,7 +50,7 @@ const Header = () => {
 
             {/* User Profile */}
             <div className="relative">
-              <button
+              <div
                 className={`flex items-center space-x-2 text-gray-600 hover:text-gray-900 p-1  rounded-full  transition-colors duration-200 cursor-pointer ${colors.gradients.blueToPink}`}
                 onClick={() => setOpenMenu(true)}
               >
@@ -63,7 +63,7 @@ const Header = () => {
                 ) : (
                   <FaUserCircle className="text-4xl text-white" />
                 )}
-              </button>
+              </div>
             </div>
           </div>
         </div>

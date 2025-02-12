@@ -49,9 +49,8 @@ export default function Login() {
       } else {
         toast.error(dataResponse.message);
       }
-      console.log(dataResponse);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }

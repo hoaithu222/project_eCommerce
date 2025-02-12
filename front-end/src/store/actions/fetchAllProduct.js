@@ -10,7 +10,7 @@ export const fetchAllProduct = ({_page,_limit,_sort,_order,q,shop_id})=>{
                     method:SummaryApi.getProduct.method,
                 });
             const result = await response.json();
-            console.log(result);
+
            if(result.success){
              dispatch({type:"get_product_success",payload:{
                 data:result.data,

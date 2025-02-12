@@ -19,6 +19,7 @@ export default function ListProduct({
   subCategory = [],
 }) {
   const [products, setProduct] = useState([]);
+
   const [limit, setLimit] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [sort, setSort] = useState("id");
@@ -75,7 +76,13 @@ export default function ListProduct({
         );
 
         const data = await response.json();
-        setProduct(data.data);
+
+        const newProduct = data.data.filter(
+          (product) => product.is_active === true,
+        );
+
+        setProduct(newProduct);
+
         setCount(data.count);
       } catch (error) {
         console.error("Error fetching products:", error);

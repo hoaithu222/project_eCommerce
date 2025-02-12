@@ -3,7 +3,7 @@ import { IoClose } from "react-icons/io5";
 import { FcAddImage, FcCheckmark } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import colors from "../style/colors";
-import InputField from "./InputField copy";
+import InputField from "./InputField";
 import SummaryApi from "../common/SummaryApi";
 import { toast } from "react-toastify";
 import { MdDescription } from "react-icons/md";
@@ -52,7 +52,7 @@ export default function EditSubCategory({
   };
   const handleCategorySelect = (e) => {
     const selectedId = e.target.value;
-    console.log(selectedId);
+
     if (!selectedId) return;
 
     setData((prev) => ({ ...prev, category_id: Number(selectedId) }));

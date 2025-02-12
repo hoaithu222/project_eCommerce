@@ -80,8 +80,7 @@ export default function SubCategory() {
         setFilteredSubCategories(result.data.sub_categories);
       }
     } catch (error) {
-      toast.error("Failed to fetch subcategories");
-      console.log(error);
+      console.error(error);
       setFilteredSubCategories(null);
     } finally {
       setLoadingCategory(false);

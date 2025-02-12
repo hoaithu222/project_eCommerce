@@ -79,7 +79,7 @@ export default function Shop() {
       fetchShop();
     }
   };
-  console.log(shops);
+
   return (
     <div className="m-5 ">
       {/* Header Section - Enhanced */}
@@ -98,7 +98,6 @@ export default function Shop() {
       <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-gray-600">
-            {/* Table Header - Enhanced gradient */}
             <thead className="bg-gradient-to-r from-purple-500 via-purple-400 to-pink-500 text-white">
               <tr>
                 <th className="px-6 py-5 text-left font-semibold">Logo</th>

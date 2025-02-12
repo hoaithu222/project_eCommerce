@@ -89,6 +89,16 @@ const SummaryApi= {
     updateActiveShop:{
         url:`${baseURL}/shop`,
         method:"PATCH",
-    }
+    },
+    // product
+    getProduct:{
+        url:`${baseURL}/products`,
+        method:"get"
+    },
+    updateProduct:{
+        url:`${baseURL}/products`,
+        method:"PATCH",
+    },
+
 }
 export default SummaryApi;

@@ -8,7 +8,7 @@ import { fetchProduct } from "../store/actions/fetchProduct";
 export default function Home() {
   const dispath = useDispatch();
   useEffect(() => {
-    dispath(fetchProduct({ _limit: 20, _page: 1 }));
+    dispath(fetchProduct({ _limit: 20, _page: 1, is_active: true }));
   }, []);
   return (
     <div className="w-full gap-4">

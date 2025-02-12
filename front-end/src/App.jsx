@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import { fetchCart } from "./store/actions/fetchCart";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ export default function App() {
     const token = localStorage.getItem("accessToken");
     if (token) {
       dispatch(fetchUser());
+      dispatch(fetchCart(token));
     }
   }, [dispatch, logout]);
 

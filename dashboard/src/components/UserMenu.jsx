@@ -49,8 +49,7 @@ export default function UserMenu({ onClose }) {
     }
   };
   return (
-    <div className="absolute top-20 right-1 w-40 shadow-2xl p-2 z-50 bg-white rounded-lg border border-gray-300">
-      {/* Close Button */}
+    <div className="absolute top-20 right-72 w-40 shadow-2xl p-2 z-50 bg-white rounded-lg border border-gray-300">
       <button
         onClick={onClose}
         className="text-xl text-gray-500 hover:text-red-500 transition ml-auto flex justify-end"

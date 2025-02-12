@@ -21,7 +21,6 @@ export default function ModelEditAddress({ onClose, fetchData, dataAddress }) {
     address_line1: dataAddress.address_line1 || "",
     address_line2: dataAddress.address_line2 || "",
   });
-  console.log("dataAddress", dataAddress);
   const [isLoading, setIsLoading] = useState(false);
 
   const [provinces, setProvinces] = useState([]);
@@ -32,7 +31,6 @@ export default function ModelEditAddress({ onClose, fetchData, dataAddress }) {
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [selectedWard, setSelectedWard] = useState("");
   useEffect(() => {
-    // Load provinces from addressData
     setProvinces(addressData);
   }, []);
 

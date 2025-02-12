@@ -19,6 +19,7 @@ export default function Header() {
   const isSearchPage = location.pathname === "/search";
   const [openUserMenu, setOpenUserMenu] = useState(false);
   const { data: user, loading, error } = useSelector((state) => state.user);
+  const { count } = useSelector((state) => state.cart);
 
   const handleUserClick = () => {
     if (!user.id) {
@@ -53,15 +54,37 @@ export default function Header() {
 
           <div className="flex items-center justify-between gap-4">
             {isMobile ? (
-              <div className="text-3xl text-gray-500">
-                <FaRegCircleUser onClick={handleUserClick} />
+              <div className="text-3xl text-gray-500 flex items-center gap-3">
+                <Link className="relative" to="/cart">
+                  <FaCartPlus className="text-4xl text-sky-600" />
+                  <div className="absolute -top-2 -right-2 w-5 h-5 bg-red-400 rounded-full flex items-center justify-center">
+                    <span className="text-sm text-white">{count}</span>
+                  </div>
+                </Link>
+                {user?.avatar_url ? (
+                  <div
+                    className={`${colors.gradients.pinkToOrange} rounded-full p-0.5`}
+                    onClick={handleUserClick}
+                  >
+                    <img
+                      src={user.avatar_url}
+                      alt="avatar"
+                      className="w-12 h-12 rounded-full"
+                    />
+                  </div>
+                ) : (
+                  <FaRegCircleUser
+                    className="text-4xl text-pink-300"
+                    onClick={handleUserClick}
+                  />
+                )}
               </div>
             ) : (
               <div className="items-center gap-3 flex">
                 <Link className="relative" to="/cart">
-                  <FaCartPlus className="text-3xl" />
+                  <FaCartPlus className="text-4xl text-sky-600" />
                   <div className="absolute -top-2 -right-2 w-5 h-5 bg-red-400 rounded-full flex items-center justify-center">
-                    <span className="text-sm text-white">0</span>
+                    <span className="text-sm text-white">{count}</span>
                   </div>
                 </Link>
 

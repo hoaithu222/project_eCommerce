@@ -12,7 +12,6 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
         Previous
       </button>
 
-      {/* Nút số trang */}
       {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
         <button
           key={page}

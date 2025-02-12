@@ -24,7 +24,6 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLogin = sessionStorage.getItem("isLogin");
-  console.log(isLogin);
 
   useEffect(() => {
     if (location.pathname === "/login" && isLogin) {
