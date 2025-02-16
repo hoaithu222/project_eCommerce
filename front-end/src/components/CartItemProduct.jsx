@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { formatPriceVND } from "../utils/formatPriceVND";
 import SummaryApi from "../common/SummaryApi";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import ConfirmBox from "./ConfirmBox";
+import { debounce } from "lodash";
+import { useNavigate } from "react-router-dom";
 
 export default function CartItemProduct({
   data,
@@ -14,14 +16,14 @@ export default function CartItemProduct({
   const [productVariant, setProductVariant] = useState({});
   const [openConfirm, setOpenConfirm] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [price, setPrice] = useState(0);
   const [stock, setStock] = useState(0);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data?.cart_id) {
       setProduct(data.product || {});
       setQuantity(data.quantity || 1);
-      setPrice(data.price_at_time * quantity);
 
       if (data.product_variant) {
         setProductVariant(data.product_variant);
@@ -32,25 +34,37 @@ export default function CartItemProduct({
     }
   }, [data]);
 
-  const updateQuantity = async (newQuantity) => {
-    try {
-      const token = localStorage.getItem("accessToken");
-      const response = await fetch(`${SummaryApi.updateCart.url}/${data.id}`, {
-        method: SummaryApi.updateCart.method,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ quantity: newQuantity }),
-      });
-      const result = await response.json();
-      if (result.success) {
-        onCartUpdate();
+  const debouncedUpdateQuantity = useCallback(
+    debounce(async (newQuantity) => {
+      if (isUpdating) return;
+
+      setIsUpdating(true);
+      try {
+        const token = localStorage.getItem("accessToken");
+        const response = await fetch(
+          `${SummaryApi.updateCart.url}/${data.id}`,
+          {
+            method: SummaryApi.updateCart.method,
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ quantity: newQuantity }),
+          },
+        );
+        const result = await response.json();
+        if (result.success) {
+          onCartUpdate();
+        }
+      } catch (error) {
+        console.error("Lỗi khi cập nhật số lượng:", error.message);
+        setQuantity(data.quantity);
+      } finally {
+        setIsUpdating(false);
       }
-    } catch (error) {
-      console.error("Lỗi khi cập nhật số lượng:", error.message);
-    }
-  };
+    }, 500),
+    [data.id, isUpdating],
+  );
 
   const deleteItem = async () => {
     try {
@@ -72,35 +86,45 @@ export default function CartItemProduct({
     }
   };
 
-  const handleIncrement = () => {
-    if (quantity < stock) {
+  const handleIncrement = (e) => {
+    e.stopPropagation();
+    if (quantity < stock && !isUpdating) {
       const newQuantity = quantity + 1;
       setQuantity(newQuantity);
-      setPrice(data.price_at_time * newQuantity);
-      updateQuantity(newQuantity);
+      debouncedUpdateQuantity(newQuantity);
     }
   };
 
-  const handleDecrement = () => {
-    if (quantity > 1) {
+  const handleDecrement = (e) => {
+    e.stopPropagation();
+    if (quantity > 1 && !isUpdating) {
       const newQuantity = quantity - 1;
       setQuantity(newQuantity);
-      setPrice(data.price_at_time * newQuantity);
-      updateQuantity(newQuantity);
-    } else {
+      debouncedUpdateQuantity(newQuantity);
+    } else if (quantity === 1) {
       setOpenConfirm(true);
     }
   };
+  const handleClick = (e) => {
+    e.stopPropagation();
+    navigate(`/product/${product.id}`);
+  };
+  const totalPrice = data.price_at_time * quantity;
 
   return (
-    <div className="border-b border-gray-100 p-4 hover:bg-sky-50 ">
-      <div className="flex items-center space-x-6">
-        <div className="flex items-center">
+    <div className="border-b border-gray-100 p-4 hover:bg-sky-50">
+      <div className="flex items-center space-x-6" onClick={handleClick}>
+        <div
+          className="items-center h-full  py-8"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
           <input
             type="checkbox"
             checked={isSelected}
             onChange={() => onSelectItem(data.id)}
-            className="w-5 h-5 rounded border-gray-300 text-pink-500 focus:ring-pink-400"
+            className="w-5 h-5 rounded border-gray-300 text-pink-500 focus:ring-pink-400 cursor-pointer "
           />
         </div>
 
@@ -145,29 +169,44 @@ export default function CartItemProduct({
         <div className="flex items-center space-x-2 border rounded-lg px-2 py-1">
           <button
             type="button"
-            className="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-pink-500 transition-colors"
+            className={`w-8 h-8 flex items-center justify-center transition-colors
+              ${
+                isUpdating
+                  ? "text-gray-300 cursor-not-allowed"
+                  : "text-gray-600 hover:text-pink-500"
+              }`}
             onClick={handleDecrement}
+            disabled={isUpdating}
           >
             -
           </button>
           <span className="w-12 text-center font-medium">{quantity}</span>
           <button
             type="button"
-            className="w-8 h-8 flex items-center justify-center text-gray-600 hover:text-pink-500 transition-colors"
+            className={`w-8 h-8 flex items-center justify-center transition-colors
+              ${
+                isUpdating
+                  ? "text-gray-300 cursor-not-allowed"
+                  : "text-gray-600 hover:text-pink-500"
+              }`}
             onClick={handleIncrement}
+            disabled={isUpdating}
           >
             +
           </button>
         </div>
 
         <div className="text-lg font-medium text-pink-600">
-          {formatPriceVND(price)}
+          {formatPriceVND(totalPrice)}
         </div>
 
         <button
           type="button"
-          onClick={() => setOpenConfirm(true)}
-          className="flex items-center space-x-1 text-pink-300  hover:text-pink-500 transition-colors"
+          onClick={(e) => {
+            setOpenConfirm(true);
+            e.stopPropagation();
+          }}
+          className="flex items-center space-x-1 text-pink-300 hover:text-pink-500 transition-colors"
         >
           <span>Xóa</span>
           <MdOutlineDeleteForever className="w-5 h-5" />

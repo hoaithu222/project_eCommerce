@@ -6,18 +6,27 @@ import SummaryApi from "../common/SummaryApi";
 import { toast } from "react-toastify";
 import ModelEditAddress from "../components/ModelEditAddress";
 import Loading from "./Loading";
-
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchUser } from "../store/actions/fetchUser";
 export default function Address() {
   const [openModelAdd, setOpenModelAdd] = useState(false);
   const [data, setData] = useState([]);
   const [openModelEdit, setOpenModelEdit] = useState(false);
   const [dataEdit, setDataEdit] = useState({});
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleClose = () => {
     setOpenModelAdd(false);
   };
   const handleCloseEdit = () => {
     setOpenModelEdit(false);
+  };
+  const handleGoBack = () => {
+    dispatch(fetchUser());
+    navigate(-1);
   };
 
   const getAddress = async () => {
@@ -92,13 +101,22 @@ export default function Address() {
         <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-lime-500 to-pink-500 bg-clip-text text-transparent">
           Địa chỉ của tôi
         </h2>
-        <button
-          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-violet-500 to-yellow-500 text-white rounded-lg hover:opacity-90 transition-all duration-300"
-          onClick={() => setOpenModelAdd(true)}
-        >
-          <IoMdAddCircleOutline className="text-xl animate-bounce" />
-          <span>Thêm địa chỉ mới</span>
-        </button>
+        <div className="flex items-center gap-4">
+          <button
+            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-violet-500 to-yellow-500 text-white rounded-lg hover:opacity-90 transition-all duration-300"
+            onClick={() => setOpenModelAdd(true)}
+          >
+            <IoMdAddCircleOutline className="text-xl animate-bounce" />
+            <span>Thêm địa chỉ mới</span>
+          </button>
+          <button
+            onClick={handleGoBack}
+            className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-300"
+          >
+            <IoMdArrowRoundBack className="text-xl" />
+            <span>Quay lại</span>
+          </button>
+        </div>
       </div>
 
       <div className="space-y-6">

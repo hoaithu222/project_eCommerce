@@ -34,12 +34,10 @@ export const fetchUser = (navigate) => {
           sessionStorage.clear();
           navigate('/login');
           return;
-          
         }
       }
 
-
-
+      
        if (response.ok && data?.data?.id) {
       
         sessionStorage.setItem("isLogin", "true");
@@ -56,13 +54,16 @@ export const fetchUser = (navigate) => {
       } else {
         sessionStorage.clear();
         localStorage.clear();
+        window.location.reload();
          
         throw new Error(data.message || "Failed to fetch user data");
         
 
       }
     } catch (error) {
-       navigate("/login");
+       window.location.reload();
+        sessionStorage.clear();
+        localStorage.clear();
       dispatch({ type: "fetch_data_failure", error: error.message });
     }
   };

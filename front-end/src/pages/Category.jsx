@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import SummaryApi from "../common/SummaryApi";
 import ListSubCategory from "../components/ListSubCategory";
 import ListProduct from "../components/ListProduct";
+import Loading from "./Loading";
 export default function Category() {
   const { categoryId } = useParams();
   const [categoryData, setCategoryData] = useState(null);
@@ -61,6 +62,7 @@ export default function Category() {
           subCategory={subCategory}
         />
       </div>
+      {loading && <Loading />}
     </div>
   );
 }

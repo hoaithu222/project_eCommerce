@@ -38,6 +38,9 @@ import { PrivateRoute } from "../components/PrivateRoute ";
 import AllProduct from "../pages/AllProduct";
 import NotAuthorized from "../components/NotAuthorized";
 import ShopRoute from "../components/ShopRoute";
+import Checkout from "../pages/Checkout";
+import OrderSuccess from "../pages/OrderSuccess";
+import OrderItem from "../pages/OrderItem";
 
 const router = createBrowserRouter([
   {
@@ -138,32 +141,50 @@ const router = createBrowserRouter([
                 element: <MyOrder />,
               },
               {
-                path: "address",
-                element: <Address />,
+                path: "my-order/:id",
+                element: <OrderItem />,
               },
               {
                 path: "address",
                 element: <Address />,
               },
+
               {
                 path: "notifications",
                 element: <Notification />,
               },
             ],
           },
-          {
-            path: "cart",
-            element: (
-              <PrivateRoute>
-                <Cart />
-              </PrivateRoute>
-            ),
-          },
+
           {
             path: "user-menu",
             element: <UserMenuPage />,
           },
         ],
+      },
+      {
+        path: "cart",
+        element: (
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "checkout",
+        element: (
+          <PrivateRoute>
+            <Checkout />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "order-success",
+        element: (
+          <PrivateRoute>
+            <OrderSuccess />
+          </PrivateRoute>
+        ),
       },
       {
         path: "forgot-password",

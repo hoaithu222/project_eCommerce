@@ -1,3 +1,5 @@
+import { method } from "lodash";
+
 export const baseURL = import.meta.env.VITE_SERVER_API;
 
 
@@ -58,6 +60,10 @@ const SummaryApi= {
         url:`${baseURL}/address`,
         method:"get"
     },
+    getMyOrder:{
+       url:`${baseURL}/order/my-order`,
+       method:"post"
+    },
     deleteAddress:{
         url:`${baseURL}/address`,
         method:"delete"
@@ -95,6 +101,10 @@ const SummaryApi= {
     updateShop:{
         url:`${baseURL}/shop`,
         method:"PATCH",
+    },
+    orderShop:{
+        url:`${baseURL}/order/shop`,
+        method:"POST"
     },
     // category 
     getAllCategory:{
@@ -166,5 +176,19 @@ const SummaryApi= {
         url:`${baseURL}/cart/items`,
         method:"DELETE",
     },
+    //order
+    getOrder:{
+        url:`${baseURL}/order`,
+        method:"GET"
+    },
+    updateOrder:{
+        url:`${baseURL}/order`,
+        method:"PATCH"
+    },
+    addOrder:{
+        url:`${baseURL}/order/items`,
+        method:"POST",
+    },
+
 }
 export default SummaryApi;

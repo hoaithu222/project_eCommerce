@@ -49,7 +49,7 @@ const ListCategory = () => {
 
   if (loading) {
     return (
-      <div className="container mx-auto py-4">
+      <div className="container mx-auto py-4 overflow-hidden">
         <div className="p-6 bg-gradient-to-br from-white to-blue-50 rounded-xl shadow-lg">
           <div className="animate-pulse">
             <div className="h-6 w-48 bg-blue-200/50 rounded mb-6"></div>
@@ -68,7 +68,7 @@ const ListCategory = () => {
   }
 
   return (
-    <div className="container mx-auto py-4">
+    <div className="container mx-auto py-4 overflow-hidden">
       <div className="p-6 bg-gradient-to-br from-white to-blue-50 rounded-xl shadow-lg">
         <div className="mb-6 flex justify-between items-center">
           <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">

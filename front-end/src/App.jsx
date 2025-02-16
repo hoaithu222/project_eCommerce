@@ -25,14 +25,12 @@ export default function App() {
 
   return (
     <>
-      <AuthProvider>
-        <Header />
-        <main className="min-h-[96vh]">
-          <Outlet />
-        </main>
-        <Footer />
-        <ToastContainer className="flex justify-center" />
-      </AuthProvider>
+      <Header />
+      <main className="min-h-[96vh] bg-slate-50">
+        <Outlet />
+      </main>
+      <Footer />
+      <ToastContainer className="flex justify-center" />
     </>
   );
 }

@@ -15,6 +15,7 @@ const Profile = () => {
   const { data: user } = useSelector((state) => state.user);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  console.log(user);
 
   const [formData, setFormData] = useState({
     fullname: "",
