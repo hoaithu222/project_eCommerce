@@ -41,6 +41,9 @@ import ShopRoute from "../components/ShopRoute";
 import Checkout from "../pages/Checkout";
 import OrderSuccess from "../pages/OrderSuccess";
 import OrderItem from "../pages/OrderItem";
+import Review from "../pages/Review";
+import ReviewSuccess from "../pages/ReviewSuccess";
+import ViewReview from "../pages/ViewReview";
 
 const router = createBrowserRouter([
   {
@@ -148,7 +151,14 @@ const router = createBrowserRouter([
                 path: "address",
                 element: <Address />,
               },
-
+              {
+                path: "review",
+                element: <Review />,
+              },
+              {
+                path: "view-review",
+                element: <ViewReview />,
+              },
               {
                 path: "notifications",
                 element: <Notification />,
@@ -183,6 +193,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <OrderSuccess />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "review-success",
+        element: (
+          <PrivateRoute>
+            <ReviewSuccess />
           </PrivateRoute>
         ),
       },

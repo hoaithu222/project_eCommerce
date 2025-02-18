@@ -6,7 +6,7 @@ export default function StatusFilter({ selected, onSelect }) {
       {statusOptions.map(({ key, label, color, icon: Icon }) => (
         <button
           key={key}
-          className={`flex p-2 items-center cursor-pointer border-b-4 border-transparent transition-all min-w-fit
+          className={`flex p-2 items-center cursor-pointer border-b-4 transition-all min-w-fit
           ${color} 
           ${selected === key ? "font-bold border-sky-200" : ""}
           hover:bg-gray-50`}

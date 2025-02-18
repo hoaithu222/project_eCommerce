@@ -189,6 +189,23 @@ const SummaryApi= {
         url:`${baseURL}/order/items`,
         method:"POST",
     },
+    getReviewWithOrder:{
+        url:`${baseURL}/review/order`,
+        method:"GET"
+    },
+    // review 
+    addReview:{
+        url:`${baseURL}/review`,
+        method:"POST",
+    },
+    updateReview:{
+        url:`${baseURL}/review`,
+        method:"PATCH",
+    },
+    getReview:{
+        url:`${baseURL}/review`,
+        method:"GET",
+    },
 
 }
 export default SummaryApi;

@@ -43,7 +43,7 @@ export default function OrderItem() {
   }, [id]);
 
   return (
-    <div className="bg-white shadow-lg p-4 rounded-md space-y-6 max-h-[96vh] overflow-y-auto ">
+    <div className="bg-white shadow-lg p-4 rounded-md space-y-6 max-h-[96vh] overflow-y-auto hidden-scrollbar">
       <div className="flex items-center">
         <div
           className="flex items-center text-2xl "

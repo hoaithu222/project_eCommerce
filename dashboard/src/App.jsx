@@ -21,7 +21,7 @@ export default function App() {
       <Sidebar />
       <div className="flex-1 flex flex-col">
         <Header />
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1 max-h-[96vh] overflow-y-auto hidden-scrollbar">
           <Outlet />
         </main>
         <ToastContainer className="flex justify-center" />

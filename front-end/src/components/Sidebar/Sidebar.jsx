@@ -86,18 +86,6 @@ const Sidebar = () => {
               </div>
             </NavLink>
           </li>
-
-          <li>
-            <NavLink to="/shop-management/calendar" className={getLinkClasses}>
-              <FaRegCalendarAlt className="text-2xl group-hover:scale-110 transition-transform" />
-              <div className="flex flex-col">
-                <p className="text-lg font-medium">Lịch làm việc</p>
-                <span className="text-xs opacity-75">
-                  Quản lý lịch và sự kiện
-                </span>
-              </div>
-            </NavLink>
-          </li>
         </ul>
       </nav>
     </aside>

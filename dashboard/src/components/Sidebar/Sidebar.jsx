@@ -97,27 +97,13 @@ const Sidebar = () => {
             <FaShopLock className="text-2xl group-hover:scale-110 transition-transform" />
             <div className="flex flex-col">
               <p className="text-lg font-medium">Shops</p>
-              <span className="text-xs opacity-75">Quản lý shop</span>
-            </div>
-          </NavLink>
-
-          {/* <NavLink to="/marketing" className={getLinkClasses}>
-            <FaTags className="text-2xl group-hover:scale-110 transition-transform" />
-            <div className="flex flex-col">
-              <p className="text-lg font-medium">Marketing</p>
               <span className="text-xs opacity-75">
-                Chiến dịch & khuyến mãi
+                Quản lý các shop đã đăng kí
               </span>
             </div>
-          </NavLink> */}
-
-          {/* <NavLink to="/shop" className={getLinkClasses}>
-            <GiShop className="text-2xl group-hover:scale-110 transition-transform" />
-            <div className="flex flex-col">
-              <p className="text-lg font-medium">Shop</p>
-              <span className="text-xs opacity-75">Quản lý cửa hàng</span>
-            </div>
           </NavLink>
+
+          {/* 
 
           <NavLink to="/calendar" className={getLinkClasses}>
             <FaRegCalendarAlt className="text-2xl group-hover:scale-110 transition-transform" />

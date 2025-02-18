@@ -43,7 +43,6 @@ export default function SubCategory() {
     description: "",
   });
 
-  // Fetch all categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -170,7 +169,6 @@ export default function SubCategory() {
           </button>
         </div>
 
-        {/* Filters Section */}
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="relative">
             <input
@@ -220,7 +218,6 @@ export default function SubCategory() {
         </div>
       </div>
 
-      {/* Content Section */}
       {loading || loadingCategory ? (
         <div className="flex justify-center items-center h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-4 border-purple-500 border-t-transparent"></div>

@@ -183,7 +183,7 @@ export default function ProductReview({ data }) {
                               className="w-24 h-24 rounded-lg overflow-hidden bg-gray-50"
                             >
                               <img
-                                src={image.url}
+                                src={image.image_url}
                                 alt={`Review ${index + 1}`}
                                 className="w-full h-full object-cover"
                               />

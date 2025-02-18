@@ -7,6 +7,7 @@ import SummaryApi from "../common/SummaryApi";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function ProductGeneralInfo({ data }) {
   const [productImage, setProductImage] = useState([]);
@@ -19,6 +20,7 @@ export default function ProductGeneralInfo({ data }) {
   const [stock, setStock] = useState(0);
   const [price, setPrice] = useState(0);
   const [variantAttributes, setVariantAttributes] = useState([]);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { data: shop } = useSelector((state) => state.shop);
   const imagesPerPage = 5;
@@ -279,16 +281,21 @@ export default function ProductGeneralInfo({ data }) {
             >
               Thêm vào giỏ hàng
             </button>
-            <button
+            {/* <button
               disabled={variantAttributes?.length > 0 && !selectedVariant}
               className={`flex-1 px-6 py-3 rounded-lg font-medium transition-colors ${
                 variantAttributes.length === 0 || selectedVariant
                   ? "bg-pink-500 text-white hover:bg-pink-600"
                   : "bg-gray-300 text-gray-500 cursor-not-allowed"
               }`}
+              onClick={() => {
+                navigate("/checkout", {
+                  state: data,
+                });
+              }}
             >
               Mua ngay
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

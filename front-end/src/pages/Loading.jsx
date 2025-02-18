@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-pink-50 to-purple-50 bg-opacity-80 backdrop-blur-sm">
+    <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-pink-50 to-purple-50 bg-opacity-80 backdrop-blur-sm z-50">
       <div className="flex flex-col items-center gap-6">
         <div className="relative">
           <div className="w-32 h-32 rounded-full animate-spin-slow">

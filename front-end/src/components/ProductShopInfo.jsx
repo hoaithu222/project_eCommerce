@@ -137,7 +137,6 @@ export default function ProductShopInfo({ data }) {
           <div className="flex items-center gap-2 text-gray-600">
             <Star className="w-5 h-5 text-yellow-400" />
             <span className="font-medium">{shop.rating || 0}</span>
-            <span className="text-gray-500">Đánh giá</span>
           </div>
           <div className="flex items-center gap-2 text-gray-600">
             <Users className="w-5 h-5 text-rose-400" />

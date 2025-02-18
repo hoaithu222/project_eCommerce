@@ -57,7 +57,7 @@ export default function Product() {
   const totalPages = Math.ceil(count / itemsPerPage);
 
   return (
-    <div className="max-h-screen bg-gray-50 p-6 overflow-x-auto">
+    <div className="max-h-screen bg-gray-50 p-6 ">
       <div className="bg-white rounded-xl shadow-xl p-6 mb-4">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <h2 className="text-2xl font-bold text-gray-800">
