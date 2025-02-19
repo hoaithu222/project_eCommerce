@@ -39,7 +39,7 @@ export default function ProductReview({ data }) {
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
-          size={24}
+          size={20}
           className={`${
             star <= rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
           }`}
@@ -74,14 +74,14 @@ export default function ProductReview({ data }) {
   return (
     <div className="bg-white p-5 shadow-lg rounded-xl my-4">
       <div>
-        <h2 className="text-2xl font-semibold bg-slate-50 p-4 rounded-t-lg">
+        <h2 className="text-lg md:text-xl lg:text-2xl font-semibold bg-slate-50 p-4 rounded-t-lg">
           ĐÁNH GIÁ SẢN PHẨM
         </h2>
 
-        <div className="mt-3 bg-red-50 p-6 rounded-lg">
+        <div className="mt-3 bg-red-50 p-3 md:p-4 lg:p-6 rounded-lg">
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex flex-col items-center justify-center text-center min-w-[200px] border-r border-red-100">
-              <p className="text-4xl font-bold text-red-500 mb-2">
+              <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-red-500 mb-2">
                 {ratingProduct.toFixed(1)}
               </p>
               <div className="mb-2">

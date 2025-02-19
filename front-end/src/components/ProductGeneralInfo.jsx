@@ -146,10 +146,10 @@ export default function ProductGeneralInfo({ data }) {
   };
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-xl">
-      <div className="grid lg:grid-cols-2 gap-8">
+    <div className="bg-white mt-20 p-4 rounded-lg shadow-xl">
+      <div className="grid lg:grid-cols-2 gap-4 lg:gap-8">
         <div className="space-y-4">
-          <div className="w-full h-[600px] rounded-lg overflow-hidden">
+          <div className="w-full  h-[300px] xs:h-[500px] sm:h-[600px] md:h-[600px] rounded-lg overflow-hidden">
             <img
               src={productImageActive}
               alt={data?.name}
@@ -165,7 +165,7 @@ export default function ProductGeneralInfo({ data }) {
                 <ChevronLeft className="w-5 h-5" />
               </button>
             )}
-            <div className="grid grid-cols-5 gap-4 px-10">
+            <div className="grid grid-cols-5 gap-2 lg:gap-4 px-5 lg:px-10">
               {visibleImages.map((item, index) => (
                 <div
                   key={`${item?.id}-${index}`}
@@ -195,8 +195,8 @@ export default function ProductGeneralInfo({ data }) {
           </div>
         </div>
 
-        <div className="space-y-6 my-auto">
-          <h2 className="text-2xl font-semibold text-gray-800 leading-tight">
+        <div className="space-y-2 md:space-x-4 lg:space-y-6 my-auto">
+          <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-800 leading-tight">
             {data?.name}
           </h2>
 
@@ -209,18 +209,20 @@ export default function ProductGeneralInfo({ data }) {
             </span>
           </div>
 
-          <div className="text-3xl font-bold text-red-500">
+          <div className="text-xl md:text-2xl lg:text-3xl font-bold text-red-500">
             {formatPriceVND(+price)}
           </div>
 
           <div className="space-y-4 py-4 border-y border-gray-200">
             <div className="flex items-center gap-4">
-              <span className="text-gray-600">Vận chuyển</span>
-              <span className="text-green-600 font-medium">
+              <span className="text-xs lg:text-sm text-gray-600">
+                Vận chuyển
+              </span>
+              <span className="text-xs lg:text-sm text-green-600 font-medium">
                 Miễn phí vận chuyển
               </span>
             </div>
-            <div className="text-sm text-gray-500">
+            <div className="text-xs lg:text-sm text-gray-500">
               An tâm mua sắm - Bảo hành chính hãng
             </div>
           </div>
@@ -232,7 +234,7 @@ export default function ProductGeneralInfo({ data }) {
                   <button
                     key={option}
                     onClick={() => handleOptionSelect(attribute, option)}
-                    className={`px-4 py-2 rounded-md border transition-all ${
+                    className={`px-2 py-1 lg:px-4 lg:py-2 rounded-md border transition-all ${
                       selectedOptions[attribute] === option
                         ? "border-pink-400 bg-pink-50 text-pink-400"
                         : "border-gray-300 hover:border-pink-300"
@@ -265,14 +267,16 @@ export default function ProductGeneralInfo({ data }) {
                   +
                 </button>
               </div>
-              <span className="text-gray-500">{stock} sản phẩm có sẵn</span>
+              <span className="text-xs lg:text-sm text-gray-500">
+                {stock} sản phẩm có sẵn
+              </span>
             </div>
           </div>
 
-          <div className="flex gap-4 pt-4">
+          <div className="flex gap-4 pt-2 lg:pt-4">
             <button
               disabled={variantAttributes?.length > 0 && !selectedVariant}
-              className={`flex-1 px-6 py-3 rounded-lg font-medium transition-colors ${
+              className={`flex-1 px-3 py-1 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-lg font-medium transition-colors ${
                 variantAttributes?.length === 0 || selectedVariant
                   ? "bg-pink-100 text-pink-400 hover:bg-pink-200"
                   : "bg-gray-100 text-gray-400 cursor-not-allowed"

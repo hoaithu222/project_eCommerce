@@ -85,12 +85,11 @@ export default function ProductShopInfo({ data }) {
   };
 
   return (
-    <div className="bg-white p-6 shadow-lg my-4 rounded-lg hover:shadow-xl transition-shadow duration-300">
-      <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
-        {/* Shop Logo */}
+    <div className="bg-white p-3 lg:p-6 shadow-lg my-2 lg:my-4 rounded-lg hover:shadow-xl transition-shadow duration-300">
+      <div className="flex flex-col md:flex-row items-center gap-3 lg:gap-6 md:gap-12">
         <div className="relative group">
           <div className="absolute inset-0 bg-pink-100 rounded-full blur-md group-hover:blur-lg transition-all duration-300 opacity-50"></div>
-          <div className="relative w-32 h-32 rounded-full p-2 bg-gradient-to-r from-pink-50 to-rose-50 border-2 border-gray-100 overflow-hidden">
+          <div className="relative w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full p-2 bg-gradient-to-r from-pink-50 to-rose-50 border-2 border-gray-100 overflow-hidden">
             <img
               src={shop.logo_url}
               alt={shop.name}
@@ -100,9 +99,9 @@ export default function ProductShopInfo({ data }) {
         </div>
 
         {/* Shop Info */}
-        <div className="flex flex-col items-center md:items-start gap-4">
+        <div className="flex flex-col items-center md:items-start gap-3 lg:gap-4">
           <h3 className="text-xl font-semibold text-gray-800">{shop.name}</h3>
-          <div className="flex gap-3">
+          <div className="flex gap-2 lg:gap-3">
             {isFollower ? (
               <button
                 className="px-6 py-2 bg-pink-600 text-white rounded-full hover:bg-pink-700 transition-colors duration-200 flex items-center gap-2"

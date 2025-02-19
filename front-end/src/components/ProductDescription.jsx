@@ -13,7 +13,7 @@ export default function ProductDescription({ data }) {
     <div className="bg-white rounded-lg shadow-lg">
       <div className="p-6 space-y-6">
         <div>
-          <h2 className="text-2xl font-semibold bg-slate-50 p-4 rounded-md mb-4 text-gray-800">
+          <h2 className="text-lg md:text-xl lg:text-2xl font-semibold bg-slate-50 p-2 lg:p-4 rounded-md mb-4 text-gray-800">
             Chi tiết sản phẩm
           </h2>
           <div className="space-y-4 px-2">
@@ -49,11 +49,11 @@ export default function ProductDescription({ data }) {
         </div>
 
         <div>
-          <h2 className="text-2xl font-semibold bg-slate-50 p-4 rounded-md mb-4 text-gray-800">
+          <h2 className="text-lg md:text-xl lg:text-2xl font-semibold bg-slate-50 p-2 lg:p-4 rounded-md mb-4 text-gray-800">
             Mô tả sản phẩm
           </h2>
           <div className="px-2">
-            <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
+            <p className=" text-gray-700 leading-relaxed whitespace-pre-wrap">
               {product?.description}
             </p>
           </div>
