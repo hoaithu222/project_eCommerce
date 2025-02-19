@@ -127,7 +127,7 @@ export class ProductsController {
       filter.OR = [
         {
           name: {
-            contains: name_like,
+            contains: q,
             mode: 'insensitive',
           },
         },

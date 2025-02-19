@@ -11,8 +11,7 @@ import Order from "../pages/Order";
 import Customer from "../pages/Customer";
 import Marketing from "../pages/Marketing";
 import Shop from "../pages/Shop";
-import Calendar from "../pages/Calendar";
-import Analytic from "../pages/Analytic";
+
 import System from "../pages/System";
 import ContentManagement from "../pages/ContentManagement";
 import Search from "../pages/Search";
@@ -73,14 +72,7 @@ const router = createBrowserRouter([
                 path: "/attributes",
                 element: <Attributes />,
               },
-              {
-                path: "/calendar",
-                element: <Calendar />,
-              },
-              {
-                path: "/analytics",
-                element: <Analytic />,
-              },
+
               {
                 path: "/system",
                 element: <System />,

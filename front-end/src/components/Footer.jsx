@@ -30,9 +30,8 @@ export default function Footer() {
           {/* Thông tin công ty */}
           <div className="space-y-6">
             <h2
-              className={`text-3xl font-bold ${colors.gradients.violetToBlue} bg-clip-text text-transparent`}
+              className={`text-2xl lg:text-3xl font-bold ${colors.gradients.violetToBlue} bg-clip-text text-transparent`}
             >
-              <Store className="inline-block mr-2 h-8 w-8" />
               My shop
             </h2>
             <p className="text-gray-300 leading-relaxed">
@@ -42,8 +41,8 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-center space-x-3 group hover:bg-white/10 p-2 rounded-lg transition-all duration-300">
                 <MapPin className="h-5 w-5 text-violet-400 group-hover:text-violet-300" />
-                <span className="group-hover:text-white">
-                  123 Đường ABC, Quận XYZ, TP.HCM
+                <span className=" group-hover:text-white">
+                  Vũ sơn,Bắc sơn,Lạng sơn
                 </span>
               </div>
               <div className="flex items-center space-x-3 group hover:bg-white/10 p-2 rounded-lg transition-all duration-300">
@@ -61,7 +60,7 @@ export default function Footer() {
 
           {/* Hỗ trợ khách hàng */}
           <div>
-            <h2 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-6">
+            <h2 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-6">
               Hỗ Trợ Khách Hàng
             </h2>
             <nav className="space-y-4">
@@ -87,7 +86,7 @@ export default function Footer() {
 
           {/* Dành cho người bán */}
           <div>
-            <h2 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-6">
+            <h2 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-6">
               Dành Cho Người Bán
             </h2>
             <nav className="space-y-4">
@@ -113,7 +112,7 @@ export default function Footer() {
 
           {/* Cam kết */}
           <div>
-            <h2 className="text-xl font-bold bg-gradient-to-r from-pink-400 to-rose-500 bg-clip-text text-transparent mb-6">
+            <h2 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-pink-400 to-rose-500 bg-clip-text text-transparent mb-6">
               Cam Kết Của Chúng Tôi
             </h2>
             <div className="space-y-6">
@@ -164,7 +163,7 @@ export default function Footer() {
             >
               Thu
             </span>
-            . All rights reserved.
+            .All rights reserved.
           </p>
         </div>
       </div>

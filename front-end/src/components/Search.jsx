@@ -47,19 +47,19 @@ const Search = () => {
           ${isHovered ? "shadow-lg scale-105" : ""}
         `}
       >
-        <div className="flex items-center px-3 py-1">
+        <div className="flex items-center px-1.5 py-0.5  lg:px-3 lg:py-1">
           {!(isMobile && isSearchPage) ? (
             <BsSearchHeart
               onClick={handleSearchClick}
               className={`
-              text-white text-2xl cursor-pointer
+              text-white   text-lg  lg:text-2xl cursor-pointer
               transition-transform duration-300
               ${isHovered ? "scale-110" : ""}
             `}
             />
           ) : (
             <Link to="/">
-              <FaArrowCircleLeft className="text-white text-2xl" />
+              <FaArrowCircleLeft className="text-white text-lg lg:text-2xl" />
             </Link>
           )}
 
@@ -73,15 +73,25 @@ const Search = () => {
                   1500,
                   "Hãy tìm kiếm giày dép",
                   1500,
+                  "Hãy tìm kiếm đồ công nghệ",
+                  1500,
+                  "Hãy tìm kiếm đồ gia dụng",
+                  1500,
+                  "Hãy tìm kiếm đồ thời trang nữ",
+                  1500,
+                  "Hãy tìm kiếm sách",
+                  1500,
+                  "Hãy tìm kiếm đồ balo",
+                  1500,
                 ]}
                 wrapper="span"
                 speed={50}
-                className="ml-4 text-lg text-white font-medium"
+                className="ml-4 text:xs sm:text-sm lg:text-lg text-white font-medium"
                 repeat={Infinity}
                 cursor={true}
                 style={{
                   display: "inline-block",
-                  minWidth: "250px",
+                  minWidth: "200px",
                 }}
               />
               <div
@@ -104,7 +114,7 @@ const Search = () => {
                 onKeyDown={handleSearch}
                 autoFocus
                 placeholder="Nhập từ khóa tìm kiếm..."
-                className="w-full bg-transparent text-white placeholder-white/70 outline-none  text-lg"
+                className="w-full bg-transparent text-white placeholder-white/70 outline-none text:xs sm:text-sm lg:text-lg"
               />
             </div>
           )}

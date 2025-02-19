@@ -5,7 +5,7 @@ export default function useMobile(breakpoint = 768) {
     if (typeof window !== "undefined") {
       return window.innerWidth < breakpoint;
     }
-    return false; // Giá trị mặc định cho SSR
+    return false;
   });
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function useMobile(breakpoint = 768) {
       setIsMobile(window.innerWidth < breakpoint);
     };
 
-    handleResize(); // Gọi ngay khi mount để đảm bảo giá trị chính xác
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -21,5 +21,5 @@ export default function useMobile(breakpoint = 768) {
     };
   }, [breakpoint]);
 
-  return isMobile; // Trả về giá trị đơn lẻ thay vì mảng
+  return isMobile;
 }

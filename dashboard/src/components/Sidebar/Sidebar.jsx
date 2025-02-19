@@ -38,7 +38,7 @@ const Sidebar = () => {
 
       {/* Navigation */}
       <nav className="flex-1">
-        <ul className="space-y-3">
+        <ul className="space-y-1">
           <NavLink to="/" className={getLinkClasses}>
             <MdDashboard className="text-2xl group-hover:scale-110 transition-transform" />
             <div className="flex flex-col">
@@ -103,24 +103,6 @@ const Sidebar = () => {
             </div>
           </NavLink>
 
-          {/* 
-
-          <NavLink to="/calendar" className={getLinkClasses}>
-            <FaRegCalendarAlt className="text-2xl group-hover:scale-110 transition-transform" />
-            <div className="flex flex-col">
-              <p className="text-lg font-medium">Calendar</p>
-              <span className="text-xs opacity-75">Lịch & sự kiện</span>
-            </div>
-          </NavLink>
-
-          <NavLink to="/analytics" className={getLinkClasses}>
-            <HiOutlineChartSquareBar className="text-2xl group-hover:scale-110 transition-transform" />
-            <div className="flex flex-col">
-              <p className="text-lg font-medium">Analytics</p>
-              <span className="text-xs opacity-75">Phân tích dữ liệu</span>
-            </div>
-          </NavLink>
-
           <NavLink to="/system" className={getLinkClasses}>
             <IoMdSettings className="text-2xl group-hover:scale-110 transition-transform" />
             <div className="flex flex-col">
@@ -135,7 +117,7 @@ const Sidebar = () => {
               <p className="text-lg font-medium">Content</p>
               <span className="text-xs opacity-75">Quản lý nội dung</span>
             </div>
-          </NavLink> */}
+          </NavLink>
         </ul>
       </nav>
     </aside>

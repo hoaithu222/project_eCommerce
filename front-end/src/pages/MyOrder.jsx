@@ -6,11 +6,14 @@ import { statusOptions } from "../utils/statusOptions";
 import Loading from "./Loading";
 import { formatPriceVND } from "../utils/formatPriceVND";
 import colors from "../style/colors";
+import StatusFilter from "../components/StatusFilter";
 
 export default function MyOrder() {
   const [data, setData] = useState([]);
   const [selected, setSelected] = useState("all");
   const [loading, setLoading] = useState(false);
+  const [statusCounts, setStatusCounts] = useState({});
+
   const navigate = useNavigate();
 
   const getFilteredStatus = () => {
@@ -36,6 +39,7 @@ export default function MyOrder() {
 
       if (result.success) {
         setData(result.data);
+        setStatusCounts(result.statusCounts);
       } else {
         console.error("Đã xảy ra lỗi", result.message);
       }
@@ -66,30 +70,14 @@ export default function MyOrder() {
     };
     return colors[status] || "text-gray-500";
   };
-  console.log(data);
 
   return (
     <div className="w-full max-w-6xl mx-auto">
-      <div className="px-5 shadow-lg rounded-md flex justify-between overflow-x-auto hidden-scrollbar">
-        {statusOptions.map(({ key, label, color, icon: Icon }) => (
-          <button
-            key={key}
-            className={`flex p-1 items-center cursor-pointer  transition-all min-w-fit border-b-4 
-              ${color} 
-              ${selected === key ? "font-bold border-sky-200" : ""}
-              hover:bg-gray-50`}
-            onClick={() => setSelected(key)}
-          >
-            <Icon className="text-xl font-semibold" />
-            <span
-              className={`p-1 text-sm lg:text-lg whitespace-nowrap
-                ${selected === key ? "bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent" : ""}`}
-            >
-              {label}
-            </span>
-          </button>
-        ))}
-      </div>
+      <StatusFilter
+        selected={selected}
+        onSelect={setSelected}
+        statusCounts={statusCounts}
+      />
 
       <div className="mt-4">
         {data.length === 0 && (

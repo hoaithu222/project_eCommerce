@@ -206,6 +206,15 @@ const SummaryApi= {
         url:`${baseURL}/review`,
         method:"GET",
     },
+    // analytic
+    getOverview:{
+        url:`${baseURL}/shop-statistics`,
+        method:"GET"
+    },
+    getRevenueByMonth:{
+        url:`${baseURL}/shop-statistics/revenue-by-month`,
+        method:"GET"
+    },
 
 }
 export default SummaryApi;

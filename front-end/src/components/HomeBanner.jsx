@@ -25,24 +25,31 @@ const HomeBanner = () => {
 
   const features = [
     {
-      icon: <TiTick className="text-green-500 text-3xl" />,
+      icon: <TiTick className="text-green-500 text-xl lg:text-3xl" />,
       text: "100% hàng thật",
     },
-    { icon: <FcShipped className="text-3xl" />, text: "Freeship mọi đơn" },
     {
-      icon: <MdOutlineCurrencyExchange className="text-3xl text-blue-400" />,
+      icon: <FcShipped className="text-xl lg:text-3xl" />,
+      text: "Freeship mọi đơn",
+    },
+    {
+      icon: (
+        <MdOutlineCurrencyExchange className="text-xl lg:text-3xl text-blue-400" />
+      ),
       text: "30 ngày đổi trả",
     },
     {
-      icon: <FaShippingFast className="text-3xl text-amber-500" />,
+      icon: <FaShippingFast className="text-xl lg:text-3xl text-amber-500" />,
       text: "Giao hàng nhanh",
     },
     {
-      icon: <MdOutlinePriceChange className="text-3xl text-purple-500" />,
+      icon: (
+        <MdOutlinePriceChange className="text-xl lg:text-3xl text-purple-500" />
+      ),
       text: "Giá siêu rẻ",
     },
     {
-      icon: <MdHighQuality className="text-3xl text-red-500" />,
+      icon: <MdHighQuality className="text-xl lg:text-3xl text-red-500" />,
       text: "Hàng chất lượng",
     },
   ];
@@ -77,7 +84,7 @@ const HomeBanner = () => {
 
   return (
     <div className="container mx-auto py-4">
-      <div className="bg-gray-50 p-6 rounded-md shadow-2xl transform transition-all duration-300 hover:shadow-xl">
+      <div className="bg-gray-50 p-5 lg:p-6 rounded-md shadow-2xl transform transition-all duration-300 hover:shadow-xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div
             className="relative h-[400px] overflow-hidden rounded-2xl shadow-ms group"
@@ -86,21 +93,21 @@ const HomeBanner = () => {
           >
             {/* Navigation Buttons */}
             <div
-              className={`absolute inset-0 z-10 flex items-center justify-between px-6 transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"}`}
+              className={`absolute inset-0 z-10 flex items-center justify-between px-3 lg:px-6 transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"}`}
             >
               <button
                 onClick={prevImage}
                 disabled={currentImage === 0}
-                className="p-3 rounded-full bg-white/90 hover:bg-white shadow-lg transition-all transform hover:scale-110 hover:-translate-x-1 disabled:opacity-50 disabled:hover:scale-100"
+                className="p-1.5 lg:p-3 rounded-full bg-white/90 hover:bg-white shadow-lg transition-all transform hover:scale-110 hover:-translate-x-1 disabled:opacity-50 disabled:hover:scale-100"
               >
-                <ChevronLeft className="w-6 h-6 text-gray-700" />
+                <ChevronLeft className="w:3 h:3 md:h-5 md:w-5 lg:w-6 lg:h-6 text-gray-700" />
               </button>
               <button
                 onClick={nextImage}
                 disabled={currentImage === listImage.length - 1}
-                className="p-3 rounded-full bg-white/90 hover:bg-white shadow-lg transition-all transform hover:scale-110 hover:translate-x-1 disabled:opacity-50 disabled:hover:scale-100"
+                className="p-1.5 lg:p-3 rounded-full bg-white/90 hover:bg-white shadow-lg transition-all transform hover:scale-110 hover:translate-x-1 disabled:opacity-50 disabled:hover:scale-100"
               >
-                <ChevronRight className="w-6 h-6 text-gray-700" />
+                <ChevronRight className="w:3 h:3 md:h-5 md:w-5 lg:w-6 lg:h-6 text-gray-700" />
               </button>
             </div>
 
@@ -170,7 +177,7 @@ const HomeBanner = () => {
               <div className="transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
                 {feature.icon}
               </div>
-              <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+              <p className="text-xs lg:text-sm font-medium text-gray-700 group-hover:text-gray-900">
                 {feature.text}
               </p>
             </div>

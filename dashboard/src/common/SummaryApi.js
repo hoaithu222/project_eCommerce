@@ -26,6 +26,11 @@ const SummaryApi= {
         url:`${baseURL}/users/update`,
         method:'PATCH',
     },
+    //user
+    getUser:{
+        url:`${baseURL}/users`,
+        method:'GET',
+    },
     //category 
     getCategory:{
         url:`${baseURL}/category`,
@@ -98,6 +103,36 @@ const SummaryApi= {
     updateProduct:{
         url:`${baseURL}/products`,
         method:"PATCH",
+    },
+    //statistics
+    getOverview:{
+        url:`${baseURL}/statistics`,
+        method:"GET"
+    },
+    getOverviewOrder:{
+        url:`${baseURL}/statistics/orders`,
+        method:"GET"
+    },
+    getBestSellingProducts:{
+        url:`${baseURL}/statistics/best-selling-products`,
+        method:"GET"
+    },
+    getTopCustomers:{
+        url:`${baseURL}/statistics/top-customers`,
+        method:"GET"
+    },
+
+    getCancelledOrderRate:{
+        url:`${baseURL}/statistics/cancelled-orders-rate`,
+        method:"GET"
+    },
+    getRevenueByMonth:{
+        url:`${baseURL}/statistics/revenue-by-month`,
+        method:"GET"
+    },
+    getOrdersAndUsersByMonth:{
+        url:`${baseURL}/statistics/orders-users-month`,
+        method:"GET"
     },
 
 }

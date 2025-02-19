@@ -10,6 +10,7 @@ import { SiHiveBlockchain } from "react-icons/si";
 import { RiArchive2Line } from "react-icons/ri";
 import { FaShopLock, FaWindowRestore } from "react-icons/fa6";
 import { PiStarThin } from "react-icons/pi";
+import { IoAnalytics } from "react-icons/io5";
 
 const Sidebar = () => {
   const getLinkClasses = ({ isActive }) => {
@@ -75,13 +76,14 @@ const Sidebar = () => {
               </div>
             </NavLink>
           </li>
+
           <li>
-            <NavLink to="/shop-management/review" className={getLinkClasses}>
-              <PiStarThin className="text-2xl group-hover:scale-110 transition-transform" />
+            <NavLink to="/shop-management/analytic" className={getLinkClasses}>
+              <IoAnalytics className="text-2xl group-hover:scale-110 transition-transform" />
               <div className="flex flex-col">
-                <p className="text-lg font-medium">Đánh giá sản phẩm</p>
+                <p className="text-lg font-medium">Analytic</p>
                 <span className="text-xs opacity-75">
-                  Quản lý và phản hồi đánh giá
+                  Quản lý phân tích doanh thu và đơn hàng
                 </span>
               </div>
             </NavLink>

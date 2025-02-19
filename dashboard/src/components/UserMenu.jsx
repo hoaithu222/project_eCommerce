@@ -12,14 +12,6 @@ export default function UserMenu({ onClose }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("accessToken");
-    if (!token) {
-      navigate("/login");
-    }
-    dispatch(fetchUser());
-  }, [dispatch, navigate]);
-
   const handleLogout = async () => {
     onClose();
     setLoading(true);
@@ -49,7 +41,7 @@ export default function UserMenu({ onClose }) {
     }
   };
   return (
-    <div className="absolute top-20 right-72 w-40 shadow-2xl p-2 z-50 bg-white rounded-lg border border-gray-300">
+    <div className="absolute top-16 right-0 w-40 shadow-2xl p-2 z-50 bg-white rounded-lg border border-gray-300">
       <button
         onClick={onClose}
         className="text-xl text-gray-500 hover:text-red-500 transition ml-auto flex justify-end"
@@ -58,17 +50,23 @@ export default function UserMenu({ onClose }) {
       </button>
       {/* Menu Items */}
       <div className="flex flex-col mt-1 space-y-2">
-        <Link className="text-gray-700 hover:bg-gray-200 rounded-md px-2 py-1 flex items-center gap-3">
+        <button
+          className="w-full text-left text-gray-700 hover:bg-gray-200 rounded-md px-2 py-1 flex items-center gap-3"
+          onClick={() => {
+            onClose();
+            navigate("/profile");
+          }}
+        >
           <LuExternalLink className="text-green-300 text-2xl " />
           <span className="text-xl font-medium">Profile</span>
-        </Link>
-        <Link
+        </button>
+        <button
           className="text-gray-700 hover:bg-gray-200 rounded-md px-2 py-1 flex items-center gap-3"
           onClick={handleLogout}
         >
           <IoIosLogOut className="text-red-300 text-2xl" />
           <span className="text-xl font-medium">Logout</span>
-        </Link>
+        </button>
       </div>
     </div>
   );

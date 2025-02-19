@@ -1,40 +1,12 @@
 import { useEffect, useState } from "react";
-import SummaryApi from "../common/SummaryApi";
 import { FaBoxOpen } from "react-icons/fa6";
-import { Link } from "react-router-dom";
-import { statusOptions } from "../utils/statusOptions";
-import Loading from "./Loading";
-import { formatPriceVND } from "../utils/formatPriceVND";
-import OrderShopItem from "../components/OrderShopItem";
+import SummaryApi from "../common/SummaryApi";
+
 import StatusFilter from "../components/StatusFilter";
+import OrderCard from "../components/OrderCard";
 
-const STATUS_FLOW = {
-  pending: "processing",
-  processing: "shipped",
-  shipped: {
-    success: "delivered",
-    cancel: "cancelled",
-  },
-  delivered: "completed",
-  cancelled: "cancelled",
-};
-
-const STATUS_COLORS = {
-  pending: "text-yellow-500",
-  processing: "text-blue-500",
-  shipped: "text-purple-500",
-  delivered: "text-green-500",
-  cancelled: "text-red-500",
-};
-
-const ACTION_BUTTON_TEXT = {
-  pending: "Xác nhận đã chuẩn bị hàng xong",
-  processing: "Xác nhận đã được vận chuyển",
-  shipped: {
-    success: "Xác nhận đã ship thành công",
-    cancel: "Đơn hàng đã bị hủy",
-  },
-};
+import Loading from "./Loading";
+import { STATUS_FLOW } from "../utils/orderConstants";
 
 export default function ShopOrder() {
   const [orders, setOrders] = useState([]);
@@ -42,6 +14,7 @@ export default function ShopOrder() {
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [showActionButtons, setShowActionButtons] = useState({});
+  const [statusCounts, setStatusCounts] = useState({});
 
   const fetchOrders = async () => {
     setIsLoading(true);
@@ -59,6 +32,8 @@ export default function ShopOrder() {
       });
 
       const result = await response.json();
+      setStatusCounts(result.statusCounts);
+
       if (result.success) {
         setOrders(result.data);
       }
@@ -109,10 +84,6 @@ export default function ShopOrder() {
     }
   };
 
-  useEffect(() => {
-    fetchOrders();
-  }, [selectedStatus]);
-
   const toggleActionButtons = (orderId) => {
     setShowActionButtons((prev) => ({
       ...prev,
@@ -120,110 +91,18 @@ export default function ShopOrder() {
     }));
   };
 
-  const renderActionButtons = (order) => {
-    const isOrderFinalized =
-      order.status === "cancelled" || order.status === "completed";
-
-    if (isOrderFinalized) {
-      return (
-        <button
-          className="bg-white py-1.5 px-3 rounded-md border border-gray-300 text-gray-400 cursor-not-allowed"
-          disabled
-        >
-          {order.status === "cancelled" ? "Đã hủy" : "Hoàn thành"}
-        </button>
-      );
-    }
-
-    if (order.status === "shipped") {
-      return (
-        <div className="relative ml-auto">
-          <button
-            className="bg-white py-1.5 px-3 rounded-md border border-gray-300 text-red-300 hover:bg-red-50"
-            onClick={() => toggleActionButtons(order.id)}
-          >
-            Cập nhật trạng thái
-          </button>
-
-          {showActionButtons[order.id] && (
-            <div className="absolute right-0 mt-2 bg-white border border-gray-200 rounded-md shadow-lg z-10">
-              <button
-                className="w-full px-4 py-2 text-left hover:bg-green-50 text-green-600"
-                onClick={() =>
-                  handleStatusUpdate(order.id, order.status, "success")
-                }
-              >
-                {ACTION_BUTTON_TEXT.shipped.success}
-              </button>
-              <button
-                className="w-full px-4 py-2 text-left hover:bg-red-50 text-red-600"
-                onClick={() =>
-                  handleStatusUpdate(order.id, order.status, "cancel")
-                }
-              >
-                {ACTION_BUTTON_TEXT.shipped.cancel}
-              </button>
-            </div>
-          )}
-        </div>
-      );
-    }
-
-    return (
-      <button
-        className="bg-white py-1.5 px-3 rounded-md border border-gray-300 ml-auto text-red-300 hover:bg-red-50"
-        onClick={() => handleStatusUpdate(order.id, order.status)}
-      >
-        {ACTION_BUTTON_TEXT[order.status]}
-      </button>
-    );
-  };
-
-  const renderOrderCard = (order) => {
-    const lastHistoryEntry =
-      order.order_history[order.order_history.length - 1];
-
-    return (
-      <div key={order.id} className="bg-white mb-3 rounded-md shadow-md">
-        <div className="flex items-center gap-3 p-3 bg-pink-50">
-          <div className="w-20 h-20 rounded-full bg-sky-200 p-0.5 overflow-hidden">
-            <img
-              src={order.user.avatar_url}
-              alt={order.user.username}
-              className="w-full h-full object-cover rounded-full"
-            />
-          </div>
-          <p className="text-xl font-semibold">{order.user.username}</p>
-          {renderActionButtons(order)}
-        </div>
-
-        <div className="p-3">
-          {order.order_items.map((item) => (
-            <OrderShopItem key={item.id} item={item} />
-          ))}
-        </div>
-
-        <div className="p-4 mt-3 flex items-center justify-between">
-          {lastHistoryEntry && (
-            <p className={STATUS_COLORS[lastHistoryEntry.status]}>
-              {lastHistoryEntry.description}
-            </p>
-          )}
-          <div className="ml-auto flex gap-2 items-center">
-            <p className="text-xl">Thành tiền:</p>
-            <strong className="text-red-500 text-xl">
-              {formatPriceVND(+order.total_amount)}
-            </strong>
-          </div>
-        </div>
-      </div>
-    );
-  };
+  useEffect(() => {
+    fetchOrders();
+  }, [selectedStatus]);
 
   return (
     <div className="p-5 max-h-[96vh] overflow-y-auto hidden-scrollbar">
       <div className="w-full max-w-6xl mx-auto">
-        <StatusFilter selected={selectedStatus} onSelect={setSelectedStatus} />
+        <StatusFilter
+          selected={selectedStatus}
+          onSelect={setSelectedStatus}
+          statusCounts={statusCounts}
+        />
         <div className="mt-4">
           {orders.length === 0 ? (
             <div className="flex items-center min-h-screen justify-center mx-auto p-3">
@@ -235,7 +114,15 @@ export default function ShopOrder() {
               </div>
             </div>
           ) : (
-            orders.map(renderOrderCard)
+            orders.map((order) => (
+              <OrderCard
+                key={order.id}
+                order={order}
+                showActionButtons={showActionButtons}
+                toggleActionButtons={toggleActionButtons}
+                handleStatusUpdate={handleStatusUpdate}
+              />
+            ))
           )}
         </div>
         {(isLoading || isUpdating) && <Loading />}

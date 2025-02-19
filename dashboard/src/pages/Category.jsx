@@ -13,9 +13,11 @@ import Loading from "./Loading";
 import SummaryApi from "../common/SummaryApi";
 import colors from "../style/colors";
 import Pagination from "../components/Pagination";
+import CategoryCardSkeleton from "../components/CategoryCardSkeleton";
 
 export default function Category() {
   const [openCategory, setOpenCategory] = useState(false);
+
   const [openConfirm, setOpenConfirm] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
   const [loadingDelete, setLoadingDelete] = useState(false);
@@ -29,6 +31,7 @@ export default function Category() {
   const {
     data: category,
     loading,
+
     count,
   } = useSelector((state) => state.category);
 
@@ -169,10 +172,14 @@ export default function Category() {
 
       {/* Content */}
       {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-purple-500 border-t-transparent"></div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {Array(8)
+            .fill(0)
+            .map((_, index) => (
+              <CategoryCardSkeleton key={index} />
+            ))}
         </div>
-      ) : !category?.length ? (
+      ) : category?.length === 0 ? (
         <NoData
           message="No categories found"
           subMessage="Try adjusting your search or create a new category"
@@ -250,7 +257,6 @@ export default function Category() {
           close={() => setOpenConfirm(false)}
         />
       )}
-      {loadingDelete && <Loading />}
     </div>
   );
 }

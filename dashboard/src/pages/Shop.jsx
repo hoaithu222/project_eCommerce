@@ -6,11 +6,13 @@ import SummaryApi from "../common/SummaryApi";
 import { toast } from "react-toastify";
 import ConfirmActive from "../components/ConfirmActive";
 import ViewShop from "../components/ViewShop";
+import Loading from "./Loading";
 
 export default function Shop() {
   const [shops, setShop] = useState([]);
   const [openConfirmBoxActive, setOpenConfirmBoxActive] = useState(false);
   const [openConfirmBoxDeactive, setOpenConfirmBoxDeactive] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [openViewShop, setOpenViewShop] = useState(false);
   const [shopActive, setShopActive] = useState();
   const [shopDeactive, setShopDeactive] = useState();
@@ -18,14 +20,21 @@ export default function Shop() {
   const token = localStorage.getItem("accessToken");
 
   const fetchShop = async () => {
-    const response = await fetch(SummaryApi.getShop.url, {
-      method: SummaryApi.getShop.method,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const data = await response.json();
-    setShop(data.data);
+    setLoading(true);
+    try {
+      const response = await fetch(SummaryApi.getShop.url, {
+        method: SummaryApi.getShop.method,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      setShop(data.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -206,6 +215,7 @@ export default function Shop() {
         />
       )}
       {openViewShop && <ViewShop close={handleClose} data={shopView} />}
+      {loading && <Loading />}
     </div>
   );
 }

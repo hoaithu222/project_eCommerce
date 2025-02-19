@@ -28,7 +28,7 @@ import VerifyOtp from "../pages/VerifyOtp";
 import DefaultLayout from "../layout/DefaultLayout";
 import DefaultShop from "../layout/DefaultShop";
 import ShopProduct from "../pages/ShopProduct";
-import ShopReview from "../pages/ShopReview";
+
 import AddProduct from "../pages/AddProduct";
 import EditProduct from "../pages/EditProduct";
 import Category from "../pages/Category";
@@ -44,6 +44,7 @@ import OrderItem from "../pages/OrderItem";
 import Review from "../pages/Review";
 import ReviewSuccess from "../pages/ReviewSuccess";
 import ViewReview from "../pages/ViewReview";
+import Analytic from "../pages/Analytic";
 
 const router = createBrowserRouter([
   {
@@ -121,9 +122,10 @@ const router = createBrowserRouter([
                 path: "order",
                 element: <ShopOrder />,
               },
+
               {
-                path: "review",
-                element: <ShopReview />,
+                path: "analytic",
+                element: <Analytic />,
               },
             ],
           },
