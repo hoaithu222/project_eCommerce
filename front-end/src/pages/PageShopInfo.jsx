@@ -160,8 +160,8 @@ export default function PageShopInfo() {
               <h1 className="text-base sm:text-xl md:text-3xl lg:text-4xl font-bold mb-0.5 lg:mb-2 drop-shadow-lg">
                 {shop.name}
               </h1>
-              <div className="flex md:flex-row flex-col  space-x-2 md:space-x-5 lg:space-y-6 text-sm ">
-                <div className="flex items-center bg-black/30 px-1.5 py-0.5 lg:px-4 lg:py-2 rounded-full backdrop-blur-sm">
+              <div className="flex md:flex-row flex-col   space-x-3 text-sm ">
+                <div className=" flex items-center bg-black/30 px-1.5 py-0.5 lg:px-4 lg:py-2 rounded-full backdrop-blur-sm">
                   <Star className="mr-1 lg:mr-2 text-base sm:text-lg md:text-xl lg:text-2xl text-yellow-400" />
                   <span className="text-sm md:text-lg lg:text-xl font-semibold">
                     {shop.rating}/5.0
@@ -186,7 +186,7 @@ export default function PageShopInfo() {
               {isFollower ? (
                 <div
                   className="px-2 py-0.5 md:px-5 md:py-1.5 lg:px-8 lg:py-3 bg-rose-600 hover:bg-rose-700 rounded-full transition-all 
-                           transform hover:scale-105 hover:shadow-lg font-semibold text-lg flex items-center gap-1  cursor-pointer text-xs md:text-base"
+                           transform hover:scale-105 hover:shadow-lg font-semibold  flex items-center gap-1  cursor-pointer text-xs  md:text-lg"
                   onClick={handleUnfollower}
                 >
                   <MdCancel />
@@ -195,7 +195,7 @@ export default function PageShopInfo() {
               ) : (
                 <div
                   className="px-3 py-1 md:px-5 md:py-1.5 lg:px-8 lg:py-3 bg-blue-600 hover:bg-blue-700 rounded-full transition-all 
-                           transform hover:scale-105 hover:shadow-lg font-semibold text-lg flex items-center gap-1 cursor-pointer"
+                           transform hover:scale-105 hover:shadow-lg font-semibold text-xs md:text-lg flex items-center gap-1 cursor-pointer"
                   onClick={handleFollower}
                 >
                   <MdOutlineAddCircle />
