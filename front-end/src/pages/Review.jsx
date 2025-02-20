@@ -123,20 +123,20 @@ export default function Review() {
   return (
     <div className="max-w-3xl mx-auto bg-white p-6 shadow-lg rounded-lg">
       <div className="flex items-center gap-3 border-b pb-4">
-        <MdRateReview className="text-4xl text-purple-500" />
-        <h2 className="text-2xl font-semibold bg-gradient-to-r from-lime-500 to-pink-500 bg-clip-text text-transparent">
+        <MdRateReview className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-purple-500" />
+        <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold bg-gradient-to-r from-lime-500 to-pink-500 bg-clip-text text-transparent">
           Đánh giá sản phẩm
         </h2>
       </div>
 
-      <div className="mt-6 space-y-8">
+      <div className="mt-2 sm:mt-3 md:mt-4 lg:mt-6 space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
         {orderItems.map((item, index) => (
           <div
             key={`${item.id}-${index}`}
-            className="p-4 border rounded-lg hover:shadow-md transition-shadow"
+            className="p-2 md:p-3 lg:p-4 border rounded-lg hover:shadow-md transition-shadow"
           >
             <div className="flex items-center gap-4">
-              <div className="w-24 h-24 rounded-lg border-2 border-gray-200 overflow-hidden">
+              <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-lg border-2 border-gray-200 overflow-hidden">
                 <img
                   src={item.product.product_images[0].image_url}
                   alt={item.product.name}
@@ -144,19 +144,21 @@ export default function Review() {
                 />
               </div>
 
-              <h3 className="flex-1 font-medium text-md">
+              <h3 className="flex-1 font-medium text-xs md:text-base lg:text-md">
                 {item.product.name}
               </h3>
             </div>
 
             <div className="mt-4 space-y-4">
               <div className="flex items-center gap-4">
-                <p className="font-medium min-w-32">Chất lượng sản phẩm:</p>
+                <p className="font-medium min-w-32 text-xs md:text-base lg:text-md">
+                  Chất lượng sản phẩm:
+                </p>
                 <div className="flex gap-1">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <FaStar
                       key={star}
-                      className={`text-2xl cursor-pointer transition-colors ${
+                      className={`sm:text-lg md:text-xl lg:text-2xl cursor-pointer transition-colors ${
                         star <= reviewForms[index]?.rating
                           ? "text-yellow-400"
                           : "text-gray-300"
@@ -168,7 +170,7 @@ export default function Review() {
               </div>
 
               <div>
-                <label className="block font-medium mb-2">
+                <label className="block font-medium mb-2 text-xs md:text-base lg:text-md">
                   Đánh giá chi tiết:
                 </label>
                 <textarea
@@ -180,11 +182,13 @@ export default function Review() {
               </div>
 
               <div className="space-y-2">
-                <p className="font-medium">Hình ảnh sản phẩm:</p>
+                <p className="font-medium text-xs md:text-base lg:text-md">
+                  Hình ảnh sản phẩm:
+                </p>
                 <div className="flex items-center gap-3 flex-wrap">
                   {reviewForms[index]?.ReviewImage.map((img, imgIndex) => (
                     <div
-                      className="w-28 h-28 border rounded-lg relative group overflow-hidden"
+                      className="w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 border rounded-lg relative group overflow-hidden"
                       key={`${img.image_url}-${imgIndex}`}
                     >
                       <img
@@ -202,15 +206,15 @@ export default function Review() {
                   ))}
 
                   <label
-                    className="w-28 h-28 border-dashed border-2 border-purple-200 rounded-lg flex flex-col items-center justify-center text-purple-400 cursor-pointer hover:border-purple-400 hover:text-purple-600 transition-colors"
+                    className="w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 border-dashed border-2 border-purple-200 rounded-lg flex flex-col items-center justify-center text-purple-400 cursor-pointer hover:border-purple-400 hover:text-purple-600 transition-colors"
                     htmlFor={`image-upload-${index}`}
                   >
                     {loading ? (
                       <div className="animate-pulse">Đang tải...</div>
                     ) : (
                       <>
-                        <LuImagePlus className="text-3xl mb-1" />
-                        <p className="text-sm">Thêm ảnh</p>
+                        <LuImagePlus className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-1" />
+                        <p className="text-xs lg:text-sm">Thêm ảnh</p>
                       </>
                     )}
                   </label>
@@ -231,7 +235,7 @@ export default function Review() {
       <div className="flex gap-3 justify-end mt-6">
         <button
           type="button"
-          className="px-6 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium transition-colors"
+          className="px-3 py-1 lg:px-6 lg:py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium transition-colors"
           onClick={() => navigate(-1)}
           disabled={submitting}
         >
@@ -239,7 +243,7 @@ export default function Review() {
         </button>
         <button
           type="submit"
-          className="px-6 py-2 rounded-lg bg-gradient-to-r from-sky-400 to-blue-600 text-white font-medium hover:from-sky-500 hover:to-blue-700 transition-colors disabled:opacity-50"
+          className="px-3 py-1 lg:px-6 lg:py-2 rounded-lg bg-gradient-to-r from-sky-400 to-blue-600 text-white font-medium hover:from-sky-500 hover:to-blue-700 transition-colors disabled:opacity-50"
           onClick={handleSubmit}
           disabled={submitting}
         >

@@ -10,10 +10,13 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchUser } from "../store/actions/fetchUser";
+import ConfirmBox from "../components/ConfirmBox";
 export default function Address() {
   const [openModelAdd, setOpenModelAdd] = useState(false);
   const [data, setData] = useState([]);
   const [openModelEdit, setOpenModelEdit] = useState(false);
+  const [openConfirm, setOpenConfirm] = useState(false);
+  const [idDelete, setIdDelete] = useState(0);
   const [dataEdit, setDataEdit] = useState({});
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -55,9 +58,9 @@ export default function Address() {
     });
     const dataResponse = await response.json();
     if (dataResponse.error) {
-      toast.error("Lỗi khi xóa sản phẩm");
+      toast.error("Lỗi khi xóa địa chỉ");
     } else if (dataResponse.success) {
-      toast.success("Xóa sản phẩm thành công");
+      toast.success("Xóa địa chỉ thành công");
       getAddress();
     }
     setLoading(false);
@@ -96,31 +99,33 @@ export default function Address() {
   }, []);
 
   return (
-    <section className="bg-white rounded-lg shadow-lg p-6 min-h-screen">
-      <div className="flex justify-between items-center border-b border-gray-200 pb-6 mb-6">
-        <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-lime-500 to-pink-500 bg-clip-text text-transparent">
+    <section className="bg-white rounded-lg shadow-lg p-3 md:p-4 lg:p-6 min-h-screen">
+      <div className="flex justify-between items-center border-b border-gray-200 mb-3 md:mb-4 pb-3 md:pb-4 lg:pb-6 lg:mb-6">
+        <h2 className="text-base sm:text-xl md:text-2xl lg::text-3xl font-bold bg-gradient-to-r from-lime-500 to-pink-500 bg-clip-text text-transparent">
           Địa chỉ của tôi
         </h2>
         <div className="flex items-center gap-4">
           <button
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-violet-500 to-yellow-500 text-white rounded-lg hover:opacity-90 transition-all duration-300"
+            className="flex items-center gap-2 px-1.5 py-0.5 md:px-3 md:py-1.5 lg:px-4 lg:py-2 bg-gradient-to-r from-violet-500 to-yellow-500 text-white rounded-lg hover:opacity-90 transition-all duration-300"
             onClick={() => setOpenModelAdd(true)}
           >
-            <IoMdAddCircleOutline className="text-xl animate-bounce" />
-            <span>Thêm địa chỉ mới</span>
+            <IoMdAddCircleOutline className="text-lg lg:text-xl animate-bounce" />
+            <span className="text-xs md:text-sm">Thêm địa chỉ mới</span>
           </button>
           <button
             onClick={handleGoBack}
-            className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-300"
+            className="flex items-center px-1.5 py-0.5 md:px-3 md:py-1.5 lg:px-4 lg:py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-300"
           >
-            <IoMdArrowRoundBack className="text-xl" />
-            <span>Quay lại</span>
+            <IoMdArrowRoundBack className="text-lg lg:text-xl" />
+            <span className="text-xs md:text-sm">Quay lại</span>
           </button>
         </div>
       </div>
 
-      <div className="space-y-6">
-        <h3 className="text-xl font-semibold text-gray-800">Địa chỉ</h3>
+      <div className="space-y-2 md:space-y-4 lg:space-y-6">
+        <h3 className="text-sm md:text-lg lg:text-xl font-semibold text-gray-800">
+          Địa chỉ
+        </h3>
         <div className="space-y-4">
           {data?.map((address) => (
             <div
@@ -160,7 +165,10 @@ export default function Address() {
                 {!address.is_default && (
                   <button
                     className="flex items-center gap-1 px-3 py-1.5 text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-300"
-                    onClick={() => handleDelete(address.id)}
+                    onClick={() => {
+                      setOpenConfirm(true);
+                      setIdDelete(address.id);
+                    }}
                   >
                     <IoMdTrash />
                     Xóa
@@ -188,6 +196,13 @@ export default function Address() {
           onClose={handleCloseEdit}
           fetchData={() => getAddress()}
           dataAddress={dataEdit}
+        />
+      )}
+      {openConfirm && (
+        <ConfirmBox
+          cancel={() => setOpenConfirm(false)}
+          close={setOpenConfirm(false)}
+          confirm={handleDelete(idDelete)}
         />
       )}
       {loading && <Loading />}

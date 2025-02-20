@@ -107,28 +107,30 @@ export default function EditReview({ data, onClose, fetchData }) {
 
   return (
     <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center">
-      <div className="bg-pink-50 p-5 rounded-md shadow-xl w-[60%]">
+      <div className="bg-pink-50 p-2 sm:p-3 md:p-4 lg:p-5 rounded-md shadow-xl w-[80%] lg:w-[60%]">
         <div className="flex items-center justify-between">
           <h2
-            className={`${colors.textColors.gradientPinkToYellow} text-2xl font-semibold`}
+            className={`${colors.textColors.gradientPinkToYellow} text-base md:text-xl lg:text-2xl font-semibold`}
           >
             Sửa đánh giá
           </h2>
           <X
-            className="text-red-600 hover:text-red-700 font-semibold cursor-pointer"
+            className="text-red-600 hover:text-red-700 font-semibold cursor-pointer text-base md:text-lg lg:text-xl"
             onClick={onClose}
           />
         </div>
         <div className="mt-2 border border-gray-200 p-4 rounded-lg hover:shadow-xl bg-white">
           <div className="flex items-center gap-3">
-            <div className="w-24 h-24 overflow-hidden rounded-lg shadow-xl">
+            <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 overflow-hidden rounded-lg shadow-xl">
               <img
                 src={data.product.product_images[0].image_url}
                 alt={data.product.name}
                 className="w-full h-full object-cover overflow-hidden rounded-lg"
               />
             </div>
-            <h3 className="line-clamp-1">{data.product.name}</h3>
+            <h3 className="line-clamp-1 text-xs sm:text-base">
+              {data.product.name}
+            </h3>
           </div>
           <div className="mt-4 space-y-4">
             <div className="flex items-center gap-4">
@@ -137,7 +139,7 @@ export default function EditReview({ data, onClose, fetchData }) {
                 {[1, 2, 3, 4, 5].map((star) => (
                   <FaStar
                     key={star}
-                    className={`text-2xl cursor-pointer transition-colors ${
+                    className={`text-lg md:text-xl lg:text-2xl cursor-pointer transition-colors ${
                       star <= dataForm.rating
                         ? "text-yellow-400"
                         : "text-gray-300"
@@ -149,7 +151,7 @@ export default function EditReview({ data, onClose, fetchData }) {
             </div>
 
             <div>
-              <label className="block font-medium mb-2">
+              <label className="block font-medium mb-2text-xs sm:text-base ">
                 Đánh giá chi tiết:
               </label>
               <textarea
@@ -161,11 +163,13 @@ export default function EditReview({ data, onClose, fetchData }) {
             </div>
 
             <div className="space-y-2">
-              <p className="font-medium">Hình ảnh sản phẩm:</p>
+              <p className="font-medium text-xs md:text-base lg:text-md">
+                Hình ảnh sản phẩm:
+              </p>
               <div className="flex items-center gap-3 flex-wrap">
                 {dataForm.ReviewImage.map((img, imgIndex) => (
                   <div
-                    className="w-28 h-28 border rounded-lg relative group overflow-hidden"
+                    className="w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 border rounded-lg relative group overflow-hidden"
                     key={`${img.image_url}-${imgIndex}`}
                   >
                     <img
@@ -183,15 +187,17 @@ export default function EditReview({ data, onClose, fetchData }) {
                 ))}
 
                 <label
-                  className="w-28 h-28 border-dashed border-2 border-purple-200 rounded-lg flex flex-col items-center justify-center text-purple-400 cursor-pointer hover:border-purple-400 hover:text-purple-600 transition-colors"
+                  className="w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 border-dashed border-2 border-purple-200 rounded-lg flex flex-col items-center justify-center text-purple-400 cursor-pointer hover:border-purple-400 hover:text-purple-600 transition-colors"
                   htmlFor={`image-upload`}
                 >
                   {loading ? (
-                    <div className="animate-pulse">Đang tải...</div>
+                    <div className="animate-pulse text-xs lg:text-sm">
+                      Đang tải...
+                    </div>
                   ) : (
                     <>
                       <LuImagePlus className="text-3xl mb-1" />
-                      <p className="text-sm">Thêm ảnh</p>
+                      <p className="text-xs lg:text-sm">Thêm ảnh</p>
                     </>
                   )}
                 </label>
@@ -208,7 +214,7 @@ export default function EditReview({ data, onClose, fetchData }) {
           <div className="flex gap-3 justify-end mt-6">
             <button
               type="button"
-              className="px-6 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium transition-colors"
+              className="px-3 py-1 lg:px-6 lg:py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium transition-colors"
               onClick={onClose}
               disabled={submitting}
             >
@@ -216,7 +222,7 @@ export default function EditReview({ data, onClose, fetchData }) {
             </button>
             <button
               type="submit"
-              className="px-6 py-2 rounded-lg bg-gradient-to-r from-sky-400 to-blue-600 text-white font-medium hover:from-sky-500 hover:to-blue-700 transition-colors disabled:opacity-50"
+              className="px-3 py-1 lg:px-6 lg:py-2 rounded-lg bg-gradient-to-r from-sky-400 to-blue-600 text-white font-medium hover:from-sky-500 hover:to-blue-700 transition-colors disabled:opacity-50"
               onClick={handleSubmit}
               disabled={submitting}
             >

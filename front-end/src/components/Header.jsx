@@ -35,7 +35,7 @@ export default function Header() {
   };
 
   return (
-    <header className=" shadow-md fixed top-0 left-0 right-0 p-3 z-50 bg-white">
+    <header className="h-25 shadow-md fixed top-0 left-0 right-0 p-3 z-50 bg-white">
       {!(isMobile && isSearchPage) && (
         <div className="container mx-auto flex items-center justify-between h-full">
           <Link

@@ -26,7 +26,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <main className="min-h-[96vh] bg-slate-50">
+      <main className="min-h-[96vh] bg-slate-50 mt-24">
         <Outlet />
       </main>
       <Footer />

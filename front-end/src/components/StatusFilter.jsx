@@ -9,11 +9,11 @@ export default function StatusFilter({ selected, onSelect, statusCounts }) {
   };
 
   return (
-    <div className="px-3 shadow-lg rounded-md flex justify-between overflow-x-auto ">
+    <div className="px-1 md:px-2 lg:px-3 shadow-lg rounded-md flex justify-between overflow-x-auto hidden-scrollbar ">
       {statusOptions.map(({ key, label, color, icon: Icon }) => (
         <button
           key={key}
-          className={`flex p-2 items-center cursor-pointer border-b-4 transition-all min-w-fit
+          className={`flex p-1 lg:p-2 items-center cursor-pointer border-b-2 md:border-b-3 lg:border-b-4 transition-all min-w-fit
           ${color} 
           ${selected === key ? "font-bold border-sky-200" : ""}
           hover:bg-gray-50`}
@@ -21,7 +21,7 @@ export default function StatusFilter({ selected, onSelect, statusCounts }) {
         >
           <Icon className="text-xl font-semibold" />
           <span
-            className={`p-2 text-sm lg:text-lg whitespace-nowrap flex items-center gap-1
+            className={`p-1 lg:p-2 text-sm lg:text-lg whitespace-nowrap flex items-center gap-1
             ${selected === key ? "bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent" : ""}`}
           >
             {label}

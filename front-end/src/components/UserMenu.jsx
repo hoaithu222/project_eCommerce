@@ -185,7 +185,7 @@ const UserMenu = ({ onClose, isFullPage = false }) => {
   );
 
   const containerClass = isFullPage
-    ? "bg-pink-50 p-6 h-full mr-3 "
+    ? "bg-pink-50 p-10 h-full mr-3 mt-20 lg:mt-0"
     : "bg-white rounded-lg shadow-lg p-4 w-80 border border-gray-200";
 
   return (

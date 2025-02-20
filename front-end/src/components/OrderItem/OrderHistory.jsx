@@ -28,7 +28,7 @@ export default function OrderHistory({ orderItem }) {
       shipped: 3,
       delivering: 4,
       delivered: 5,
-      cancelled: 5, // Sử dụng cùng level với delivered
+      cancelled: 5,
     };
 
     const currentStep = statusOrder[currentStatus] || 0;
@@ -36,7 +36,6 @@ export default function OrderHistory({ orderItem }) {
 
     const isActive = stepNumber <= currentStep;
 
-    // Nếu đơn hàng bị hủy, chỉ các bước trước khi hủy mới active
     if (isCancelled && status !== "cancelled") {
       return {
         icon: `text-${stepNumber < currentStep ? "blue-500" : "gray-300"}`,
@@ -48,9 +47,9 @@ export default function OrderHistory({ orderItem }) {
     // Nếu là trạng thái cancelled, đổi màu thành đỏ
     if (status === "cancelled" && isCancelled) {
       return {
-        icon: "text-red-500",
-        border: "border-red-500",
-        line: "bg-red-500",
+        icon: "text-red-500 text-4xl lg:text-6xl",
+        border: "border-red-500 text-4xl lg:text-6xl",
+        line: "bg-red-500 text-4xl lg:text-6xl",
       };
     }
 
@@ -72,11 +71,11 @@ export default function OrderHistory({ orderItem }) {
         <div className="flex flex-col">
           <div className="flex items-center">
             <p
-              className={`p-3 rounded-full border-4 ${getTimelineStyles("cancelled").border}`}
+              className={`p-1 sm:p-2 lg:p-3 rounded-full border-4 ${getTimelineStyles("cancelled").border}`}
             >
               <FaBan
-                className={getTimelineStyles("cancelled").icon}
-                size={60}
+                className={getTimelineStyles("cancelled")
+                  .icon`text-2xl lg:text-4xl`}
               />
             </p>
           </div>
@@ -92,89 +91,104 @@ export default function OrderHistory({ orderItem }) {
       <div className="flex flex-col">
         <div className="flex items-center">
           <p
-            className={`p-3 rounded-full border-4 ${getTimelineStyles("delivered").border}`}
+            className={` p-1 sm:p-2 lg:p-3 rounded-full border-4 ${getTimelineStyles("delivered").border}`}
           >
-            <BsStarFill
-              className={getTimelineStyles("delivered").icon}
-              size={60}
-            />
+            <BsStarFill className={getTimelineStyles("delivered").icon} />
           </p>
         </div>
-        <p className="w-[90%] font-semibold">Giao hàng thành công</p>
-        <p className="text-gray">{getHistoryDate("delivered")}</p>
+        <p className="w-[90%] font-semibold text-xs sm:text-sm md:text-base">
+          Giao hàng thành công
+        </p>
+        <p className="text-gray hidden md:block text-xs sm:text-sm md:text-base">
+          {getHistoryDate("delivered")}
+        </p>
       </div>
     );
   };
 
   return (
-    <div className="flex items-center justify-center mx-auto">
-      <div className="flex mt-5">
+    <div className="flex items-center justify-center mx-auto p-2">
+      <div className="flex mt-5 ">
         <div className="flex flex-col">
           <div className="flex items-center">
             <p
-              className={`p-3 rounded-full border-4 ${getTimelineStyles("pending").border}`}
+              className={`p-1 sm:p-2 lg:p-3 rounded-full border-4 ${getTimelineStyles("pending").border}`}
             >
               <MdOutlineLibraryBooks
                 className={getTimelineStyles("pending").icon}
-                size={60}
               />
             </p>
-            <p className={`w-24 h-1 ${getTimelineStyles("pending").line}`}></p>
+            <p
+              className={`xs:10 w-12 sm:w-24 md:w-28 lg:w-24 xl:w-36  h-1 ${getTimelineStyles("pending").line}`}
+            ></p>
           </div>
-          <p className="w-[90%] font-semibold">Đơn hàng đang chờ xử lý</p>
-          <p className="text-gray">{getHistoryDate("pending")}</p>
+          <p className="w-[90%] font-semibold text-xs sm:text-sm md:text-base">
+            Đơn hàng đang chờ xử lý
+          </p>
+          <p className="text-gray hidden md:block text-xs sm:text-sm md:text-base">
+            {getHistoryDate("pending")}
+          </p>
         </div>
 
         <div className="flex flex-col">
           <div className="flex items-center">
             <p
-              className={`p-3 rounded-full border-4 ${getTimelineStyles("processing").border}`}
+              className={`p-1 sm:p-2 lg:p-3 rounded-full border-4 ${getTimelineStyles("processing").border}`}
             >
               <FaClockRotateLeft
                 className={getTimelineStyles("processing").icon}
-                size={60}
               />
             </p>
             <p
-              className={`w-24 h-1 ${getTimelineStyles("processing").line}`}
+              className={`xs:10 w-12 sm:w-24 md:w-28 lg:w-24 xl:w-36  h-1 ${getTimelineStyles("processing").line}`}
             ></p>
           </div>
-          <p className="w-[90%] font-semibold">Đơn hàng đang được xử lý</p>
-          <p className="text-gray">{getHistoryDate("processing")}</p>
+          <p className="w-[90%] font-semibold text-xs sm:text-sm md:text-base">
+            Đơn hàng đang được xử lý
+          </p>
+          <p className="text-gray hidden md:block text-xs sm:text-sm md:text-base">
+            {getHistoryDate("processing")}
+          </p>
         </div>
 
         <div className="flex flex-col">
           <div className="flex items-center">
             <p
-              className={`p-3 rounded-full border-4 ${getTimelineStyles("shipped").border}`}
+              className={`p-1 sm:p-2 lg:p-3 rounded-full border-4 ${getTimelineStyles("shipped").border}`}
             >
-              <TiDownload
-                className={getTimelineStyles("shipped").icon}
-                size={60}
-              />
+              <TiDownload className={getTimelineStyles("shipped").icon} />
             </p>
-            <p className={`w-24 h-1 ${getTimelineStyles("shipped").line}`}></p>
+            <p
+              className={` w-16 sm:w-24 md:w-28 lg:w-24 xl:w-36  h-1 ${getTimelineStyles("shipped").line}`}
+            ></p>
           </div>
-          <p className="w-[90%] font-semibold">Đơn hàng đã được gửi đi</p>
-          <p className="text-gray">{getHistoryDate("shipped")}</p>
+          <p className="w-[90%] font-semibold text-xs sm:text-sm md:text-base ">
+            Đơn hàng đã được gửi đi
+          </p>
+          <p className="text-gray hidden md:block text-xs sm:text-sm md:text-base">
+            {getHistoryDate("shipped")}
+          </p>
         </div>
 
         <div className="flex flex-col">
           <div className="flex items-center">
             <p
-              className={`p-3 rounded-full border-4 ${getTimelineStyles("delivering").border}`}
+              className={`p-1 sm:p-2 lg:p-3 rounded-full border-4 ${getTimelineStyles("delivering").border}`}
             >
               <MdLocalShipping
                 className={getTimelineStyles("delivering").icon}
-                size={60}
               />
             </p>
             <p
-              className={`w-24 h-1 ${getTimelineStyles("delivering").line}`}
+              className={`xs:10 w-12 sm:w-28 md:w-28 lg:w-24 xl:w-36 h-1 ${getTimelineStyles("delivering").line}`}
             ></p>
           </div>
-          <p className="w-[90%] font-semibold">Đơn hàng đang giao hàng</p>
-          <p className="text-gray">{getHistoryDate("delivering")}</p>
+          <p className="w-[90%] font-semibold text-xs sm:text-sm md:text-base">
+            Đơn hàng đang giao hàng
+          </p>
+          <p className="text-gray hidden md:block text-xs sm:text-sm md:text-base">
+            {getHistoryDate("delivering")}
+          </p>
         </div>
 
         {renderFinalStep()}

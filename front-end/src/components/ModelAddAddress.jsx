@@ -134,8 +134,8 @@ export default function ModelAddAddress({ onClose, fetchData }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-55 z-50 flex items-center justify-center">
-      <div className="bg-white w-[50%] p-5 rounded-xl shadow-2xl">
+    <div className="fixed inset-0 bg-black bg-opacity-55 z-50 flex items-center justify-center ">
+      <div className="bg-white w-[80%]  md:w-[50%] p-3 md:p-5 rounded-xl shadow-2xl overflow-y-auto hidden-scrollbar ">
         <div className="flex justify-between items-center">
           <h2
             className={`${colors.textColors.gradientPurpleToYellow} text-2xl font-medium`}
@@ -166,7 +166,7 @@ export default function ModelAddAddress({ onClose, fetchData }) {
           />
           <div className="space-y-3 flex flex-col p-3">
             <select
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded max-h-[300px] overflow-y-auto"
               value={selectedProvince}
               onChange={handleProvinceChange}
             >

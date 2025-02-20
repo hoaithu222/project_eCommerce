@@ -43,19 +43,25 @@ export default function OrderItem() {
   }, [id]);
 
   return (
-    <div className="bg-white shadow-lg p-4 rounded-md space-y-6 max-h-[96vh] overflow-y-auto hidden-scrollbar">
+    <div className="bg-white shadow-lg p-2 lg:p-4 rounded-md space-y-6 max-h-[96vh] overflow-y-auto hidden-scrollbar">
       <div className="flex items-center">
         <div
-          className="flex items-center text-2xl "
+          className="flex items-center text-base sm:text-lg md:text-xl lg:text-2xl "
           onClick={() => {
             navigate(-1);
           }}
         >
-          <IoChevronBackCircle size={30} className="text-sky-400" />
-          <p className={`${colors.textColors.gradientOrangeToCyan}`}>Trở lại</p>
+          <IoChevronBackCircle className="text-sky-400 text-xl md:text-2xl lg:text-3xl" />
+          <p
+            className={`${colors.textColors.gradientOrangeToCyan} text-base lg:text-lg`}
+          >
+            Trở lại
+          </p>
         </div>
         <div className="ml-auto">
-          <p className={`${colors.textColors.gradientOrangeToCyan}`}>
+          <p
+            className={`${colors.textColors.gradientOrangeToCyan} text-base lg:text-lg`}
+          >
             Mã hàng :{data.id}
           </p>
         </div>

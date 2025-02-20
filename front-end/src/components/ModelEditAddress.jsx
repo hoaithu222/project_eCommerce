@@ -126,7 +126,7 @@ export default function ModelEditAddress({ onClose, fetchData, dataAddress }) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-55 z-50 flex items-center justify-center">
-      <div className="bg-white w-[50%] p-5 rounded-xl shadow-2xl shadow-slate-50">
+      <div className="bg-white w-[80%]  md:w-[50%] p-3 md:p-5 rounded-xl shadow-2xl shadow-slate-50">
         <div className="flex justify-between items-center">
           <h2
             className={`${colors.textColors.gradientPurpleToYellow} text-2xl font-medium`}
