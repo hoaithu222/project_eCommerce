@@ -137,11 +137,11 @@ export default function Checkout() {
   };
 
   return (
-    <div className="container mx-auto my-5 space-y-4">
+    <div className="container mx-auto my-3 space-y-2 md:my-4 lg:my-5 lg:space-y-4">
       {/* Header */}
-      <div className="bg-white p-5 shadow-xl rounded-xl flex items-center justify-between">
+      <div className="bg-white p-3 md:p-4 lg:p-5 shadow-xl rounded-xl flex items-center justify-between">
         <h2
-          className={`${colors.textColors.gradientLimeToPink} text-3xl font-semibold`}
+          className={`${colors.textColors.gradientLimeToPink} text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold`}
         >
           Thanh toán
         </h2>
@@ -154,12 +154,12 @@ export default function Checkout() {
       </div>
 
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl">
+        <div className="bg-red-50 border border-red-200 text-red-700 px-2 lg:px-4 py-1.5 lg:py-3 rounded-xl">
           {error}
         </div>
       )}
 
-      <div className="bg-white p-5 shadow-xl rounded-xl">
+      <div className="bg-white p-1 md:p-3 lg:p-5 shadow-xl rounded-xl">
         <CheckoutAddress
           address={user?.user_addresses || []}
           onSelect={handleAddressSelect}
@@ -170,13 +170,13 @@ export default function Checkout() {
         <InfoCheckout data={orders} />
       </div>
 
-      <div className="bg-white p-6 shadow-lg rounded-xl mb-6">
+      <div className="bg-white p-3 md:p-5 lg:p-6 shadow-lg rounded-xl mb-6">
         <h2
-          className={`${colors.textColors.gradientRainbow} text-2xl font-bold mb-6`}
+          className={`${colors.textColors.gradientRainbow} text-sm sm:text-lg md:text-xl lg:text-2xl font-bold mb-3 md:mb-4 lg:mb-6`}
         >
           Phương thức thanh toán
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 lg:gap-6">
           {paymentMethods.map((method) => (
             <div
               key={method.id}
@@ -184,34 +184,36 @@ export default function Checkout() {
                 setSelectedPayment(method.id);
                 setError(null);
               }}
-              className={`flex items-center p-2 border rounded-lg cursor-pointer transition-all
+              className={`flex items-center p-1 lg:p-2 border rounded-lg cursor-pointer transition-all
                 ${
                   selectedPayment === method.id
                     ? "border-blue-500 bg-blue-50"
                     : "border-gray-200 hover:border-blue-300"
                 }`}
             >
-              <div className="w-16 h-12 flex-shrink-0">
+              <div className="w-10 h-6 md:w-14 md:h-10  lg:w-16 lg:h-12 flex-shrink-0">
                 <img
                   src={method.logo}
                   alt={method.name}
                   className="w-full h-full object-contain"
                 />
               </div>
-              <p className="ml-4 font-medium text-gray-700">{method.name}</p>
+              <p className="ext-xs md:text-sm ml-2 lg:ml-4 font-medium text-gray-700">
+                {method.name}
+              </p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Submit button */}
-      <div className="bg-white p-6 shadow-lg rounded-xl">
+      <div className="bg-white p-3 md:p-4 lg:p-6 shadow-lg rounded-xl">
         <button
           onClick={handleSubmitOrder}
           disabled={isLoading}
-          className={`w-full py-4 ${colors.button.large} ${colors.button.gradientSunrise} 
+          className={`w-full py-2 lg:py-4 ${colors.button.large} ${colors.button.gradientSunrise} 
             ${isLoading ? "opacity-50 cursor-not-allowed" : "hover:opacity-90"}
-            transition-opacity rounded-lg font-bold text-lg`}
+            transition-opacity rounded-lg font-bold text-sm lg:text-lg`}
         >
           {isLoading ? "Đang xử lý..." : "Xác nhận mua hàng"}
         </button>

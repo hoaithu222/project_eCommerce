@@ -83,7 +83,7 @@ const HomeBanner = () => {
   }, [currentImage]);
 
   return (
-    <div className="container mx-auto py-4">
+    <div className="container mx-auto py-4 mt-20">
       <div className="bg-gray-50 p-5 lg:p-6 rounded-md shadow-2xl transform transition-all duration-300 hover:shadow-xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div

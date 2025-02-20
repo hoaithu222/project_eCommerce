@@ -122,9 +122,9 @@ export default function PageShopInfo() {
     return (
       <div className="min-h-screen bg-gray-50">
         <div className="flex items-center justify-center h-80 bg-gray-200 animate-pulse">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
+          <div className="animate-spin rounded-full w-8 h-8 md:w-10 md:h-10 lg:h-12 lg:w-12 border-4 border-blue-500 border-t-transparent"></div>
         </div>
-        <div className="container mx-auto py-4">
+        <div className="container mx-auto py-2 lg:py-4">
           <LoadingSkeleton />
         </div>
       </div>
@@ -132,8 +132,8 @@ export default function PageShopInfo() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="relative h-96 overflow-hidden">
+    <div className="min-h-screen bg-gray-50 mt-20">
+      <div className="relative h-52 sm:h-72 md:h-80 lg:h-96 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={shop.banner_url || "/api/placeholder/1200/400"}
@@ -143,37 +143,39 @@ export default function PageShopInfo() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/70" />
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-          <div className="container mx-auto flex items-end space-x-8">
+        <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 lg:p-8 text-white">
+          <div className="container mx-auto flex items-end  space-x-3 md:space-x-5 lg:space-x-8 p-4">
             <div className="relative group">
-              <img
-                src={shop.logo_url || "/api/placeholder/120/120"}
-                alt="Shop Logo"
-                className="w-36 h-36 rounded-full border-4 border-white object-cover shadow-xl 
+              <div className="h-20 w-20 sm:w-24 sm:h-24 md:w-32 md:h-32 lg:w-36 lg:h-36  border-2 border-white rounded-full">
+                <img
+                  src={shop.logo_url || "/api/placeholder/120/120"}
+                  alt="Shop Logo"
+                  className=" w-full h-full rounded-full object-cover shadow-xl 
                          transform group-hover:scale-105 transition-transform duration-300"
-              />
+                />
+              </div>
             </div>
 
-            <div className="flex-1 space-y-4">
-              <h1 className="text-4xl font-bold mb-2 drop-shadow-lg">
+            <div className="flex-1 space-x-1 md:space-x-3 lg:space-y-4">
+              <h1 className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-bold mb-0.5 lg:mb-2 drop-shadow-lg">
                 {shop.name}
               </h1>
-              <div className="flex items-center space-x-6 text-sm">
-                <div className="flex items-center bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm">
-                  <Star className="mr-2 text-2xl text-yellow-400" />
-                  <span className="text-xl font-semibold">
+              <div className="flex md:flex-row flex-col  space-x-2 md:space-x-5 lg:space-y-6 text-sm ">
+                <div className="flex items-center bg-black/30 px-1.5 py-0.5 lg:px-4 lg:py-2 rounded-full backdrop-blur-sm">
+                  <Star className="mr-1 lg:mr-2 text-lg md:text-xl lg:text-2xl text-yellow-400" />
+                  <span className="text-sm md:text-lg lg:text-xl font-semibold">
                     {shop.rating}/5.0
                   </span>
                 </div>
-                <div className="flex items-center bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm">
-                  <Users className="mr-2 text-2xl text-blue-400" />
-                  <span className="text-xl font-semibold">
+                <div className="hidden md:flex items-center bg-black/30 px-1.5 py-0.5 lg:px-4 lg:py-4 rounded-full backdrop-blur-sm">
+                  <Users className="mr-1 lg:mr-2 text-lg md:text-xl lg:text-2xl text-blue-400" />
+                  <span className="text-sm md:text-lg lg:text-xl font-semibold">
                     {shop.followers} Người theo dõi
                   </span>
                 </div>
-                <div className="flex items-center bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm">
-                  <ShoppingBag className="text-2xl mr-2 text-pink-400" />
-                  <span className="text-xl font-semibold">
+                <div className=" items-center bg-black/30 px-1.5 py-0.5 lg:px-4 lg:py-2 rounded-full backdrop-blur-sm hidden md:flex">
+                  <ShoppingBag className="mr-1 lg:mr-2 text-lg md:text-xl lg:text-2xl text-pink-400" />
+                  <span className="text-sm md:text-lg lg:text-xl font-semibold">
                     {shop.products?.length} Sản phẩm
                   </span>
                 </div>
@@ -183,7 +185,7 @@ export default function PageShopInfo() {
             <div>
               {isFollower ? (
                 <div
-                  className="px-8 py-3 bg-rose-600 hover:bg-rose-700 rounded-full transition-all 
+                  className="px-3 py-1 md:px-5 md:py-1.5 lg:px-8 lg:py-3 bg-rose-600 hover:bg-rose-700 rounded-full transition-all 
                            transform hover:scale-105 hover:shadow-lg font-semibold text-lg flex items-center gap-1  cursor-pointer"
                   onClick={handleUnfollower}
                 >
@@ -192,7 +194,7 @@ export default function PageShopInfo() {
                 </div>
               ) : (
                 <div
-                  className="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-full transition-all 
+                  className="px-3 py-1 md:px-5 md:py-1.5 lg:px-8 lg:py-3 bg-blue-600 hover:bg-blue-700 rounded-full transition-all 
                            transform hover:scale-105 hover:shadow-lg font-semibold text-lg flex items-center gap-1 cursor-pointer"
                   onClick={handleFollower}
                 >
@@ -205,21 +207,21 @@ export default function PageShopInfo() {
         </div>
       </div>
 
-      <div className="container mx-auto py-8">
-        <div className="bg-white rounded-xl shadow-sm p-8">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-800">
+      <div className="container mx-auto py-4 lg:py-8">
+        <div className="bg-white rounded-xl shadow-sm p-5 lg:p-8">
+          <div className="flex justify-between items-center mb-4 lg:mb-8">
+            <h2 className=" text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-800">
               Danh sách sản phẩm của shop
             </h2>
             <div className="relative">
               <input
                 type="text"
                 placeholder="Tìm kiếm sản phẩm..."
-                className="pl-10 pr-4 py-2 rounded-full border border-gray-200 focus:outline-none 
+                className="pl-10 pr-2 lg:pr-4 py-2 rounded-full border border-gray-200 focus:outline-none 
                          focus:border-blue-500 w-64 transition-all"
               />
               <Search
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                className="absolute left-1.5 top-1/2 lg:left-3 lg:top-1/2 transform -translate-y-1/2 text-gray-400"
                 size={20}
               />
             </div>

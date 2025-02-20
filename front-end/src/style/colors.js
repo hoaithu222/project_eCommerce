@@ -46,7 +46,7 @@ const colors = {
     button: {
         // Button theo kích thước
         small: "rounded-full px-2 py-1 text-sm transition duration-200 ease-in-out",
-        medium: "rounded-full px-6 py-2 text-base transition duration-200 ease-in-out",
+        medium: "rounded-full  px-3 py-1 md:px-5 md:py-1.5 lg:px-6 lg:py-2  text-base transition duration-200 ease-in-out",
         large: "rounded-full px-9 py-3 text-lg transition duration-200 ease-in-out",
 
         // Các button gradient

@@ -124,10 +124,10 @@ export default function Cart() {
   const total = calculateTotal();
 
   return (
-    <div className="container mx-auto mt-4 p-4 max-h-[96vh] overflow-y-auto hidden-scrollbar mb-24 relative">
-      <div className="bg-white shadow-lg rounded-xl p-6 flex items-center justify-between">
+    <div className="container mx-auto mt-2 lg:mt-4 p-2 lg:p-4 max-h-[96vh] overflow-y-auto hidden-scrollbar mb-10  md:mb-20 lg:mb-24 relative">
+      <div className="bg-white shadow-lg rounded-xl p-2 md:p-4 lg:p-6 flex items-center justify-between">
         <h2
-          className={`${colors.textColors.gradientGreenToPurple} text-3xl font-bold`}
+          className={`${colors.textColors.gradientGreenToPurple} text-lg sm-text-xl md:text-2xl lg:text-3xl font-bold`}
         >
           Giỏ hàng của tôi
         </h2>
@@ -140,17 +140,17 @@ export default function Cart() {
       </div>
 
       {data.length === 0 ? (
-        <div className="mt-6 bg-white shadow-lg rounded-xl p-8 text-center">
+        <div className="mt-2 md:mt-4 lg:mt-6 bg-white shadow-lg rounded-xl p-3 md:p-5  lg:p-8 text-center">
           <p className="text-gray-500 text-lg">Giỏ hàng của bạn đang trống</p>
           <Link
             to="/"
-            className="mt-4 inline-block px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors"
+            className="mt-2 lg:mt-4 inline-block px-3 py-1 lg:px-6 lg:py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors"
           >
             Tiếp tục mua sắm
           </Link>
         </div>
       ) : (
-        <div className="mt-6 space-y-6">
+        <div className="mt-2 space-y-2 md:mt-4 md:space-y-4 lg:mt-6 lg:space-y-6">
           {data.map((item, index) => {
             const shopProducts = item.products || [];
             const allShopProductsSelected = shopProducts.every((p) =>
@@ -162,8 +162,8 @@ export default function Cart() {
                 key={`${index}-${item?.shop?.id}`}
                 className="bg-white shadow-lg rounded-xl overflow-hidden transition-shadow hover:shadow-xl"
               >
-                <div className="p-4 bg-gradient-to-r from-pink-50 to-purple-50">
-                  <div className="flex items-center space-x-4">
+                <div className="p-2 md:p-3 lg:p-4 bg-gradient-to-r from-pink-50 to-purple-50">
+                  <div className="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
                     <input
                       type="checkbox"
                       checked={allShopProductsSelected}
@@ -177,7 +177,7 @@ export default function Cart() {
                       to={`/shop/${item.shop.id}`}
                       className="flex items-center space-x-3 group"
                     >
-                      <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-pink-200 transition-transform group-hover:scale-105">
+                      <div className="w-6 h-6 md:h-8 md:w-8 lg:w-10 lg:h-10 rounded-full overflow-hidden border-2 border-pink-200 transition-transform group-hover:scale-105">
                         <img
                           src={item.shop.logo_url}
                           alt={item.shop.name}
@@ -209,30 +209,32 @@ export default function Cart() {
       )}
 
       <div className="fixed bg-white bottom-0 left-0 right-0 z-50 border-t border-gray-200 shadow-xl">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto p-2 md:p-3 lg:p-4 ">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
               <input
                 type="checkbox"
                 checked={selectedItemsCount === totalItems && totalItems > 0}
                 onChange={handleSelectAll}
                 className="w-6 h-6 rounded border-gray-300 text-pink-500 focus:ring-pink-400"
               />
-              <p className="text-gray-600">
+              <p className="text-xs lg:text-sm  text-gray-600">
                 Chọn tất cả ({selectedItemsCount}/{totalItems})
               </p>
             </div>
             <div className="flex items-center space-x-6">
-              <div className="text-right">
-                <p className="text-gray-500">Tổng thanh toán:</p>
-                <p className="text-xl font-bold text-pink-500">
+              <div className=" text-right">
+                <p className="text-xs lg:text-sm text-gray-500">
+                  Tổng thanh toán:
+                </p>
+                <p className="text-sm md:text-lg lg:text-xl font-bold text-pink-500">
                   {formatPriceVND(total)}
                 </p>
               </div>
               <button
                 onClick={handleCheckout}
                 disabled={selectedItems.size === 0}
-                className="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg font-medium 
+                className="px-4 py-1 md:px-5 md:py-2 lg:px-8 lg:py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg font-medium 
                           hover:from-pink-600 hover:to-purple-600 transition-all transform hover:scale-105
                           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >

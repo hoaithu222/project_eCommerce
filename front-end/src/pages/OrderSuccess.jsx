@@ -96,7 +96,7 @@ export default function OrderSuccess() {
           <p className="text-center text-gray-500">Không có đơn hàng nào.</p>
         )}
       </div>
-      <div className="flex items-center justify-center my-4 gap-4">
+      <div className="flex items-center justify-center my-4 gap-2 lg:my-4 lg:gap-4">
         <Link
           to="/account/my-order"
           className={`${colors.button.medium} ${colors.button.gradientSkyToOcean}`}
