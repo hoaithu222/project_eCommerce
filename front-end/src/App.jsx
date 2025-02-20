@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import api, { setupAxiosInterceptors } from "./utils/api";
+import { setupAxiosInterceptors } from "./utils/api";
 
 import { fetchUser } from "./store/actions/fetchUser";
 import { Outlet } from "react-router-dom";
@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { fetchCart } from "./store/actions/fetchCart";
+import "./App.css";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -30,7 +31,10 @@ export default function App() {
         <Outlet />
       </main>
       <Footer />
-      <ToastContainer className="flex justify-center" />
+      <ToastContainer
+        className="flex justify-center"
+        toastClassName="custom-toast"
+      />
     </>
   );
 }

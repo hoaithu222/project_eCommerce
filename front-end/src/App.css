@@ -1,0 +1,10 @@
+.custom-toast {
+  @apply bg-black text-white px-6 py-4 rounded-lg shadow-lg text-lg;
+}
+
+/* Khi màn hình nhỏ hơn 640px */
+@media (max-width: 500px) {
+  .custom-toast {
+    @apply px-3 py-2 text-sm w-[200px]; /* Thu nhỏ toast */
+  }
+}

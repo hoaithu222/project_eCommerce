@@ -45,8 +45,6 @@ export default function ViewReview() {
       />
     ));
   };
-  console.log("order", state.order);
-  console.log("review", review);
 
   return (
     <div className="bg-white p-3 shadow-md rounded-md">

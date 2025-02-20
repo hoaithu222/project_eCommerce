@@ -157,12 +157,12 @@ export default function PageShopInfo() {
             </div>
 
             <div className="flex-1 space-x-1 md:space-x-3 lg:space-y-4">
-              <h1 className="text-lg sm:text-xl md:text-3xl lg:text-4xl font-bold mb-0.5 lg:mb-2 drop-shadow-lg">
+              <h1 className="text-base sm:text-xl md:text-3xl lg:text-4xl font-bold mb-0.5 lg:mb-2 drop-shadow-lg">
                 {shop.name}
               </h1>
               <div className="flex md:flex-row flex-col  space-x-2 md:space-x-5 lg:space-y-6 text-sm ">
                 <div className="flex items-center bg-black/30 px-1.5 py-0.5 lg:px-4 lg:py-2 rounded-full backdrop-blur-sm">
-                  <Star className="mr-1 lg:mr-2 text-lg md:text-xl lg:text-2xl text-yellow-400" />
+                  <Star className="mr-1 lg:mr-2 text-base sm:text-lg md:text-xl lg:text-2xl text-yellow-400" />
                   <span className="text-sm md:text-lg lg:text-xl font-semibold">
                     {shop.rating}/5.0
                   </span>
@@ -185,8 +185,8 @@ export default function PageShopInfo() {
             <div>
               {isFollower ? (
                 <div
-                  className="px-3 py-1 md:px-5 md:py-1.5 lg:px-8 lg:py-3 bg-rose-600 hover:bg-rose-700 rounded-full transition-all 
-                           transform hover:scale-105 hover:shadow-lg font-semibold text-lg flex items-center gap-1  cursor-pointer"
+                  className="px-2 py-0.5 md:px-5 md:py-1.5 lg:px-8 lg:py-3 bg-rose-600 hover:bg-rose-700 rounded-full transition-all 
+                           transform hover:scale-105 hover:shadow-lg font-semibold text-lg flex items-center gap-1  cursor-pointer text-xs md:text-base"
                   onClick={handleUnfollower}
                 >
                   <MdCancel />
@@ -207,21 +207,21 @@ export default function PageShopInfo() {
         </div>
       </div>
 
-      <div className="container mx-auto py-4 lg:py-8">
-        <div className="bg-white rounded-xl shadow-sm p-5 lg:p-8">
-          <div className="flex justify-between items-center mb-4 lg:mb-8">
+      <div className="container mx-auto py-2 md:py-4 lg:py-8">
+        <div className="bg-white rounded-xl shadow-sm p-3 md:p-5 lg:p-8">
+          <div className="flex justify-between items-center mb-4 lg:mb-8 gap-2">
             <h2 className=" text-sm sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-800">
-              Danh sách sản phẩm của shop
+              Danh sách sản phẩm
             </h2>
             <div className="relative">
               <input
                 type="text"
                 placeholder="Tìm kiếm sản phẩm..."
-                className="pl-10 pr-2 lg:pr-4 py-2 rounded-full border border-gray-200 focus:outline-none 
+                className="pl-4 sm:pl-6 md:pl-8 lg:pl-10 pr-2 lg:pr-4 py-2 rounded-full border border-gray-200 focus:outline-none 
                          focus:border-blue-500 w-64 transition-all"
               />
               <Search
-                className="absolute left-1.5 top-1/2 lg:left-3 lg:top-1/2 transform -translate-y-1/2 text-gray-400"
+                className="absolute hidden top-1/2 sm:block lg:left-3 lg:top-1/2 transform -translate-y-1/2 text-gray-400"
                 size={20}
               />
             </div>
