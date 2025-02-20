@@ -14,8 +14,8 @@ export const fetchCart = (token)=>{
             if(response.ok){
                 dispatch({
                     type:"get_cart_success",payload:{
-                        data:result.data,
-                        cart_item:result.data.cart_items,
+                        data:result?.data,
+                        cart_item:result?.data?.cart_items,
                         count:result?.count,
                     }
                 })

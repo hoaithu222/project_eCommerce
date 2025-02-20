@@ -72,7 +72,7 @@ export default function MyOrder() {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto">
+    <div className="w-full sm:max-w-4xl md:max-w-5xl lg:max-w-6xl mx-auto">
       <StatusFilter
         selected={selected}
         onSelect={setSelected}

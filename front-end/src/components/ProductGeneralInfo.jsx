@@ -107,7 +107,7 @@ export default function ProductGeneralInfo({ data }) {
   const canScrollLeft = startIndex > 0;
   const canScrollRight = startIndex + imagesPerPage < productImage.length;
   const handleAddToCart = async () => {
-    if (shop.id === data.shop_id) {
+    if (shop?.id === data.shop_id) {
       toast.error("Bạn không thể cho sản phẩm của mình bán vào giỏ");
     } else {
       const cartItem = {
