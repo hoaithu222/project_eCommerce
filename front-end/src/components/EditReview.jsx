@@ -103,7 +103,6 @@ export default function EditReview({ data, onClose, fetchData }) {
       setSubmitting(false);
     }
   };
-  console.log(data);
 
   return (
     <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center">

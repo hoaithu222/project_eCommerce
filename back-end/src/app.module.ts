@@ -15,6 +15,13 @@ import { SubCategoryModule } from './modules/sub-category/sub-category.module';
 import { AttributesModule } from './modules/attributes/attributes.module';
 import { ShopModule } from './modules/shop/shop.module';
 import { ProductsModule } from './modules/products/products.module';
+import { ShopFollowerModule } from './modules/shop-follower/shop-follower.module';
+import { CartModule } from './modules/cart/cart.module';
+import { OrderModule } from './modules/order/order.module';
+import { ReviewModule } from './modules/review/review.module';
+import { PaymentModule } from './modules/payment/payment.module';
+import { StatisticsModule } from './modules/statistics/statistics.module';
+import { ShopStatisticsModule } from './modules/shop-statistics/shop-statistics.module';
 
 @Module({
   imports: [
@@ -29,6 +36,13 @@ import { ProductsModule } from './modules/products/products.module';
     AttributesModule,
     ShopModule,
     ProductsModule,
+    ShopFollowerModule,
+    CartModule,
+    OrderModule,
+    ReviewModule,
+    PaymentModule,
+    StatisticsModule,
+    ShopStatisticsModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService, AuthService],
@@ -61,11 +75,19 @@ export class AppModule {
           method: RequestMethod.PATCH,
         },
         {
+          path: 'users',
+          method: RequestMethod.GET,
+        },
+        {
           path: 'address/create',
           method: RequestMethod.POST,
         },
         {
           path: 'address',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'address/:id',
           method: RequestMethod.GET,
         },
         {
@@ -120,6 +142,10 @@ export class AppModule {
           path: 'shop',
           method: RequestMethod.GET,
         },
+        // {
+        //   path: 'shop/:id',
+        //   method: RequestMethod.GET,
+        // },
         {
           path: 'shop/:id',
           method: RequestMethod.PATCH,
@@ -140,6 +166,112 @@ export class AppModule {
         {
           path: 'products',
           method: RequestMethod.DELETE,
+        },
+        // shop followers
+        {
+          path: 'shop-follower',
+          method: RequestMethod.POST,
+        },
+        {
+          path: 'shop-follower/unfollow',
+          method: RequestMethod.POST,
+        },
+        // cart
+        {
+          path: 'cart/items',
+          method: RequestMethod.POST,
+        },
+        {
+          path: 'cart',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'cart/shop',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'cart/items/:itemId',
+          method: RequestMethod.PATCH,
+        },
+        {
+          path: 'cart/items/:itemId',
+          method: RequestMethod.DELETE,
+        },
+        //order
+        {
+          path: 'order/items',
+          method: RequestMethod.POST,
+        },
+        {
+          path: 'order/:id',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'order/:id',
+          method: RequestMethod.PATCH,
+        },
+        {
+          path: 'order/my-order',
+          method: RequestMethod.POST,
+        },
+        {
+          path: 'order/shop',
+          method: RequestMethod.POST,
+        },
+        // review
+        {
+          path: 'review',
+          method: RequestMethod.POST,
+        },
+        {
+          path: 'review/:id',
+          method: RequestMethod.PATCH,
+        },
+        {
+          path: 'review/:id',
+          method: RequestMethod.DELETE,
+        },
+        {
+          path: 'review/:id',
+          method: RequestMethod.GET,
+        },
+        // static
+        {
+          path: 'statistics',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'statistics/orders',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'statistics/best-selling-products',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'statistics/top-customers',
+          method: RequestMethod.GET,
+        },
+
+        {
+          path: 'statistics/cancelled-orders-rate',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'statistics/revenue-by-month',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'statistics/orders-users-month',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'shop-statistics/:id',
+          method: RequestMethod.GET,
+        },
+        {
+          path: 'shop-statistics/revenue-by-month/:id',
+          method: RequestMethod.GET,
         },
       );
   }

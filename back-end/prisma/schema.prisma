@@ -28,6 +28,7 @@ model User {
   updated_at              DateTime           @updatedAt
   verifyEmail             Boolean            @default(false)
   refreshToken            String?
+  refreshTokenExpiry      DateTime?
   verificationToken       String?
   verificationTokenExpiry DateTime?
   verifiedAt              DateTime?
@@ -43,6 +44,15 @@ model User {
   Review                  Review[]
 
   @@map("users")
+}
+
+model BlacklistedToken {
+  id        String   @id @default(uuid())
+  token     String   @unique @db.Text
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("blacklistedToken")
 }
 
 enum Status {
@@ -102,6 +112,7 @@ model Shop {
   products        Product[]
   ShopVoucher     ShopVoucher[]
   Order           Order[]
+  CartItem        CartItem[]
 
   @@map("shops")
 }
@@ -174,6 +185,8 @@ model Product {
   product_attributes ProductAttribute[]
   product_variants   ProductVariant[]
   Review             Review[]
+  CartItem           CartItem[]
+  OrderItem          OrderItem[]
 
   @@map("products")
 }
@@ -185,7 +198,7 @@ model ProductImage {
   display_order Int
   is_thumbnail  Boolean
   created_at    DateTime @default(now())
-  product       Product  @relation(fields: [product_id], references: [id])
+  product       Product  @relation(fields: [product_id], references: [id], onDelete: Cascade)
 
   @@map("product_images")
 }
@@ -217,7 +230,7 @@ model AttributeValue {
   type_id          Int
   value            String
   created_at       DateTime           @default(now())
-  type             AttributeType      @relation(fields: [type_id], references: [id])
+  type             AttributeType      @relation(fields: [type_id], references: [id], onDelete: Cascade)
   ProductAttribute ProductAttribute[]
 
   @@map("attribute_values")
@@ -227,7 +240,7 @@ model ProductAttribute {
   product_id         Int
   attribute_value_id Int
   product            Product        @relation(fields: [product_id], references: [id])
-  attribute_value    AttributeValue @relation(fields: [attribute_value_id], references: [id])
+  attribute_value    AttributeValue @relation(fields: [attribute_value_id], references: [id], onDelete: Cascade)
 
   @@id([product_id, attribute_value_id])
   @@map("product_attributes")
@@ -244,8 +257,9 @@ model ProductVariant {
   barcode     String?
 
   created_at DateTime    @default(now())
-  product    Product     @relation(fields: [product_id], references: [id])
+  product    Product     @relation(fields: [product_id], references: [id], onDelete: Cascade)
   OrderItem  OrderItem[]
+  CartItem   CartItem[]
 
   @@map("product_variants")
 }
@@ -303,6 +317,7 @@ model ShopVoucher {
 model Cart {
   id         Int        @id @default(autoincrement())
   user_id    Int
+  status     CartStatus @default(ACTIVE)
   created_at DateTime   @default(now())
   updated_at DateTime   @updatedAt
   cart_items CartItem[]
@@ -310,15 +325,28 @@ model Cart {
   @@map("carts")
 }
 
-model CartItem {
-  cart_id       Int
-  variant_id    Int
-  quantity      Int
-  price_at_time Decimal
-  Cart          Cart?   @relation(fields: [cartId], references: [id])
-  cartId        Int?
+enum CartStatus {
+  ACTIVE
+  COMPLETED
+  ABANDONED
+}
 
-  @@id([cart_id, variant_id])
+model CartItem {
+  id              Int             @id @default(autoincrement())
+  cart_id         Int
+  product_id      Int?
+  variant_id      Int?
+  quantity        Int
+  price_at_time   Decimal
+  created_at      DateTime        @default(now())
+  updated_at      DateTime        @updatedAt
+  shop_id         Int
+  shop            Shop            @relation(fields: [shop_id], references: [id])
+  Cart            Cart            @relation(fields: [cart_id], references: [id])
+  product         Product?        @relation(fields: [product_id], references: [id])
+  product_variant ProductVariant? @relation(fields: [variant_id], references: [id])
+
+  @@unique([cart_id, product_id, variant_id])
   @@map("cart_items")
 }
 
@@ -336,8 +364,10 @@ model Order {
   courier_name        String?
   notes               String?
   voucher_id          Int?
-  discount_amount     Decimal
+  is_pay              Boolean        @default(false)
+  discount_amount     Decimal?       @default(0)
   cancellation_reason String?
+  is_review           Boolean        @default(false)
   created_at          DateTime       @default(now())
   updated_at          DateTime       @updatedAt
   user                User           @relation(fields: [user_id], references: [id])
@@ -345,6 +375,7 @@ model Order {
   order_items         OrderItem[]
   order_history       OrderHistory[]
   shop_voucher        ShopVoucher?   @relation(fields: [voucher_id], references: [id])
+  Review              Review[]
 
   @@map("orders")
 }
@@ -360,15 +391,17 @@ enum OrderStatus {
 }
 
 model OrderItem {
-  id              Int            @id @default(autoincrement())
+  id              Int             @id @default(autoincrement())
   order_id        Int
-  variant_id      Int
+  variant_id      Int?
+  product_id      Int?
   quantity        Int
   unit_price      Decimal
   subtotal        Decimal
-  created_at      DateTime       @default(now())
-  order           Order          @relation(fields: [order_id], references: [id])
-  product_variant ProductVariant @relation(fields: [variant_id], references: [id])
+  created_at      DateTime        @default(now())
+  order           Order           @relation(fields: [order_id], references: [id])
+  product         Product?        @relation(fields: [product_id], references: [id])
+  product_variant ProductVariant? @relation(fields: [variant_id], references: [id])
 
   @@map("order_items")
 }
@@ -391,10 +424,11 @@ model Review {
   product_id  Int
   order_id    Int
   rating      Int
-  comment     String
+  comment     String?
   created_at  DateTime      @default(now())
   user        User          @relation(fields: [user_id], references: [id])
   product     Product       @relation(fields: [product_id], references: [id])
+  order       Order         @relation(fields: [order_id], references: [id])
   ReviewImage ReviewImage[]
 
   @@map("reviews")

@@ -103,7 +103,7 @@ const Sidebar = () => {
             </div>
           </NavLink>
 
-          <NavLink to="/system" className={getLinkClasses}>
+          {/* <NavLink to="/system" className={getLinkClasses}>
             <IoMdSettings className="text-2xl group-hover:scale-110 transition-transform" />
             <div className="flex flex-col">
               <p className="text-lg font-medium">System</p>
@@ -117,7 +117,7 @@ const Sidebar = () => {
               <p className="text-lg font-medium">Content</p>
               <span className="text-xs opacity-75">Quản lý nội dung</span>
             </div>
-          </NavLink>
+          </NavLink> */}
         </ul>
       </nav>
     </aside>

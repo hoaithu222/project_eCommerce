@@ -117,7 +117,7 @@ export default function ProductGeneralInfo({ data }) {
         shop_id: data.shop_id,
         price_at_time: price,
       };
-      console.log("cartItem");
+
       const token = localStorage.getItem("accessToken");
       const response = await fetch(SummaryApi.addCart.url, {
         method: SummaryApi.addCart.method,
@@ -130,7 +130,7 @@ export default function ProductGeneralInfo({ data }) {
       const result = await response.json();
       if (result.success) {
         toast.success(result.message);
-        console.log("result", result);
+
         if (result.action === "CREATE") {
           dispatch({
             type: "add_cart",
@@ -141,7 +141,6 @@ export default function ProductGeneralInfo({ data }) {
           });
         }
       }
-      console.log("Kết quả trả về sau khi thêm giỏ hàng", result);
     }
   };
 

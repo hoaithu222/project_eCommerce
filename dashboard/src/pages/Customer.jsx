@@ -41,8 +41,6 @@ export default function Customer() {
         setData(result.data);
         setCount(result.count);
       }
-
-      console.log(result);
     } catch (error) {
       console.error(error);
     } finally {

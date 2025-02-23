@@ -98,7 +98,7 @@ const ViewShop = ({ close, data }) => {
 
               <div className="text-center border-x border-gray-200">
                 <div className="font-bold text-2xl text-gray-900 mb-2">
-                  {product.length || 0}
+                  {product?.length || 0}
                 </div>
                 <p className="text-sm font-medium text-gray-600">
                   Tổng sản phẩm

@@ -16,7 +16,7 @@ import ViewShop from "../components/ViewShop";
 
 export default function ShopManagement() {
   const { data: shop, count } = useSelector((state) => state.shop);
-  console.log("số sản phẩm của shop", count);
+
   const [data, setData] = useState({
     name: shop?.name,
     logo_url: shop?.logo_url,
@@ -115,13 +115,13 @@ export default function ShopManagement() {
               <FaEdit className="mr-1 text-lg lg:text-xl" />
               <button>Sửa thông tin shop</button>
             </div>
-            <div
+            {/* <div
               className={`${colors.gradients.pinkToOrange} flex items-center text-white rounded-full px-3 py-1.5 cursor-pointer  hover:scale-105`}
               onClick={() => setIsView(true)}
             >
               <MdOutlinePreview className="mr-1 text-lg lg:text-xl" />
               <button>Xem shop của tôi</button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -106,12 +106,10 @@ export default function Checkout() {
           if (!res.ok) {
             throw new Error(data.message || "Có lỗi xảy ra khi xử lý đơn hàng");
           }
-          console.log("data sau khi ấn order ", data);
 
           return data;
         }),
       );
-      console.log("response", responses);
 
       const hasErrors = responses.some((res) => !res.success);
       if (hasErrors) {

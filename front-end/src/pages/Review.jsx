@@ -31,7 +31,6 @@ export default function Review() {
       setReviewForms(initialForms);
     }
   }, [state]);
-  console.log(state.order);
 
   const handleRatingChange = (index, rating) => {
     setReviewForms((prev) => {

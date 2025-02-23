@@ -31,13 +31,6 @@ export class SubCategoryService {
       where: filter,
       include: {
         category: true,
-        products: {
-          include: {
-            product_attributes: true,
-            product_images: true,
-            product_variants: true,
-          },
-        },
       },
       orderBy: {
         [sort]: order,
@@ -53,13 +46,6 @@ export class SubCategoryService {
       },
       include: {
         category: true,
-        products: {
-          include: {
-            product_attributes: true,
-            product_images: true,
-            product_variants: true,
-          },
-        },
       },
     });
   }

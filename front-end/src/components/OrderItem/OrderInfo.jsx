@@ -22,7 +22,6 @@ export default function OrderInfo({ orderItem }) {
     };
     return colors[status] || "text-gray-500";
   };
-  console.log(order);
 
   return (
     <div

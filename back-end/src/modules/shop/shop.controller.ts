@@ -16,6 +16,7 @@ import { CreateShopDto } from './dto/create-shop.dto';
 import { UpdateShopDto } from './dto/update-shop.dto';
 
 import { z } from 'zod';
+import { error } from 'console';
 
 @Controller('shop')
 export class ShopController {
@@ -127,7 +128,16 @@ export class ShopController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string, @Res() res) {
+  async findOne(@Param('id') id: string, @Res() res, @Req() req) {
+    // const user = req.user;
+
+    // if (!(user.role === 'Admin' && user.is_admin)) {
+    //   return res.status(HttpStatus.UNAUTHORIZED).json({
+    //     message: 'Bạn không có quyền ',
+    //     error: true,
+    //     success: false,
+    //   });
+    // }
     const shop = await this.shopService.findOne(+id);
     if (!shop) {
       return res.status(HttpStatus.BAD_REQUEST).json({
@@ -152,7 +162,7 @@ export class ShopController {
     @Req() req,
   ) {
     const user = req.user;
-    console.log(user.role);
+
     if (!user || user.role !== 'Shop') {
       return res.status(HttpStatus.UNAUTHORIZED).json({
         message: 'Bạn không có quyền',
