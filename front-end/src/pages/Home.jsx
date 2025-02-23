@@ -4,6 +4,7 @@ import ListCategory from "../components/ListCategory";
 import Product from "../components/Product";
 import { useDispatch } from "react-redux";
 import { fetchProduct } from "../store/actions/fetchProduct";
+import TopProduct from "../components/TopProduct";
 
 export default function Home() {
   const dispath = useDispatch();
@@ -14,6 +15,7 @@ export default function Home() {
     <div className="w-full gap-4">
       <HomeBanner />
       <ListCategory />
+      <TopProduct />
       <Product />
     </div>
   );

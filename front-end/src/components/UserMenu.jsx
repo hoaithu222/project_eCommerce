@@ -19,14 +19,22 @@ import SummaryApi from "../common/SummaryApi";
 import { toast } from "react-toastify";
 import { FcShop } from "react-icons/fc";
 
-const MenuLink = ({ to, icon: Icon, label, onClick, className = "" }) => (
+const MenuLink = ({
+  to,
+  icon: Icon,
+  label,
+  onClick,
+  className = "",
+  comment,
+}) => (
   <Link
     to={to}
     className={`flex items-center gap-4 p-4 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all shadow-sm ${className}`}
     onClick={onClick}
   >
     <Icon className="text-blue-300 text-xl" />
-    <span className="text-gray-700 font-medium">{label}</span>
+    <span className="text-gray-700 font-medium block">{label}</span>
+    <span className="text-xs text-gray-400 block">{comment}</span>
   </Link>
 );
 
@@ -139,12 +147,12 @@ const UserMenu = ({ onClose, isFullPage = false }) => {
               label="Địa chỉ"
               onClick={handleLinkClick}
             />
-            <MenuLink
+            {/* <MenuLink
               to="/account/notifications"
               icon={IoIosNotifications}
               label="Thông báo"
               onClick={handleLinkClick}
-            />
+            /> */}
           </>
         )}
         <MenuLink
@@ -159,6 +167,7 @@ const UserMenu = ({ onClose, isFullPage = false }) => {
             icon={FcShop}
             label="Quản lý cửa hàng"
             onClick={handleLinkClick}
+            comment="Dành cho màn hình desktop"
           />
         ) : (
           <MenuLink

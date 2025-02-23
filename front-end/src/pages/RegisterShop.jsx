@@ -103,13 +103,13 @@ export default function RegisterShop() {
   };
 
   return (
-    <div className="container mx-auto mt-3 ">
-      <div className="bg-white shadow-2xl rounded-xl shadow-blue-100 p-5 ">
+    <div className="container mx-auto mt-2 lg:mt-3 ">
+      <div className="bg-white shadow-2xl rounded-xl shadow-blue-100 p-2 sm:p-3 md:p-4 lg:p-5 ">
         {checkRegisterShop ? (
           <div className="flex flex-col items-center justify-center p-8 space-y-6 text-center">
-            <div className="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center">
+            <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-blue-50 rounded-full flex items-center justify-center">
               <svg
-                className="w-12 h-12 text-blue-500"
+                className="md:w-10 md:h-10 lg:w-12 lg:h-12 text-blue-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -122,7 +122,7 @@ export default function RegisterShop() {
                 />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-gray-800">
+            <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-800">
               Đăng ký của bạn đã được gửi!
             </h3>
             <p className="text-gray-600 max-w-md">
@@ -131,7 +131,7 @@ export default function RegisterShop() {
             </p>
             <Link
               to="/"
-              className="px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg"
+              className="px-3 py-1 md:px-5 md:py-1.5 lg:px-8 lg:py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-medium rounded-full hover:from-blue-600 hover:to-blue-700 transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg"
             >
               Trở về trang chủ
             </Link>
@@ -140,15 +140,15 @@ export default function RegisterShop() {
           <div>
             <div className="border-b-2 p-2 border-blue-50">
               <h2
-                className={`${colors.textColors.gradientIndigoToTeal} text-3xl font-semibold`}
+                className={`${colors.textColors.gradientIndigoToTeal} text-lg   md:text-xl lg:text-2xl xl:text-3xl font-semibold`}
               >
                 Đăng kí bán hàng
               </h2>
-              <p className="text-gray-400 mt-2">
+              <p className="text-gray-400 mt-2 text-xs sm:text-base">
                 Vui lòng nhập đầy đủ thông tin bên dưới
               </p>
             </div>
-            <form className="mt-3 p-5" onSubmit={handleSubmit}>
+            <form className="mt-1 md:mt-2 lg:mt-3 p-5" onSubmit={handleSubmit}>
               <InputField
                 label="Nhập tên shop"
                 name="name"
@@ -163,7 +163,7 @@ export default function RegisterShop() {
               <div className="space-y-2">
                 <label
                   htmlFor="description"
-                  className="block text-lg font-medium text-gray-700 mb-3"
+                  className="block text-base sm:text-lg font-medium text-gray-700 mb-3"
                 >
                   Mô tả shop
                 </label>
@@ -188,19 +188,21 @@ export default function RegisterShop() {
                   />
                 </div>
               </div>
-              <div className="flex mb-5 items-center mt-3">
+              <div className="grid grid-cols-1 lg:grid-cols-2 mb-5 items-center mt-3">
                 <div className="w-[35%]  ">
                   <label
                     htmlFor="logo_url"
-                    className="text-lg font-medium text-gray-700 mb-2 flex items-center gap-2 cursor-pointer hover:text-gray-900 transition-colors"
+                    className=" text-base sm:text-lg font-medium text-gray-700 mb-2 flex items-center gap-2 cursor-pointer hover:text-gray-900 transition-colors"
                     title="Click here"
                   >
                     <PiCursorClick className="text-blue-300 text-3xl" />
 
-                    <span className="text-lg">Chọn ảnh logo shop</span>
+                    <span className=" text-base sm:text-lg">
+                      Chọn ảnh logo shop
+                    </span>
                   </label>
                   <div className="mt-2">
-                    <div className="w-36 h-36 bg-gray-50  border-dotted border-2 border-blue-200 rounded-xl overflow-hidden flex items-center justify-center">
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-30 md:h-30 lg:w-36 lg:h-36 bg-gray-50  border-dotted border-2 border-blue-200 rounded-xl overflow-hidden flex items-center justify-center">
                       {data?.logo_url ? (
                         <img
                           src={data.logo_url}
@@ -230,10 +232,12 @@ export default function RegisterShop() {
                     title="Click here"
                   >
                     <FcAddImage size={32} className="" />
-                    <span>Chọn ảnh banner shop</span>
+                    <spa className="text-base sm:text-lg">
+                      Chọn ảnh banner shop
+                    </spa>
                   </label>
                   <div className="mt-2">
-                    <div className="w-full h-36 bg-gray-50 border-dotted border-2 border-blue-200  rounded-xl overflow-hidden flex items-center justify-center">
+                    <div className="w-full lg:h-36 h-24  sm:h-28 md:h-30 bg-gray-50 border-dotted border-2 border-blue-200  rounded-xl overflow-hidden flex items-center justify-center">
                       {data?.banner_url ? (
                         <img
                           src={data.banner_url}

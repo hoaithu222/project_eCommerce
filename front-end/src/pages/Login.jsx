@@ -74,12 +74,14 @@ export default function Login() {
 
   return (
     <section className="flex justify-center items-center min-h-screen">
-      <div className="min-w-[40%] shadow-xl shadow-blue-50 rounded-md bg-white p-10">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+      <div className="min-w-[30%] md:min-w-[35%] lg:min-w-[40%] shadow-xl shadow-blue-50 rounded-md bg-white p-3 md:p-5 lg:p-10">
+        <div className="text-center mb-4 md:mb-6 lg::mb-8">
+          <h2 className=" text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
             Welcome Back
           </h2>
-          <p className="mt-2 text-gray-600">Login to your account</p>
+          <p className="mt-2 text-gray-600 text-xs md:text-base">
+            Login to your account
+          </p>
         </div>
         <form
           className=" p-5 space-y-4 lg:p-8 lg:space-y-5"
@@ -109,7 +111,7 @@ export default function Login() {
           <div className="flex justify-end">
             <Link
               to="/forgot-password"
-              className="text-pink-600 hover:text-pink-700 text-sm transition-colors"
+              className="text-pink-600 hover:text-pink-700 text-sm transition-colors text-xs md:text-base"
             >
               Forgot password?
             </Link>
@@ -128,14 +130,14 @@ export default function Login() {
             {isLoading ? <LoadingBtn /> : "Login"}
           </button>
           <div className="text-center text-gray-500 mt-4">or</div>
-          <div className="flex gap-4 mt-4">
+          <div className="flex gap-2  md:gap-3 md:mt-3 lg:gap-4 lg:mt-4 flex-wrap">
             <button
               type="button"
               onClick={() => handleSocialLogin("google")}
               className="flex-1 flex items-center justify-center gap-2 py-3 border rounded-lg hover:shadow-md transition-all"
             >
               <FcGoogle className="h-5 w-5" />
-              <span>Google</span>
+              <span className="text-xs md:text-base">Google</span>
             </button>
             <button
               type="button"
@@ -143,7 +145,7 @@ export default function Login() {
               className="flex-1 flex items-center justify-center gap-2 py-3 border rounded-lg text-blue-600 hover:shadow-md transition-all"
             >
               <FaFacebook className="h-5 w-5" />
-              <span>Facebook</span>
+              <span className="text-xs md:text-base">Facebook</span>
             </button>
             <button
               type="button"
@@ -151,10 +153,10 @@ export default function Login() {
               className="flex-1 flex items-center justify-center gap-2 py-3 border rounded-lg text-gray-800 hover:shadow-md transition-all"
             >
               <FaGithub className="h-5 w-5" />
-              <span>GitHub</span>
+              <span className="text-xs md:text-base">GitHub</span>
             </button>
           </div>
-          <p className="text-center mt-14 text-gray-600">
+          <p className="text-center mt-14 text-gray-600 text-xs md:text-base">
             Don't have an account?{" "}
             <Link
               to="/register"

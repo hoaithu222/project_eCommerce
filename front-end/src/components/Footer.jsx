@@ -26,7 +26,7 @@ export default function Footer() {
           className={`absolute bottom-0 right-0 w-40 h-40 ${colors.gradients.pinkToOrange} rounded-full opacity-10 blur-xl transform translate-x-1/2 translate-y-1/2`}
         ></div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
           {/* Thông tin công ty */}
           <div className="space-y-6">
             <h2

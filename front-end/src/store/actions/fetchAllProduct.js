@@ -21,5 +21,4 @@ export const fetchAllProduct = ({_page,_limit,_sort,_order,q,shop_id})=>{
             dispatch({type:"get_product_error",error:error.message})
         }
     }
-
 }

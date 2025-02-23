@@ -22,7 +22,7 @@ const InputField = ({
       {label && (
         <label
           htmlFor={id}
-          className="block text-lg font-medium text-gray-700 mb-2"
+          className="block text-base lg:text-lg font-medium text-gray-700 mb-2"
         >
           {label}
         </label>
@@ -41,7 +41,7 @@ const InputField = ({
           onChange={onChange}
           placeholder={placeholder}
           required={required}
-          readOnly={isReadOnly} // Chỉ hiển thị khi isReadOnly là true
+          readOnly={isReadOnly}
           className={`${
             Icon ? "pl-12" : "pl-4"
           } w-full h-12 px-4 py-3 bg-gray-50 border ${
@@ -54,20 +54,19 @@ const InputField = ({
               : "focus:ring-blue-200 focus:border-blue-400"
           } outline-none transition-all duration-300`}
         />
-        {isPassword &&
-          !isReadOnly && ( // Chỉ hiển thị nút toggle khi không phải chế độ chỉ đọc
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500"
-            >
-              {showPassword ? (
-                <FiEyeOff className="h-5 w-5" />
-              ) : (
-                <FiEye className="h-5 w-5" />
-              )}
-            </button>
-          )}
+        {isPassword && !isReadOnly && (
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500"
+          >
+            {showPassword ? (
+              <FiEyeOff className="h-5 w-5" />
+            ) : (
+              <FiEye className="h-5 w-5" />
+            )}
+          </button>
+        )}
       </div>
       {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
     </div>

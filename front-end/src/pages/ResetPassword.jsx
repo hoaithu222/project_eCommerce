@@ -67,26 +67,30 @@ export default function ResetPassword() {
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-100 flex justify-center items-center">
       <div className="min-w-[30%] mx-auto">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
             Reset Password
           </h2>
           <p className="mt-2 text-gray-600">Enter your new password</p>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-xl p-6">
+        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-xl md:p-4 lg:p-6">
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+            <div className="mb-2 p-1 lg:mb-4 lg:p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg">
               {error}
             </div>
           )}
 
           {success && (
-            <div className="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg">
+            <div className="mb-2 p-1 lg:mb-4 lg:p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg">
               {success}
             </div>
           )}
 
-          <form className="space-y-6" onSubmit={handleSubmit} noValidate>
+          <form
+            className="space-y-2 md:space-y-4 lg:space-y-6"
+            onSubmit={handleSubmit}
+            noValidate
+          >
             <InputField
               label="Mật khẩu"
               name="password"
@@ -119,7 +123,7 @@ export default function ResetPassword() {
             </button>
           </form>
 
-          <p className="text-center mt-6 text-gray-600">
+          <p className="text-center mt-2 md:mt-4 lg:mt-6 text-gray-600">
             Remember your password?
             <Link
               to="/login"

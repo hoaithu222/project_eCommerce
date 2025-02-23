@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { fetchCart } from "./store/actions/fetchCart";
 import "./App.css";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -26,15 +27,13 @@ export default function App() {
 
   return (
     <>
+      <ScrollToTop />
       <Header />
       <main className="min-h-[96vh] bg-slate-50 mt-24">
         <Outlet />
       </main>
       <Footer />
-      <ToastContainer
-        className="flex justify-center"
-        toastClassName="custom-toast"
-      />
+      <ToastContainer className="flex justify-center" />
     </>
   );
 }

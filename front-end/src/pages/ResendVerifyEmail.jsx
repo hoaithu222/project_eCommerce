@@ -49,8 +49,10 @@ export default function ResendVerifyEmail() {
 
   return (
     <div className="text-center max-w-md mx-auto p-6 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold text-red-600 mb-4">Xác thực Email</h2>
-      <p className="text-gray-600 mb-4">
+      <h2 className=" text-xl lg:text-2xl font-bold text-red-600 mb-4">
+        Xác thực Email
+      </h2>
+      <p className="text-gray-600 mb-4 text-xs sm:text-base">
         Link xác thực email của bạn đã hết hạn hoặc chưa được gửi. Vui lòng yêu
         cầu gửi lại.
       </p>
@@ -65,7 +67,7 @@ export default function ResendVerifyEmail() {
       </button>
 
       <div className="mt-4">
-        <p className="text-sm text-gray-600">
+        <p className="text-xs sm:text-sm text-gray-600">
           Nếu bạn không nhận được email, hãy kiểm tra hộp thư rác hoặc{" "}
           <Link
             to="https://mail.google.com"

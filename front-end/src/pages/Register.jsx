@@ -72,12 +72,12 @@ export default function Register() {
   return (
     <section className="flex justify-center items-center min-h-screen">
       {verificationSent ? (
-        <div className="min-w-[40%] shadow-lg shadow-indigo-200 rounded-lg bg-white p-10 text-center">
-          <FcCheckmark className="text-5xl mx-auto mb-4" />
-          <h2 className="text-3xl font-bold text-indigo-800 mb-4">
+        <div className="min-w-[30%] md:min-w-[35%] lg:min-w-[40%] shadow-lg shadow-indigo-200 rounded-lg bg-white p-10 text-center">
+          <FcCheckmark className=" text-2xl sm:text-3xl md:text-4xl lg:text-5xl mx-auto sm:mb-3 lg:mb-4" />
+          <h2 className=" text-xl md:text-2xl lg:text-3xl font-bold text-indigo-800 mb-4">
             Đăng ký thành công!
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 mb-6 text-sm md:text-base">
             Chúng tôi đã gửi một email xác nhận đến
             <strong>{data.email}</strong>. Vui lòng kiểm tra hộp thư để kích
             hoạt tài khoản của bạn.
@@ -91,15 +91,15 @@ export default function Register() {
           </Link>
         </div>
       ) : (
-        <div className="min-w-[40%] shadow-xl shadow-blue-50 rounded-md bg-white p-10">
+        <div className="min-w-[30%] md:min-w-[35%] lg:min-w-[40%] shadow-xl shadow-blue-50 rounded-md bg-white p-3 sm:p-5 md:p-8 lg:p-10">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
               Welcome to my shop
             </h2>
           </div>
           <form
             onSubmit={handleSubmit}
-            className=" p-5 space-y-4 lg:p-7 lg:space-y-5"
+            className=" p-2 space-y-4 lg:p-7 lg:space-y-5"
           >
             <InputField
               label="Tên"

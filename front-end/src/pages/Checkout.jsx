@@ -26,9 +26,9 @@ export default function Checkout() {
 
   const paymentMethods = [
     { id: "cod", name: "Thanh toán khi nhận hàng", logo: cod },
-    { id: "vnpay", name: "VNPAY", logo: vnpayLogo },
-    { id: "momo", name: "MOMO", logo: momoLogo },
-    { id: "zalopay", name: "ZALOPAY", logo: zalopayLogo },
+    // { id: "vnpay", name: "VNPAY", logo: vnpayLogo },
+    // { id: "momo", name: "MOMO", logo: momoLogo },
+    // { id: "zalopay", name: "ZALOPAY", logo: zalopayLogo },
   ];
 
   useEffect(() => {

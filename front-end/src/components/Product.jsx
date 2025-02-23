@@ -2,8 +2,6 @@ import { useSelector } from "react-redux";
 import { FcLike } from "react-icons/fc";
 import ProductItem from "./ProductItem";
 import LoadingSkeleton from "./LoadingSkeleton";
-import { Link } from "react-router-dom";
-import colors from "../style/colors";
 
 export default function Product() {
   const { data: products, loading } = useSelector((state) => state.product);
@@ -32,14 +30,14 @@ export default function Product() {
             <ProductItem key={product.id} product={product} />
           ))}
         </div>
-        <div className="flex items-center justify-center">
+        {/* <div className="flex items-center justify-center">
           <Link
             to="/products"
             className={`${colors.button.medium} ${colors.button.gradientRedToYellow} mx-auto my-2 lg:my-4 `}
           >
             Xem thêm
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

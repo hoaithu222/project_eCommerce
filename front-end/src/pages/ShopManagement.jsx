@@ -96,11 +96,11 @@ export default function ShopManagement() {
     }
   };
   return (
-    <div className="p-6">
-      <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+    <div className="p-2 sm:p-3 md:p-4 lg:p-6">
+      <div className="bg-white rounded-xl shadow-lg p-2 sm:p-3 md:p-4 lg:p-6  mb-2 sm:mb-3 md:mb-4 lg:mb-6">
         <div className="flex ">
           <div className="flex items-center">
-            <MdPermDeviceInformation className="text-3xl text-purple-500 hover:rotate-2 cursor-pointer" />
+            <MdPermDeviceInformation className="text-xl md:text-2xl lg:text-3xl text-purple-500 hover:rotate-2 cursor-pointer" />
             <h3
               className={` ${colors.textColors.gradientPurpleToYellow} text-xl font-bold`}
             >
@@ -112,14 +112,14 @@ export default function ShopManagement() {
               className={`${colors.gradients.greenToBlue} flex items-center text-white rounded-full px-3 py-1.5 cursor-pointer hover:scale-105`}
               onClick={() => setIsEdit(true)}
             >
-              <FaEdit className="mr-1 text-xl" />
+              <FaEdit className="mr-1 text-lg lg:text-xl" />
               <button>Sửa thông tin shop</button>
             </div>
             <div
               className={`${colors.gradients.pinkToOrange} flex items-center text-white rounded-full px-3 py-1.5 cursor-pointer  hover:scale-105`}
               onClick={() => setIsView(true)}
             >
-              <MdOutlinePreview className="mr-1 text-xl" />
+              <MdOutlinePreview className="mr-1 text-lg lg:text-xl" />
               <button>Xem shop của tôi</button>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function ShopManagement() {
               )}
 
               {data.logo_url ? (
-                <div className="w-36 h-36">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-30 md:h-30 lg:w-36 lg:h-36">
                   <img
                     src={data.logo_url}
                     alt="Logo"
@@ -174,7 +174,7 @@ export default function ShopManagement() {
                   />
                 </div>
               ) : (
-                <FaUserCircle className="w-36 h-36 text-gray-200" />
+                <FaUserCircle className="w-24 h-24 sm:w-28 sm:h-28 md:w-30 md:h-30 lg:w-36 lg:h-36 text-gray-200" />
               )}
             </div>
             <ul className="list-item list-disc  text-gray-400 ml-2">
@@ -197,7 +197,7 @@ export default function ShopManagement() {
               <img
                 src={data.banner_url}
                 alt="banner"
-                className="w-96 h-36 object-cover ml-2"
+                className="sm:w-56 md:h-24 md:w-72 md:h-32 lg:w-96 lg:h-36 object-cover ml-2"
               />
             )}
             {isEdit && (
@@ -210,14 +210,14 @@ export default function ShopManagement() {
                   onChange={handleUploadBanner}
                 />
                 <label htmlFor="banner">
-                  <IoCloudUploadSharp className="text-red-400 text-5xl absolute left-40 cursor-pointer hover:scale-105" />
+                  <IoCloudUploadSharp className="text-red-400  text-2xl sm:text-3xl md:text-4xl lg:text-5xl absolute left-40 cursor-pointer hover:scale-105" />
                 </label>
               </>
             )}
           </div>
           <div>
             <label
-              className="block text-lg font-medium text-gray-700 mb-2"
+              className="block text-base lg:text-lg font-medium text-gray-700 mb-2"
               htmlFor="description"
             >
               Mô tả shop
@@ -239,7 +239,7 @@ export default function ShopManagement() {
             />
           </div>
           {isEdit && (
-            <div className="flex justify-center gap-5">
+            <div className="flex justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-5">
               <button
                 className={`${colors.button.medium} ${colors.button.gradientCyanToIndigo}`}
               >
