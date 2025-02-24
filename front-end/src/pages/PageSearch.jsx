@@ -9,7 +9,6 @@ export default function PageSearch() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Get decoded search term
   const getSearchTerm = () => {
     const searchParams = new URLSearchParams(search);
     const query = searchParams.get("q");
@@ -37,8 +36,14 @@ export default function PageSearch() {
   }, [search]);
 
   useEffect(() => {
-    const timeoutId = setTimeout(fetchData, 1000);
-    return () => clearTimeout(timeoutId);
+    const searchTerm = getSearchTerm();
+    if (searchTerm) {
+      const timeoutId = setTimeout(fetchData, 1000);
+      return () => clearTimeout(timeoutId);
+    } else {
+      setProducts([]);
+      setIsLoading(false);
+    }
   }, [fetchData]);
 
   const searchTerm = getSearchTerm();
@@ -55,11 +60,17 @@ export default function PageSearch() {
           </h3>
         </div>
 
-        {isLoading ? (
+        {!searchTerm ? (
+          <div className="text-center py-4">Vui lòng nhập từ khóa tìm kiếm</div>
+        ) : isLoading ? (
           <div className="text-center py-4">Đang tải...</div>
+        ) : products.length === 0 ? (
+          <div className="text-center py-4">
+            Không tìm thấy sản phẩm nào phù hợp với từ khóa "{searchTerm}"
+          </div>
         ) : (
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2 lg:gap-4 mt-2 lg:mt-4">
-            {products?.map((product) => (
+            {products.map((product) => (
               <ProductItem key={product.id} product={product} />
             ))}
           </div>
