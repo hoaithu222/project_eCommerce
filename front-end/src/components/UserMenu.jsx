@@ -110,7 +110,7 @@ const UserMenu = ({ onClose, isFullPage = false }) => {
               Tài khoản của tôi
             </div>
             <div className="text-xs text-gray-600 flex items-center gap-2">
-              {user.full_name}
+              {user.username}
               <span className=" text-red-500">({user.role})</span>
               <Link to="/account/profile" onClick={handleClose}>
                 {!isFullPage && (
