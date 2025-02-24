@@ -104,7 +104,7 @@ export default function OrderSuccess() {
           Xem danh sách đơn hàng
         </Link>
         <Link
-          to="/products"
+          to="/"
           className={`${colors.button.medium} ${colors.button.gradientVioletToYellow}`}
         >
           Tiết tục mua hàng
