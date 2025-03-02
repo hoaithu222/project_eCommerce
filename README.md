@@ -83,7 +83,7 @@ Dự án sàn thương mại điện tử chuyên về các sản phẩm công n
 - Hiển thị danh sách các sản phẩm thuộc vể shop
 ### 5. Giỏ hàng
 - Danh sách các sản phẩm đã cho vào giỏ hàng theo shop, cập nhật và xóa giỏ hàng
-- 
+
 ## 📊 Dashboard Quản Trị
 ### 1. Trang Tổng Quan (Dashboard)
 - Hiển thị thống kê doanh thu, đơn hàng, khách hàng

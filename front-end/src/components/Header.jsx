@@ -62,13 +62,13 @@ export default function Header() {
                 </Link>
                 {user?.avatar_url ? (
                   <div
-                    className={`${colors.gradients.pinkToOrange} rounded-full p-0.5`}
+                    className={`${colors.gradients.pinkToOrange} rounded-full p-0.5 w-8 h-8 md:w-12 md:h-12`}
                     onClick={handleUserClick}
                   >
                     <img
                       src={user.avatar_url}
                       alt="avatar"
-                      className="w-8 h-8 md:w-12 md:h-12 rounded-full"
+                      className="w-full h-full rounded-full object-cover"
                     />
                   </div>
                 ) : (
@@ -95,12 +95,12 @@ export default function Header() {
                     >
                       {user?.avatar_url ? (
                         <div
-                          className={`${colors.gradients.pinkToOrange} rounded-full p-0.5`}
+                          className={`${colors.gradients.pinkToOrange} w-8 h-8 md:w-12 md:h-12 rounded-full p-0.5`}
                         >
                           <img
                             src={user.avatar_url}
                             alt="avatar"
-                            className="w-12 h-12 rounded-full"
+                            className="w-full h-full object-cover rounded-full"
                           />
                         </div>
                       ) : (

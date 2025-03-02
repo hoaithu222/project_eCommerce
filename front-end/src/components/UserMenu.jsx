@@ -92,13 +92,13 @@ const UserMenu = ({ onClose, isFullPage = false }) => {
         <div className="flex items-center gap-4">
           <div
             onClick={handleClose}
-            className="w-12 h-12 bg-gradient-to-r from-pink-300 to-purple-300 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-shadow"
+            className="w-12 h-12 md:w-14 md:h-14 lg:w-18 lg:h-18  bg-gradient-to-r from-pink-300 to-purple-300 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-shadow"
           >
             {user?.avatar_url ? (
               <img
                 src={user.avatar_url}
                 alt="avatar"
-                className="w-full rounded-full"
+                className="w-full h-full object-cover rounded-full"
               />
             ) : (
               <FaUser className="text-white text-xl" />
@@ -106,7 +106,7 @@ const UserMenu = ({ onClose, isFullPage = false }) => {
           </div>
 
           <div className="flex-grow">
-            <div className="text-lg font-bold text-gray-800">
+            <div className=" text-base lg:text-lg font-bold text-gray-800">
               Tài khoản của tôi
             </div>
             <div className="text-xs text-gray-600 flex items-center gap-2">
