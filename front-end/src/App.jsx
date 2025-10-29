@@ -15,6 +15,7 @@ import ScrollToTop from "./components/ScrollToTop";
 export default function App() {
   const dispatch = useDispatch();
   const { logout } = useAuth();
+  // Setup Axios interceptors and fetch user/cart data on mount
 
   useEffect(() => {
     setupAxiosInterceptors(logout);
