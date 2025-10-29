@@ -16,6 +16,7 @@ export default function App() {
   const dispatch = useDispatch();
   const { logout } = useAuth();
   // Setup Axios interceptors and fetch user/cart data on mount
+  // comment
 
   useEffect(() => {
     setupAxiosInterceptors(logout);
