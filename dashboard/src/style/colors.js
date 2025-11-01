@@ -1,20 +1,25 @@
 const colors = {
   gradients: {
-    blueToPink: "bg-gradient-to-r from-blue-900 to-indigo-900",
-    pinkToPurple: "bg-gradient-to-l from-blue-900 to-indigo-900",
-    violetToYellow: "bg-gradient-to-r from-blue-900 to-indigo-900",
-    greenToBlue: "bg-gradient-to-r from-blue-900 to-indigo-900",
-    orangeToRed: "bg-gradient-to-r from-blue-900 to-indigo-900",
-    tealToPurple: "bg-gradient-to-r from-blue-900 to-indigo-900",
-    sunset: "bg-gradient-to-r from-blue-900 to-indigo-900",
-    frostToFlame: "bg-gradient-to-r from-blue-900 to-indigo-900",
-    sunrise: "bg-gradient-to-r from-blue-900 to-indigo-900",
-    skyToOcean: "bg-gradient-to-r from-blue-900 to-indigo-900",
-    limeToEmerald: "bg-gradient-to-r from-blue-900 to-indigo-900",
-    indigoToPink: "bg-gradient-to-br from-blue-900 to-indigo-900",
-    purpleToPinkBlur: "bg-gradient-to-r from-blue-900 to-indigo-900",
-    violetToBlue: "bg-gradient-to-r from-blue-900 to-indigo-900",
-    pinkToOrange: "bg-gradient-to-r from-blue-900 to-indigo-900",
+    blueToPink: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    pinkToPurple: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    blueToPurple: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    blueToBlue: "bg-gradient-to-r from-blue-500 to-blue-600",
+    blueToOrange: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    violetToYellow: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    greenToBlue: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    orangeToRed: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    tealToPurple: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    sunset: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    frostToFlame: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    sunrise: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    skyToOcean: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    limeToEmerald: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    indigoToPink: "bg-gradient-to-br from-blue-500 to-indigo-600",
+    purpleToPinkBlur: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    purpleToBlueBlur: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    violetToBlue: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    pinkToOrange: "bg-gradient-to-r from-blue-500 to-indigo-600",
+    indigoToBlue: "bg-gradient-to-r from-blue-500 to-indigo-600",
   },
 
   textColors: {
@@ -70,23 +75,25 @@ const colors = {
       "rounded-full px-6 py-3 text-lg transition duration-200 ease-in-out",
 
     gradientBlueToPink:
-      "bg-gradient-to-r from-blue-900 to-indigo-900 hover:from-blue-800 hover:to-indigo-800 active:from-blue-700 active:to-indigo-700 text-white transition duration-200 ease-in-out",
+      "bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 active:from-blue-700 active:to-indigo-800 text-white transition duration-200 ease-in-out",
+    gradientBlueToBlue:
+      "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 active:from-blue-700 active:to-blue-800 text-white transition duration-200 ease-in-out",
     gradientVioletToYellow:
-      "bg-gradient-to-r from-blue-900 to-indigo-900 hover:from-blue-800 hover:to-indigo-800 active:from-blue-700 active:to-indigo-700 text-white transition duration-200 ease-in-out",
+      "bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 active:from-blue-700 active:to-indigo-800 text-white transition duration-200 ease-in-out",
     gradientTealToPurple:
-      "bg-gradient-to-r from-blue-900 to-indigo-900 hover:from-blue-800 hover:to-indigo-800 active:from-blue-700 active:to-indigo-700 text-white transition duration-200 ease-in-out",
+      "bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 active:from-blue-700 active:to-indigo-800 text-white transition duration-200 ease-in-out",
     gradientFrostToFlame:
-      "bg-gradient-to-r from-blue-900 to-indigo-900 hover:from-blue-800 hover:to-indigo-800 active:from-blue-700 active:to-indigo-700 text-white transition duration-200 ease-in-out",
+      "bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 active:from-blue-700 active:to-indigo-800 text-white transition duration-200 ease-in-out",
     gradientSunrise:
-      "bg-gradient-to-r from-blue-900 to-indigo-900 hover:from-blue-800 hover:to-indigo-800 active:from-blue-700 active:to-indigo-700 text-white transition duration-200 ease-in-out",
+      "bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 active:from-blue-700 active:to-indigo-800 text-white transition duration-200 ease-in-out",
     gradientSkyToOcean:
-      "bg-gradient-to-r from-blue-900 to-indigo-900 hover:from-blue-800 hover:to-indigo-800 active:from-blue-700 active:to-indigo-700 text-white transition duration-200 ease-in-out",
+      "bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 active:from-blue-700 active:to-indigo-800 text-white transition duration-200 ease-in-out",
     gradientPurpleToOrange:
-      "bg-gradient-to-r from-blue-900 to-indigo-900 hover:from-blue-800 hover:to-indigo-800 active:from-blue-700 active:to-indigo-700 text-white transition duration-200 ease-in-out",
+      "bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 active:from-blue-700 active:to-indigo-800 text-white transition duration-200 ease-in-out",
     gradientRedToYellow:
-      "bg-gradient-to-r from-blue-900 to-indigo-900 hover:from-blue-800 hover:to-indigo-800 active:from-blue-700 active:to-indigo-700 text-white transition duration-200 ease-in-out",
+      "bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 active:from-blue-700 active:to-indigo-800 text-white transition duration-200 ease-in-out",
     gradientCyanToIndigo:
-      "bg-gradient-to-r from-blue-900 to-indigo-900 hover:from-blue-800 hover:to-indigo-800 active:from-blue-700 active:to-indigo-700 text-white transition duration-200 ease-in-out",
+      "bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 active:from-blue-700 active:to-indigo-800 text-white transition duration-200 ease-in-out",
 
     primary:
       "bg-blue-900 text-gray-100 hover:bg-blue-800 active:bg-blue-700 rounded-full transition duration-200 ease-in-out",
