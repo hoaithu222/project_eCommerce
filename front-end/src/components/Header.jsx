@@ -42,7 +42,7 @@ export default function Header() {
             to="/"
             className="overflow-hidden w-10 h-10 rounded-md sm:w-12 sm:h-12 md:w-16 md:h-16 xl:w-18 xl:h-18"
           >
-            <img src={logo} alt="logo" className="object-cover w-full h-full" />
+            <img src={logo} alt="logo" className="object-contain w-full h-full" />
           </Link>
 
           <div className="hidden md:block">

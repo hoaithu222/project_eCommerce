@@ -17,40 +17,40 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={`${colors.gradients.indigoToBlue} text-gray-100`}>
-      <div className="mx-auto py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden container">
+    <footer className="text-gray-100 bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700">
+      <div className="container overflow-hidden relative px-4 py-16 mx-auto sm:px-6 lg:px-8">
         <div
-          className={`absolute top-0 left-0 w-32 h-32 ${colors.gradients.purpleToBlueBlur} rounded-full opacity-10 blur-xl transform -translate-x-1/2 -translate-y-1/2`}
+          className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full opacity-20 blur-xl transform -translate-x-1/2 -translate-y-1/2"
         ></div>
         <div
-          className={`absolute bottom-0 right-0 w-40 h-40 ${colors.gradients.blueToOrange} rounded-full opacity-10 blur-xl transform translate-x-1/2 translate-y-1/2`}
+          className="absolute right-0 bottom-0 w-40 h-40 bg-gradient-to-r from-indigo-400 to-blue-500 rounded-full opacity-20 blur-xl transform translate-x-1/2 translate-y-1/2"
         ></div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
+        <div className="grid relative z-10 grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
           {/* Thông tin công ty */}
           <div className="space-y-6">
             <h2
-              className={`text-2xl lg:text-3xl font-bold ${colors.gradients.violetToBlue} bg-clip-text text-transparent`}
+              className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-white lg:text-3xl"
             >
               My shop
             </h2>
-            <p className="text-gray-300 leading-relaxed">
+            <p className="leading-relaxed text-gray-300">
               Sàn thương mại điện tử uy tín hàng đầu Việt Nam. Mang đến trải
               nghiệm mua sắm trực tuyến an toàn và tiện lợi.
             </p>
             <div className="space-y-4">
-              <div className="flex items-center space-x-3 group hover:bg-white/10 p-2 rounded-lg transition-all duration-300">
-                <MapPin className="h-5 w-5 text-violet-400 group-hover:text-violet-300" />
-                <span className=" group-hover:text-white">
+              <div className="flex items-center p-2 space-x-3 rounded-lg transition-all duration-300 group hover:bg-white/10">
+                <MapPin className="w-5 h-5 text-blue-400 group-hover:text-blue-300" />
+                <span className="group-hover:text-white">
                   Vũ sơn,Bắc sơn,Lạng sơn
                 </span>
               </div>
-              <div className="flex items-center space-x-3 group hover:bg-white/10 p-2 rounded-lg transition-all duration-300">
-                <Phone className="h-5 w-5 text-teal-400 group-hover:text-teal-300" />
+              <div className="flex items-center p-2 space-x-3 rounded-lg transition-all duration-300 group hover:bg-white/10">
+                <Phone className="w-5 h-5 text-teal-400 group-hover:text-teal-300" />
                 <span className="group-hover:text-white">1900 1234</span>
               </div>
-              <div className="flex items-center space-x-3 group hover:bg-white/10 p-2 rounded-lg transition-all duration-300">
-                <Mail className="h-5 w-5 text-rose-400 group-hover:text-rose-300" />
+              <div className="flex items-center p-2 space-x-3 rounded-lg transition-all duration-300 group hover:bg-white/10">
+                <Mail className="w-5 h-5 text-blue-400 group-hover:text-blue-300" />
                 <span className="group-hover:text-white">
                   support@emarket.com
                 </span>
@@ -60,7 +60,7 @@ export default function Footer() {
 
           {/* Hỗ trợ khách hàng */}
           <div>
-            <h2 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent mb-6">
+            <h2 className="mb-6 text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 lg:text-xl">
               Hỗ Trợ Khách Hàng
             </h2>
             <nav className="space-y-4">
@@ -74,9 +74,7 @@ export default function Footer() {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="block text-gray-300 hover:text-white p-2 rounded-lg transition-all duration-300
-                    hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-blue-500/20
-                    hover:translate-x-2 transform"
+                  className="block p-2 text-gray-300 rounded-lg transition-all duration-300 transform hover:text-white hover:bg-gradient-to-r hover:from-blue-500/20 hover:to-blue-600/20 hover:translate-x-2"
                 >
                   {link.text}
                 </Link>
@@ -86,7 +84,7 @@ export default function Footer() {
 
           {/* Dành cho người bán */}
           <div>
-            <h2 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent mb-6">
+            <h2 className="mb-6 text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 lg:text-xl">
               Dành Cho Người Bán
             </h2>
             <nav className="space-y-4">
@@ -100,9 +98,7 @@ export default function Footer() {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="block text-gray-300 hover:text-white p-2 rounded-lg transition-all duration-300
-                    hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-blue-500/20
-                    hover:translate-x-2 transform"
+                  className="block p-2 text-gray-300 rounded-lg transition-all duration-300 transform hover:text-white hover:bg-gradient-to-r hover:from-blue-500/20 hover:to-blue-600/20 hover:translate-x-2"
                 >
                   {link.text}
                 </Link>
@@ -112,40 +108,40 @@ export default function Footer() {
 
           {/* Cam kết */}
           <div>
-            <h2 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-blue-400 to-rose-500 bg-clip-text text-transparent mb-6">
+            <h2 className="mb-6 text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500 lg:text-xl">
               Cam Kết Của Chúng Tôi
             </h2>
             <div className="space-y-6">
-              <div className="flex items-center space-x-3 group hover:bg-white/10 p-2 rounded-lg transition-all duration-300">
-                <ShieldCheck className="h-6 w-6 text-green-400" />
+              <div className="flex items-center p-2 space-x-3 rounded-lg transition-all duration-300 group hover:bg-white/10">
+                <ShieldCheck className="w-6 h-6 text-green-400" />
                 <span className="text-gray-300">Bảo vệ người mua 100%</span>
               </div>
-              <div className="flex items-center space-x-3 group hover:bg-white/10 p-2 rounded-lg transition-all duration-300">
-                <CreditCard className="h-6 w-6 text-blue-400" />
+              <div className="flex items-center p-2 space-x-3 rounded-lg transition-all duration-300 group hover:bg-white/10">
+                <CreditCard className="w-6 h-6 text-blue-400" />
                 <span className="text-gray-300">Thanh toán an toàn</span>
               </div>
-              <div className="flex items-center space-x-3 group hover:bg-white/10 p-2 rounded-lg transition-all duration-300">
-                <Truck className="h-6 w-6 text-yellow-400" />
+              <div className="flex items-center p-2 space-x-3 rounded-lg transition-all duration-300 group hover:bg-white/10">
+                <Truck className="w-6 h-6 text-yellow-400" />
                 <span className="text-gray-300">Vận chuyển nhanh chóng</span>
               </div>
-              <div className="flex space-x-6 mt-6">
+              <div className="flex mt-6 space-x-6">
                 <Link
                   to="https://facebook.com"
-                  className="text-gray-300 hover:text-blue-400 transition-all duration-300 transform hover:scale-125 hover:rotate-6"
+                  className="text-gray-300 transition-all duration-300 transform hover:text-blue-400 hover:scale-125 hover:rotate-6"
                 >
-                  <Facebook className="h-8 w-8" />
+                  <Facebook className="w-8 h-8" />
                 </Link>
                 <Link
                   to="https://instagram.com"
-                  className="text-gray-300 hover:text-blue-400 transition-all duration-300 transform hover:scale-125 hover:-rotate-6"
+                  className="text-gray-300 transition-all duration-300 transform hover:text-blue-400 hover:scale-125 hover:-rotate-6"
                 >
-                  <Instagram className="h-8 w-8" />
+                  <Instagram className="w-8 h-8" />
                 </Link>
                 <Link
                   to="https://twitter.com"
-                  className="text-gray-300 hover:text-blue-400 transition-all duration-300 transform hover:scale-125 hover:rotate-6"
+                  className="text-gray-300 transition-all duration-300 transform hover:text-blue-400 hover:scale-125 hover:rotate-6"
                 >
-                  <Twitter className="h-8 w-8" />
+                  <Twitter className="w-8 h-8" />
                 </Link>
               </div>
             </div>
@@ -154,14 +150,14 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="border-t border-gray-100/20">
-        <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-gray-300 mr-1">
+      <div className="border-t border-blue-400/30">
+        <div className="px-4 py-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <p className="mr-1 text-center text-gray-200">
             &copy; {currentYear} - Copyright by
             <span
-              className={`${colors.textColors.frostToFlameText} font-bold hover:${colors.textColors.gradientPrimary} transition-all duration-300`}
+              className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200 transition-all duration-300 hover:from-blue-200 hover:to-white"
             >
-              Thu
+              {" "}Thu
             </span>
             .All rights reserved.
           </p>
