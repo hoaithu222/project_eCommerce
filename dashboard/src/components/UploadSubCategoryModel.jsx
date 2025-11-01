@@ -105,15 +105,15 @@ export default function UploadSubCategoryModal({ onClose, onSuccess }) {
   }, []);
 
   return (
-    <div className="fixed inset-0 bg-black/70 z-50 flex justify-center items-center px-4 md:px-52 lg:px-72">
-      <div className="bg-white w-full max-w-lg rounded-2xl shadow-xl p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="font-semibold text-2xl text-gray-800">
+    <div className="flex fixed inset-0 z-50 justify-center items-center px-4 bg-black/70 md:px-52 lg:px-72">
+      <div className="p-6 w-full max-w-lg bg-white rounded-2xl shadow-xl">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-semibold text-gray-800">
             Thêm Danh Mục
           </h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-2 rounded-full transition-colors hover:bg-gray-100"
           >
             <IoClose size={24} className="text-gray-600" />
           </button>
@@ -132,12 +132,12 @@ export default function UploadSubCategoryModal({ onClose, onSuccess }) {
           />
 
           <div className="space-y-2">
-            <label className="block text-lg font-medium text-gray-700 mb-3">
+            <label className="block mb-3 text-lg font-medium text-gray-700">
               Mô tả danh mục
             </label>
             <div className="relative group">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-start pt-3 pointer-events-none">
-                <MdDescription className="h-6 w-6 text-pink-400 group-focus-within:text-pink-500 transition-colors duration-200" />
+              <div className="flex absolute inset-y-0 left-0 items-start pt-3 pl-4 pointer-events-none">
+                <MdDescription className="w-6 h-6 text-blue-400 transition-colors duration-200 group-focus-within:text-blue-500" />
               </div>
               <textarea
                 name="description"
@@ -146,8 +146,8 @@ export default function UploadSubCategoryModal({ onClose, onSuccess }) {
                 required
                 rows={5}
                 className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl
-                focus:ring-2 focus:ring-pink-100 focus:border-pink-400
-                hover:border-pink-300 outline-none transition-all duration-200
+                focus:ring-2 focus:ring-blue-100 focus:border-blue-400
+                hover:border-blue-300 outline-none transition-all duration-200
                 placeholder:text-gray-400 text-gray-700 resize-y min-h-[120px]"
                 placeholder="Nhập mô tả danh mục"
               />
@@ -158,9 +158,9 @@ export default function UploadSubCategoryModal({ onClose, onSuccess }) {
             <label className="text-lg font-medium text-gray-700">
               Select Category
             </label>
-            <div className="border focus-within:border-pink-400 rounded-md">
+            <div className="rounded-md border focus-within:border-blue-400">
               <select
-                className="w-full bg-blue-50 border p-3 rounded-lg outline-none"
+                className="p-3 w-full bg-blue-50 rounded-lg border outline-none"
                 onChange={(e) => {
                   handleCategorySelect(e);
                 }}
@@ -179,21 +179,21 @@ export default function UploadSubCategoryModal({ onClose, onSuccess }) {
           <div className="space-y-2">
             <label
               htmlFor="icon_url"
-              className="text-lg font-medium text-gray-700 flex items-center gap-2 cursor-pointer hover:text-gray-900 transition-colors"
+              className="flex gap-2 items-center text-lg font-medium text-gray-700 transition-colors cursor-pointer hover:text-gray-900"
             >
               <FcAddImage size={32} className="animate-bounce" />
               <span>Tải ảnh lên</span>
             </label>
-            <div className="w-36 h-36 bg-gray-50 border border-gray-300 rounded-xl overflow-hidden">
+            <div className="overflow-hidden w-36 h-36 bg-gray-50 rounded-xl border border-gray-300">
               {formData.icon_url ? (
                 <img
                   src={formData.icon_url}
                   alt="Category preview"
-                  className="w-full h-full object-cover"
+                  className="object-cover w-full h-full"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                  <p className="text-gray-500 text-center text-sm">
+                <div className="flex justify-center items-center w-full h-full">
+                  <p className="text-sm text-center text-gray-500">
                     {isLoading.image ? "Đang tải ảnh..." : "Chưa có ảnh"}
                   </p>
                 </div>
@@ -215,13 +215,13 @@ export default function UploadSubCategoryModal({ onClose, onSuccess }) {
             className="w-full py-3 px-4 font-medium text-white rounded-xl 
                      transition-all duration-300 transform hover:scale-[1.02]
                      disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none
-                     bg-gradient-to-r from-pink-500 to-rose-500"
+                     bg-gradient-to-r from-blue-500 to-rose-500"
           >
             {isLoading.form ? <LoadingBtn /> : "Thêm danh mục"}
           </button>
         </form>
       </div>
-      {isLoading.form && <Loading />}
+
     </div>
   );
 }

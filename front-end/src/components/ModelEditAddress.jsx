@@ -240,7 +240,7 @@ export default function ModelEditAddress({ onClose, fetchData, dataAddress }) {
           <button
             type="submit"
             className={`w-full ${
-              colors.gradients.pinkToPurple
+              colors.gradients.blueToPurple
             } text-white py-3 rounded-lg font-medium transform hover:-translate-y-0.5 transition-all duration-200 ${
               isLoading
                 ? "opacity-70 cursor-not-allowed"

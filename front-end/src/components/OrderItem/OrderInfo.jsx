@@ -28,7 +28,7 @@ export default function OrderInfo({ orderItem }) {
       key={order.id}
       className="bg-white mb-1.5 md:mb-3 rounded-md shadow-md"
     >
-      <div className="flex items-center gap-1 p-1 lg:gap-1.5 lg:p-1.5 md:gap-3 md:p-3 bg-pink-50">
+      <div className="flex items-center gap-1 p-1 lg:gap-1.5 lg:p-1.5 md:gap-3 md:p-3 bg-blue-50">
         <div className="flex items-center gap-1 md:gap-2 lg:gap-3 ">
           <div className="h-8 w-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full bg-sky-200 p-0.5 overflow-hidden">
             <img
@@ -49,7 +49,7 @@ export default function OrderInfo({ orderItem }) {
         </div>{" "}
         {order.status === "delivered" && (
           <div
-            className={`ml-auto ${colors.button.gradientBlueToPink} ${colors.button.medium} cursor-pointer text-sm md:text-lg lg:text-xl`}
+            className={`ml-auto ${colors.button.gradientBlueToBlue} ${colors.button.medium} cursor-pointer text-sm md:text-lg lg:text-xl`}
             onClick={() => {
               navigate("/account/review", {
                 state: {
@@ -103,7 +103,7 @@ export default function OrderInfo({ orderItem }) {
                 </div>
               </div>
               <div className="flex justify-end flex-1">
-                <p className="text-pink-500 font-semibold text-sm md:text-lg lg:text-xl text-end">
+                <p className="text-blue-500 font-semibold text-sm md:text-lg lg:text-xl text-end">
                   {formatPriceVND(+item?.unit_price)}
                 </p>
               </div>

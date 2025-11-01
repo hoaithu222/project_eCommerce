@@ -41,8 +41,8 @@ export default function Overview() {
   }, []);
 
   return (
-    <div className="space-y-8 p-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="p-6 space-y-8">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         <StatCard
           icon={BsBagHeartFill}
           title="Tổng số đơn hàng"
@@ -65,7 +65,7 @@ export default function Overview() {
           value={data.totalUsers}
           trend={2.56}
           color="#EC4899"
-          bgColor="bg-pink-500"
+          bgColor="bg-blue-500"
         />
         <StatCard
           icon={RiProductHuntFill}

@@ -169,7 +169,7 @@ export default function RegisterShop() {
                 </label>
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-start pt-3 pointer-events-none">
-                    <MdDescription className="h-6 w-6 text-pink-400 group-focus-within:text-pink-500 transition-colors duration-200" />
+                    <MdDescription className="h-6 w-6 text-blue-400 group-focus-within:text-blue-500 transition-colors duration-200" />
                   </div>
                   <textarea
                     id="description"
@@ -180,8 +180,8 @@ export default function RegisterShop() {
                     required
                     rows={3}
                     className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl
-                focus:ring-2 focus:ring-pink-100 focus:border-pink-400
-                hover:border-pink-300
+                focus:ring-2 focus:ring-blue-100 focus:border-blue-400
+                hover:border-blue-300
                 outline-none transition-all duration-200
                 placeholder:text-gray-400 text-gray-700
                 resize-y min-h-[120px]"
@@ -266,7 +266,7 @@ export default function RegisterShop() {
               <button
                 type="submit"
                 className={`w-full ${
-                  colors.gradients.pinkToPurple
+                  colors.gradients.blueToPurple
                 } text-white py-3 rounded-lg font-medium transform hover:-translate-y-0.5 transition-all duration-200 ${
                   isLoading
                     ? "opacity-70 cursor-not-allowed"

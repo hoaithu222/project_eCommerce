@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaCartPlus } from "react-icons/fa";
 import { FaRegCircleUser } from "react-icons/fa6";
-import logo from "../assets/img/logo.png";
+import logo from "../assets/logo.png";
 
 import Search from "./Search";
 import useMobile from "../hooks/useMobile";
@@ -18,7 +18,7 @@ export default function Header() {
   const navigate = useNavigate();
   const isSearchPage = location.pathname === "/search";
   const [openUserMenu, setOpenUserMenu] = useState(false);
-  const { data: user, loading, error } = useSelector((state) => state.user);
+  const { data: user, loading } = useSelector((state) => state.user);
   const { count } = useSelector((state) => state.cart);
 
   const handleUserClick = () => {
@@ -35,12 +35,12 @@ export default function Header() {
   };
 
   return (
-    <header className="h-25 shadow-md fixed top-0 left-0 right-0 p-3 z-50 bg-white">
+    <header className="fixed top-0 right-0 left-0 z-50 p-3 bg-white shadow-md h-25">
       {!(isMobile && isSearchPage) && (
-        <div className="container mx-auto flex items-center justify-between h-full">
+        <div className="container flex justify-between items-center mx-auto h-full">
           <Link
             to="/"
-            className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 xl:w-18 xl:h-18"
+            className="overflow-hidden w-10 h-10 rounded-md sm:w-12 sm:h-12 md:w-16 md:h-16 xl:w-18 xl:h-18"
           >
             <img src={logo} alt="logo" className="object-cover w-full h-full" />
           </Link>
@@ -49,40 +49,40 @@ export default function Header() {
             <Search />
           </div>
 
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex gap-4 justify-between items-center">
             {isMobile ? (
-              <div className="text-lg text-gray-500 flex items-center gap-3">
+              <div className="flex gap-3 items-center text-lg text-gray-500">
                 <Link className="relative" to="/cart">
-                  <FaCartPlus className=" text-3xl md:text-4xl text-sky-600" />
-                  <div className="absolute -top-1 -right-1 md:-top-2 md:-right-2 w-4 h-4  md:w-5 md:h-5 bg-red-400 rounded-full flex items-center justify-center">
-                    <span className="text-xs md:text-sm text-white">
+                  <FaCartPlus className="text-3xl text-sky-600 md:text-4xl" />
+                  <div className="flex absolute -top-1 -right-1 justify-center items-center w-4 h-4 bg-red-400 rounded-full md:-top-2 md:-right-2 md:w-5 md:h-5">
+                    <span className="text-xs text-white md:text-sm">
                       {count}
                     </span>
                   </div>
                 </Link>
                 {user?.avatar_url ? (
                   <div
-                    className={`${colors.gradients.pinkToOrange} rounded-full p-0.5 w-8 h-8 md:w-12 md:h-12`}
+                    className={`${colors.gradients.blueToOrange} rounded-full p-0.5 w-8 h-8 md:w-12 md:h-12`}
                     onClick={handleUserClick}
                   >
                     <img
                       src={user.avatar_url}
                       alt="avatar"
-                      className="w-full h-full rounded-full object-cover"
+                      className="object-cover w-full h-full rounded-full"
                     />
                   </div>
                 ) : (
                   <FaRegCircleUser
-                    className="text-2xl md:text-4xl text-pink-300"
+                    className="text-2xl text-blue-300 md:text-4xl"
                     onClick={handleUserClick}
                   />
                 )}
               </div>
             ) : (
-              <div className="items-center gap-3 flex">
+              <div className="flex gap-3 items-center">
                 <Link className="relative" to="/cart">
                   <FaCartPlus className="text-4xl text-sky-600" />
-                  <div className="absolute -top-2 -right-2 w-5 h-5 bg-red-400 rounded-full flex items-center justify-center">
+                  <div className="flex absolute -top-2 -right-2 justify-center items-center w-5 h-5 bg-red-400 rounded-full">
                     <span className="text-sm text-white">{count}</span>
                   </div>
                 </Link>
@@ -90,21 +90,21 @@ export default function Header() {
                 {user?.id ? (
                   <div className="relative">
                     <div
-                      className="flex items-center gap-1 hover:text-gray-700 transition-colors cursor-pointer"
+                      className="flex gap-1 items-center transition-colors cursor-pointer hover:text-gray-700"
                       onClick={handleUserClick}
                     >
                       {user?.avatar_url ? (
                         <div
-                          className={`${colors.gradients.pinkToOrange} w-8 h-8 md:w-12 md:h-12 rounded-full p-0.5`}
+                          className={`${colors.gradients.blueToOrange} w-8 h-8 md:w-12 md:h-12 rounded-full p-0.5`}
                         >
                           <img
                             src={user.avatar_url}
                             alt="avatar"
-                            className="w-full h-full object-cover rounded-full"
+                            className="object-cover w-full h-full rounded-full"
                           />
                         </div>
                       ) : (
-                        <FaRegCircleUser className="text-4xl text-pink-300" />
+                        <FaRegCircleUser className="text-4xl text-blue-300" />
                       )}
                     </div>
                     {openUserMenu && (
@@ -127,10 +127,10 @@ export default function Header() {
         </div>
       )}
 
-      <div className="container mx-auto flex justify-center md:hidden mt-4">
+      <div className="container flex justify-center mx-auto mt-4 md:hidden">
         <Search />
       </div>
-      {loading && <Loading />}
+
     </header>
   );
 }

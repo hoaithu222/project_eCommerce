@@ -17,14 +17,14 @@ const Sidebar = () => {
     const baseClasses =
       "flex items-center gap-3 p-3 rounded-lg transition-all duration-300 ease-in-out transform hover:translate-x-2 group relative";
     return isActive
-      ? `${baseClasses} bg-gradient-to-r from-pink-500 to-blue-500 text-white shadow-xl shadow-pink-200/50`
-      : `${baseClasses} hover:bg-gradient-to-r hover:from-pink-100 hover:to-blue-100`;
+      ? `${baseClasses} bg-gradient-to-r from-blue-500 to-blue-500 text-white shadow-xl shadow-blue-200/50`
+      : `${baseClasses} hover:bg-gradient-to-r hover:from-blue-100 hover:to-blue-100`;
   };
 
   return (
     <aside className="w-72 bg-white shadow-2xl shadow-blue-200/50 flex flex-col overflow-y-auto p-4 min-h-[96vh] relative pt-5">
-      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-200 to-blue-200 rounded-full blur-3xl opacity-20 -z-10"></div>
-      <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-blue-200 to-pink-200 rounded-full blur-3xl opacity-20 -z-10"></div>
+      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-200 to-blue-200 rounded-full blur-3xl opacity-20 -z-10"></div>
+      <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-blue-200 to-blue-200 rounded-full blur-3xl opacity-20 -z-10"></div>
       <nav className="flex-1">
         <ul className="space-y-3">
           <li>

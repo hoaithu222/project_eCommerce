@@ -123,7 +123,7 @@ export default function Review() {
     <div className="max-w-3xl mx-auto bg-white p-6 shadow-lg rounded-lg">
       <div className="flex items-center gap-3 border-b pb-4">
         <MdRateReview className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-purple-500" />
-        <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold bg-gradient-to-r from-lime-500 to-pink-500 bg-clip-text text-transparent">
+        <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold bg-gradient-to-r from-lime-500 to-blue-500 bg-clip-text text-transparent">
           Đánh giá sản phẩm
         </h2>
       </div>

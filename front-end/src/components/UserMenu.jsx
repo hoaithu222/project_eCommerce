@@ -29,12 +29,12 @@ const MenuLink = ({
 }) => (
   <Link
     to={to}
-    className={`flex items-center gap-4 p-4 bg-gray-100 hover:bg-gray-200 rounded-lg transition-all shadow-sm ${className}`}
+    className={`flex gap-4 items-center p-4 bg-gray-100 rounded-lg shadow-sm transition-all hover:bg-gray-200 ${className}`}
     onClick={onClick}
   >
-    <Icon className="text-blue-300 text-xl" />
-    <span className="text-gray-700 font-medium block">{label}</span>
-    <span className="text-xs text-gray-400 block">{comment}</span>
+    <Icon className="text-xl text-blue-300" />
+    <span className="block font-medium text-gray-700">{label}</span>
+    <span className="block text-xs text-gray-400">{comment}</span>
   </Link>
 );
 
@@ -87,41 +87,41 @@ const UserMenu = ({ onClose, isFullPage = false }) => {
   const handleClose = () => onClose?.();
 
   const menuContent = (
-    <div className="flex flex-col ">
-      <div className="border-b border-gray-300 pb-4">
-        <div className="flex items-center gap-4">
+    <div className="flex flex-col">
+      <div className="pb-4 border-b border-gray-300">
+        <div className="flex gap-4 items-center">
           <div
             onClick={handleClose}
-            className="w-12 h-12 md:w-14 md:h-14 lg:w-18 lg:h-18  bg-gradient-to-r from-pink-300 to-purple-300 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-shadow"
+            className="flex justify-center items-center w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full shadow-md transition-shadow md:w-14 md:h-14 lg:w-18 lg:h-18 hover:shadow-lg"
           >
             {user?.avatar_url ? (
               <img
                 src={user.avatar_url}
                 alt="avatar"
-                className="w-full h-full object-cover rounded-full"
+                className="object-cover w-full h-full rounded-full"
               />
             ) : (
-              <FaUser className="text-white text-xl" />
+              <FaUser className="text-xl text-white" />
             )}
           </div>
 
           <div className="flex-grow">
-            <div className=" text-base lg:text-lg font-bold text-gray-800">
+            <div className="text-base font-bold text-gray-800 lg:text-lg">
               Tài khoản của tôi
             </div>
-            <div className="text-xs text-gray-600 flex items-center gap-2">
+            <div className="flex gap-2 items-center text-xs text-gray-600">
               {user.username}
-              <span className=" text-red-500">({user.role})</span>
+              <span className="text-red-500">({user.role})</span>
               <Link to="/account/profile" onClick={handleClose}>
                 {!isFullPage && (
-                  <FaExternalLinkSquareAlt className=" text-green-400 animate-bounce text-lg" />
+                  <FaExternalLinkSquareAlt className="text-lg text-green-400 animate-bounce" />
                 )}
               </Link>
             </div>
           </div>
           {!isFullPage && (
             <button
-              className="p-2 text-gray-500 hover:text-red-400 transition-colors"
+              className="p-2 text-gray-500 transition-colors hover:text-red-400"
               onClick={onClose}
               aria-label="Close menu"
             >
@@ -131,7 +131,7 @@ const UserMenu = ({ onClose, isFullPage = false }) => {
         </div>
       </div>
 
-      <div className="py-4 space-y-3 flex-grow">
+      <div className="flex-grow py-4 space-y-3">
         {isFullPage && (
           <>
             <MenuLink
@@ -185,7 +185,7 @@ const UserMenu = ({ onClose, isFullPage = false }) => {
           handleClose();
           await handleLogout();
         }}
-        className="flex items-center gap-4 p-4 bg-red-100 hover:bg-red-200 rounded-lg transition-all shadow-sm text-red-600 w-full mt-auto"
+        className="flex gap-4 items-center p-4 mt-auto w-full text-red-600 bg-red-100 rounded-lg shadow-sm transition-all hover:bg-red-200"
       >
         <FaSignOutAlt className="text-xl" />
         <span>Logout</span>
@@ -194,7 +194,7 @@ const UserMenu = ({ onClose, isFullPage = false }) => {
   );
 
   const containerClass = isFullPage
-    ? "bg-pink-50 p-10 h-full mr-3 mt-20 lg:mt-0"
+    ? "bg-blue-50 p-10 h-full mr-3 mt-20 lg:mt-0"
     : "bg-white rounded-lg shadow-lg p-4 w-80 border border-gray-200";
 
   return (

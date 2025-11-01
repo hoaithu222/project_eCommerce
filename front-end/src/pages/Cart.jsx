@@ -125,7 +125,7 @@ export default function Cart() {
 
   return (
     <div className="container mx-auto mt-2 lg:mt-4 p-2 lg:p-4 max-h-[96vh] overflow-y-auto hidden-scrollbar mb-10  md:mb-20 lg:mb-24 relative">
-      <div className="bg-white shadow-lg rounded-xl p-2 md:p-4 lg:p-6 flex items-center justify-between">
+      <div className="flex justify-between items-center p-2 bg-white rounded-xl shadow-lg md:p-4 lg:p-6">
         <h2
           className={`${colors.textColors.gradientGreenToPurple} text-lg sm-text-xl md:text-2xl lg:text-3xl font-bold`}
         >
@@ -133,18 +133,18 @@ export default function Cart() {
         </h2>
         <Link
           to="/"
-          className={`${colors.button.medium} ${colors.button.gradientBlueToPink}`}
+          className={`${colors.button.medium} ${colors.button.gradientBlueToBlue}`}
         >
           Về trang chủ
         </Link>
       </div>
 
       {data.length === 0 ? (
-        <div className="mt-2 md:mt-4 lg:mt-6 bg-white shadow-lg rounded-xl p-3 md:p-5  lg:p-8 text-center">
-          <p className="text-gray-500 text-lg">Giỏ hàng của bạn đang trống</p>
+        <div className="p-3 mt-2 text-center bg-white rounded-xl shadow-lg md:mt-4 lg:mt-6 md:p-5 lg:p-8">
+          <p className="text-lg text-gray-500">Giỏ hàng của bạn đang trống</p>
           <Link
             to="/"
-            className="mt-2 lg:mt-4 inline-block px-3 py-1 lg:px-6 lg:py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors"
+            className="inline-block px-3 py-1 mt-2 text-white bg-blue-500 rounded-lg transition-colors lg:mt-4 lg:px-6 lg:py-2 hover:bg-blue-600"
           >
             Tiếp tục mua sắm
           </Link>
@@ -160,9 +160,9 @@ export default function Cart() {
             return (
               <div
                 key={`${index}-${item?.shop?.id}`}
-                className="bg-white shadow-lg rounded-xl overflow-hidden transition-shadow hover:shadow-xl"
+                className="overflow-hidden bg-white rounded-xl shadow-lg transition-shadow hover:shadow-xl"
               >
-                <div className="p-2 md:p-3 lg:p-4 bg-gradient-to-r from-pink-50 to-purple-50">
+                <div className="p-2 bg-gradient-to-r from-blue-50 to-purple-50 md:p-3 lg:p-4">
                   <div className="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
                     <input
                       type="checkbox"
@@ -170,21 +170,21 @@ export default function Cart() {
                       onChange={() =>
                         handleSelectShop(item.shop.id, shopProducts)
                       }
-                      className="w-5 h-5 rounded border-gray-300 text-pink-500 focus:ring-pink-400"
+                      className="w-5 h-5 text-blue-500 rounded border-gray-300 focus:ring-blue-400"
                     />
 
                     <Link
                       to={`/shop/${item.shop.id}`}
                       className="flex items-center space-x-3 group"
                     >
-                      <div className="w-6 h-6 md:h-8 md:w-8 lg:w-10 lg:h-10 rounded-full overflow-hidden border-2 border-pink-200 transition-transform group-hover:scale-105">
+                      <div className="overflow-hidden w-6 h-6 rounded-full border-2 border-blue-200 transition-transform md:h-8 md:w-8 lg:w-10 lg:h-10 group-hover:scale-105">
                         <img
                           src={item.shop.logo_url}
                           alt={item.shop.name}
-                          className="w-full h-full object-cover"
+                          className="object-cover w-full h-full"
                         />
                       </div>
-                      <p className="font-medium text-gray-900 group-hover:text-pink-500 transition-colors">
+                      <p className="font-medium text-gray-900 transition-colors group-hover:text-blue-500">
                         {item.shop.name}
                       </p>
                     </Link>
@@ -208,35 +208,33 @@ export default function Cart() {
         </div>
       )}
 
-      <div className="fixed bg-white bottom-0 left-0 right-0 z-50 border-t border-gray-200 shadow-xl">
-        <div className="container mx-auto p-2 md:p-3 lg:p-4 ">
-          <div className="flex items-center justify-between">
+      <div className="fixed right-0 bottom-0 left-0 z-50 bg-white border-t border-gray-200 shadow-xl">
+        <div className="container p-2 mx-auto md:p-3 lg:p-4">
+          <div className="flex justify-between items-center">
             <div className="flex items-center space-x-2 md:space-x-3 lg:space-x-4">
               <input
                 type="checkbox"
                 checked={selectedItemsCount === totalItems && totalItems > 0}
                 onChange={handleSelectAll}
-                className="w-6 h-6 rounded border-gray-300 text-pink-500 focus:ring-pink-400"
+                className="w-6 h-6 text-blue-500 rounded border-gray-300 focus:ring-blue-400"
               />
-              <p className="text-xs lg:text-sm  text-gray-600">
+              <p className="text-xs text-gray-600 lg:text-sm">
                 Chọn tất cả ({selectedItemsCount}/{totalItems})
               </p>
             </div>
             <div className="flex items-center space-x-6">
-              <div className=" text-right">
-                <p className="text-xs lg:text-sm text-gray-500">
+              <div className="text-right">
+                <p className="text-xs text-gray-500 lg:text-sm">
                   Tổng thanh toán:
                 </p>
-                <p className="text-sm md:text-lg lg:text-xl font-bold text-pink-500">
+                <p className="text-sm font-bold text-blue-500 md:text-lg lg:text-xl">
                   {formatPriceVND(total)}
                 </p>
               </div>
               <button
                 onClick={handleCheckout}
                 disabled={selectedItems.size === 0}
-                className="px-4 py-1 md:px-5 md:py-2 lg:px-8 lg:py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-lg font-medium 
-                          hover:from-pink-600 hover:to-purple-600 transition-all transform hover:scale-105
-                          disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="px-4 py-1 font-medium text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg transition-all transform md:px-5 md:py-2 lg:px-8 lg:py-3 hover:from-blue-600 hover:to-purple-600 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 Mua hàng ({selectedItemsCount})
               </button>
@@ -244,7 +242,7 @@ export default function Cart() {
           </div>
         </div>
       </div>
-      {isLoading && <Loading />}
+
     </div>
   );
 }

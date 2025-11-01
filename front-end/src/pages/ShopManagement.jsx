@@ -97,17 +97,17 @@ export default function ShopManagement() {
   };
   return (
     <div className="p-2 sm:p-3 md:p-4 lg:p-6">
-      <div className="bg-white rounded-xl shadow-lg p-2 sm:p-3 md:p-4 lg:p-6  mb-2 sm:mb-3 md:mb-4 lg:mb-6">
-        <div className="flex ">
+      <div className="p-2 mb-2 bg-white rounded-xl shadow-lg sm:p-3 md:p-4 lg:p-6 sm:mb-3 md:mb-4 lg:mb-6">
+        <div className="flex">
           <div className="flex items-center">
-            <MdPermDeviceInformation className="text-xl md:text-2xl lg:text-3xl text-purple-500 hover:rotate-2 cursor-pointer" />
+            <MdPermDeviceInformation className="text-xl text-purple-500 cursor-pointer md:text-2xl lg:text-3xl hover:rotate-2" />
             <h3
               className={` ${colors.textColors.gradientPurpleToYellow} text-xl font-bold`}
             >
               Thông tin cơ bản
             </h3>
           </div>
-          <div className="ml-auto flex gap-3">
+          <div className="flex gap-3 ml-auto">
             <div
               className={`${colors.gradients.greenToBlue} flex items-center text-white rounded-full px-3 py-1.5 cursor-pointer hover:scale-105`}
               onClick={() => setIsEdit(true)}
@@ -116,7 +116,7 @@ export default function ShopManagement() {
               <button>Sửa thông tin shop</button>
             </div>
             {/* <div
-              className={`${colors.gradients.pinkToOrange} flex items-center text-white rounded-full px-3 py-1.5 cursor-pointer  hover:scale-105`}
+              className={`${colors.gradients.blueToOrange} flex items-center text-white rounded-full px-3 py-1.5 cursor-pointer  hover:scale-105`}
               onClick={() => setIsView(true)}
             >
               <MdOutlinePreview className="mr-1 text-lg lg:text-xl" />
@@ -125,7 +125,7 @@ export default function ShopManagement() {
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-xl shadow-sm mb-6 shadow-pink-200 w-full p-5">
+      <div className="p-5 mb-6 w-full bg-white rounded-xl shadow-sm shadow-blue-200">
         <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
           <Input
             label="Tên shop"
@@ -137,10 +137,10 @@ export default function ShopManagement() {
             onChange={handleChange}
             required
           />
-          <div className="flex items-center mt-1 gap-5">
+          <div className="flex gap-5 items-center mt-1">
             <label
               htmlFor="logo"
-              className="block text-lg font-medium text-gray-700 mb-2"
+              className="block mb-2 text-lg font-medium text-gray-700"
             >
               Logo của shop
             </label>
@@ -150,7 +150,7 @@ export default function ShopManagement() {
               {isEdit && (
                 <>
                   <label
-                    className="bg-gray-300 text-blue-400 absolute bottom-0 left-2 px-14 py-1 cursor-pointer "
+                    className="absolute bottom-0 left-2 px-14 py-1 text-blue-400 bg-gray-300 cursor-pointer"
                     htmlFor="logo"
                   >
                     Sửa
@@ -170,14 +170,14 @@ export default function ShopManagement() {
                   <img
                     src={data.logo_url}
                     alt="Logo"
-                    className="w-full object-cover rounded-full "
+                    className="object-cover w-full rounded-full"
                   />
                 </div>
               ) : (
-                <FaUserCircle className="w-24 h-24 sm:w-28 sm:h-28 md:w-30 md:h-30 lg:w-36 lg:h-36 text-gray-200" />
+                <FaUserCircle className="w-24 h-24 text-gray-200 sm:w-28 sm:h-28 md:w-30 md:h-30 lg:w-36 lg:h-36" />
               )}
             </div>
-            <ul className="list-item list-disc  text-gray-400 ml-2">
+            <ul className="list-item ml-2 list-disc text-gray-400">
               <li>
                 Kích thước hình ảnh tiêu chuẩn: Chiều rộng 300px, Chiều cao
                 300px
@@ -186,10 +186,10 @@ export default function ShopManagement() {
               <li>Định dạng file được hỗ trợ: JPG,JPEG,PNG</li>
             </ul>
           </div>
-          <div className="mt-4 flex relative">
+          <div className="flex relative mt-4">
             <label
               htmlFor="banner"
-              className="block text-lg font-medium text-gray-700 mb-2"
+              className="block mb-2 text-lg font-medium text-gray-700"
             >
               Banner của shop
             </label>
@@ -197,7 +197,7 @@ export default function ShopManagement() {
               <img
                 src={data.banner_url}
                 alt="banner"
-                className="sm:w-56 md:h-24 md:w-72 md:h-32 lg:w-96 lg:h-36 object-cover ml-2"
+                className="object-cover ml-2 sm:w-56 md:h-24 md:w-72 md:h-32 lg:w-96 lg:h-36"
               />
             )}
             {isEdit && (
@@ -210,14 +210,14 @@ export default function ShopManagement() {
                   onChange={handleUploadBanner}
                 />
                 <label htmlFor="banner">
-                  <IoCloudUploadSharp className="text-red-400  text-2xl sm:text-3xl md:text-4xl lg:text-5xl absolute left-40 cursor-pointer hover:scale-105" />
+                  <IoCloudUploadSharp className="absolute left-40 text-2xl text-red-400 cursor-pointer sm:text-3xl md:text-4xl lg:text-5xl hover:scale-105" />
                 </label>
               </>
             )}
           </div>
           <div>
             <label
-              className="block text-base lg:text-lg font-medium text-gray-700 mb-2"
+              className="block mb-2 text-base font-medium text-gray-700 lg:text-lg"
               htmlFor="description"
             >
               Mô tả shop
@@ -231,15 +231,15 @@ export default function ShopManagement() {
               required
               rows={3}
               className={` w-full pl-2 pr-3 py-1 ${isEdit && "bg-gray-50 border"} border-gray-200 rounded-xl
-                focus:ring-2 focus:ring-pink-100 focus:border-pink-400
-                hover:border-pink-300
+                focus:ring-2 focus:ring-blue-100 focus:border-blue-400
+                hover:border-blue-300
                 outline-none transition-all duration-200
                 placeholder:text-gray-400 text-gray-700
                 resize-y min-h-[120px]`}
             />
           </div>
           {isEdit && (
-            <div className="flex justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-5">
+            <div className="flex gap-2 justify-center sm:gap-3 md:gap-4 lg:gap-5">
               <button
                 className={`${colors.button.medium} ${colors.button.gradientCyanToIndigo}`}
               >
@@ -255,7 +255,7 @@ export default function ShopManagement() {
           )}
         </form>
       </div>
-      {loading && <Loading />}
+
       {isView && (
         <ViewShop close={() => setIsView(false)} data={shop} count={count} />
       )}

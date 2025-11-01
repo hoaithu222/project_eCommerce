@@ -31,7 +31,7 @@ export const statusOptions = [
   {
     key: "delivered",
     label: "Đã giao hàng",
-    color: "text-pink-400",
+    color: "text-blue-400",
     icon: BsFillBox2HeartFill,
   },
   {

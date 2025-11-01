@@ -104,7 +104,7 @@ export default function ListProduct({
   const totalPage = Math.ceil(count / limit);
   if (loading) {
     return (
-      <div className="container mx-auto py-4">
+      <div className="container py-4 mx-auto">
         <div className="overflow-hidden">
           <LoadingSkeleton />
         </div>
@@ -113,10 +113,10 @@ export default function ListProduct({
   }
 
   return (
-    <div className="bg-white shadow-xl rounded-lg overflow-hidden">
-      <div className="bg-gradient-to-r from-pink-400 to-blue-400 p-2 lg:p-4 text-white">
-        <div className="flex items-center justify-between">
-          <h3 className="text-md md:text-xl lg:text-2xl font-bold">
+    <div className="overflow-hidden bg-white rounded-lg shadow-xl">
+      <div className="p-2 text-white bg-gradient-to-r from-blue-400 to-blue-400 lg:p-4">
+        <div className="flex justify-between items-center">
+          <h3 className="font-bold text-md md:text-xl lg:text-2xl">
             {title ? `Danh sách sản phẩm thuộc ${title}` : "Tất cả sản phẩm"}
           </h3>
           <button
@@ -132,10 +132,10 @@ export default function ListProduct({
       </div>
 
       <div className="p-4">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 border-b pb-3">
-          <span className="text-gray-600 font-medium">Sắp xếp theo:</span>
+        <div className="flex flex-col gap-2 pb-3 mb-4 border-b sm:flex-row sm:items-center sm:gap-4">
+          <span className="font-medium text-gray-600">Sắp xếp theo:</span>
 
-          <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 hidden-scrollbar">
+          <div className="overflow-x-auto px-4 -mx-4 sm:mx-0 sm:px-0 hidden-scrollbar">
             <div className="flex gap-2 min-w-max">
               {sortOptions.map((option, index) => (
                 <button
@@ -143,11 +143,10 @@ export default function ListProduct({
                   onClick={() => handleSortChange(option)}
                   className={`
             flex items-center gap-2 px-3 py-1 rounded-full whitespace-nowrap
-            ${
-              sort === option.key && order === option.orderBy
-                ? "bg-pink-500 text-white"
-                : "text-gray-600 hover:bg-blue-100"
-            }
+            ${sort === option.key && order === option.orderBy
+                      ? "bg-blue-500 text-white"
+                      : "text-gray-600 hover:bg-blue-100"
+                    }
             transition-colors
           `}
                 >
@@ -160,18 +159,18 @@ export default function ListProduct({
         </div>
 
         {products?.length ? (
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-5">
             {products.map((product) => (
               <ProductItem key={product.id} product={product} />
             ))}
           </div>
         ) : (
-          <div className="text-center text-gray-500 py-10">
+          <div className="py-10 text-center text-gray-500">
             Hiện tại chưa có sản phẩm
           </div>
         )}
         {totalPage > 1 && (
-          <div className="mt-6 flex justify-center">
+          <div className="flex justify-center mt-6">
             <Pagination
               currentPage={currentPage}
               totalPages={totalPage}

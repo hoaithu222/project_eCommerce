@@ -33,7 +33,7 @@ export default function TopProduct() {
   return (
     <div className="shadow-xl rounded-2xl p-6 bg-white hover:shadow-2xl transition-all duration-300">
       <h2
-        className={`${colors.textColors.gradientLimeToPink} text-2xl font-bold mb-6`}
+        className={`${colors.textColors.gradientLimeToBlue} text-2xl font-bold mb-6`}
       >
         Top Sản Phẩm Bán Chạy
       </h2>
@@ -47,9 +47,9 @@ export default function TopProduct() {
           {products.map((item, index) => (
             <div
               key={`${item.product_id}-${index}`}
-              className="flex items-center gap-4 p-3 rounded-xl hover:bg-gradient-to-r hover:from-lime-50 hover:to-pink-50 transition-all duration-300 group"
+              className="flex items-center gap-4 p-3 rounded-xl hover:bg-gradient-to-r hover:from-lime-50 hover:to-blue-50 transition-all duration-300 group"
             >
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-lime-500 to-pink-500 text-white flex items-center justify-center font-bold shadow-lg">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-r from-lime-500 to-blue-500 text-white flex items-center justify-center font-bold shadow-lg">
                 {index + 1}
               </div>
 
@@ -70,7 +70,7 @@ export default function TopProduct() {
                   {item.product.name}
                 </h3>
                 <div className="mt-2 flex items-center gap-2">
-                  <div className="px-3 py-1 rounded-full bg-gradient-to-r from-lime-500 to-pink-500 text-white text-sm font-medium shadow-md">
+                  <div className="px-3 py-1 rounded-full bg-gradient-to-r from-lime-500 to-blue-500 text-white text-sm font-medium shadow-md">
                     Đã bán {item._sum.quantity}
                   </div>
                   <div className="text-sm text-gray-500">trong tháng</div>

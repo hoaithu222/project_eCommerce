@@ -95,21 +95,21 @@ const Profile = () => {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 p-4 md:p-6">
-      <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden my-auto">
+    <section className="p-4 min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 md:p-6">
+      <div className="overflow-hidden mx-auto my-auto max-w-5xl bg-white rounded-xl shadow-lg">
         {/* Header */}
-        <div className="border-b-2 border-gray-100 p-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 bg-gradient-to-tl from-blue-500 to-pink-500 bg-clip-text text-transparent">
+        <div className="p-6 border-b-2 border-gray-100">
+          <h2 className="text-2xl font-bold text-transparent text-gray-800 bg-clip-text bg-gradient-to-tl from-blue-500 to-blue-500 md:text-3xl">
             Hồ sơ của tôi
           </h2>
-          <p className="text-sm md:text-base text-gray-600 mt-2">
+          <p className="mt-2 text-sm text-gray-600 md:text-base">
             Quản lý thông tin hồ sơ để bảo mật tài khoản
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 p-6">
+        <div className="grid grid-cols-1 gap-8 p-6 lg:grid-cols-3">
           {/* Form Section */}
-          <div className="lg:col-span-2 lg:border-r border-gray-100 pr-6 order-2 lg:order-1">
+          <div className="order-2 pr-6 border-gray-100 lg:col-span-2 lg:border-r lg:order-1">
             <form onSubmit={handleSubmit} className="space-y-6">
               <InputField
                 label="Tên đăng nhập"
@@ -149,7 +149,7 @@ const Profile = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-tr from-purple-500 to-pink-300 text-white py-3 px-6 rounded-lg font-medium 
+                className="w-full bg-gradient-to-tr from-purple-500 to-blue-300 text-white py-3 px-6 rounded-lg font-medium 
                          transform transition-all duration-200 hover:scale-[1.02] hover:shadow-lg
                          disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
@@ -159,19 +159,19 @@ const Profile = () => {
           </div>
 
           {/* Avatar Section */}
-          <div className="lg:col-span-1 flex flex-col items-center justify-start order-1 lg:order-2 py-6">
+          <div className="flex flex-col order-1 justify-start items-center py-6 lg:col-span-1 lg:order-2">
             <div className="relative group">
-              <div className="absolute -inset-0.5 bg-gradient-to-tl from-pink-400 to-purple-600 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-200"></div>
-              <div className="relative bg-white rounded-full p-1">
+              <div className="absolute -inset-0.5 bg-gradient-to-tl from-blue-400 to-purple-600 rounded-full opacity-75 group-hover:opacity-100 blur transition duration-200"></div>
+              <div className="relative p-1 bg-white rounded-full">
                 {isUploading ? (
-                  <div className="w-32 h-32 rounded-full flex items-center justify-center bg-gray-100">
+                  <div className="flex justify-center items-center w-32 h-32 bg-gray-100 rounded-full">
                     <LoadingBtn />
                   </div>
                 ) : formData.avatar_url ? (
                   <img
                     src={formData.avatar_url}
                     alt="Avatar"
-                    className="w-32 h-32 rounded-full object-cover"
+                    className="object-cover w-32 h-32 rounded-full"
                   />
                 ) : (
                   <FaRegCircleUser className="w-32 h-32 text-gray-400" />
@@ -181,8 +181,7 @@ const Profile = () => {
 
             <label htmlFor="avatar" className="mt-6 cursor-pointer group">
               <div
-                className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-lg font-medium
-                            transform transition-all duration-200 hover:scale-105 hover:shadow-lg"
+                className="px-6 py-2 font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
               >
                 Chọn ảnh
               </div>

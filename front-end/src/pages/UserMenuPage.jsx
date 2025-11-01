@@ -15,7 +15,7 @@ export default function UserMenuPage() {
   }, [isMobile, navigate]);
 
   return (
-    <section className="bg-pink-50 min-h-[96vh]">
+    <section className="bg-blue-50 min-h-[96vh]">
       <div className="container mx-auto p-3">
         <UserMenu isFullPage={true} onClose={() => navigate("/")} />
       </div>

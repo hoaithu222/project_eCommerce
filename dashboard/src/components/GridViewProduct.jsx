@@ -44,27 +44,27 @@ const GridViewProduct = ({ data, fetchData }) => {
     setLoading(false);
   };
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-6">
+    <div className="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {data?.map((product) => (
         <div
           key={product.id}
-          className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+          className="overflow-hidden bg-white rounded-xl shadow-lg transition-shadow duration-300 hover:shadow-xl"
         >
-          <div className="relative group aspect-square overflow-hidden">
+          <div className="overflow-hidden relative group aspect-square">
             <img
               src={
                 product?.product_images?.[0]?.image_url || "/default-image.jpg"
               }
               alt={product.name}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-30 transition-opacity duration-300 pb-2" />
+            <div className="absolute inset-0 pb-2 bg-black opacity-0 transition-opacity duration-300 group-hover:opacity-30" />
           </div>
 
           <div className="p-4 space-y-4">
             {/* Product Info */}
             <div>
-              <h3 className="font-semibold text-lg text-black hover:text-blue-400 line-clamp-2 mb-1">
+              <h3 className="mb-1 text-lg font-semibold text-black hover:text-blue-400 line-clamp-2">
                 {product.name}
               </h3>
               <p className="text-sm text-gray-500">ID Sản phẩm: {product.id}</p>
@@ -72,7 +72,7 @@ const GridViewProduct = ({ data, fetchData }) => {
 
             {/* Price and Stock */}
             <div className="flex justify-between items-center">
-              <div className="text-rose-600 font-bold">
+              <div className="font-bold text-rose-600">
                 {formatPriceVND(+product.base_price)}
               </div>
               <div className="text-gray-600">Kho: {product.stock_quantity}</div>
@@ -81,28 +81,28 @@ const GridViewProduct = ({ data, fetchData }) => {
             {/* Status */}
             <div>
               {product.is_active ? (
-                <p className="text-green-300 text-sm">Đang hiển thị</p>
+                <p className="text-sm text-green-300">Đang hiển thị</p>
               ) : (
-                <p className="text-red-400 text-sm">Đã ẩn</p>
+                <p className="text-sm text-red-400">Đã ẩn</p>
               )}
             </div>
 
             {/* Actions */}
-            <div className="mx-auto gap-2 pt-2">
+            <div className="gap-2 pt-2 mx-auto">
               {product.is_active ? (
                 <button
-                  className="flex items-center gap-2 px-3 py-1 bg-red-400 text-white rounded-xl hover:bg-red-500 transition-all duration-300 text-sm shadow-md hover:shadow-xl group flex-1"
+                  className="flex flex-1 gap-2 items-center px-3 py-1 text-sm text-white bg-red-400 rounded-xl shadow-md transition-all duration-300 hover:bg-red-500 hover:shadow-xl group"
                   onClick={() => handleUpdate(product)}
                 >
-                  <FcCancel className="text-xl transform group-hover:rotate-12 transition-transform duration-300" />
+                  <FcCancel className="text-xl transition-transform duration-300 transform group-hover:rotate-12" />
                   <span>Ẩn</span>
                 </button>
               ) : (
                 <button
-                  className="flex items-center gap-2 px-3 py-1 bg-green-400 text-white rounded-xl hover:bg-green-500 transition-all duration-300 text-sm shadow-md hover:shadow-xl group flex-1"
+                  className="flex flex-1 gap-2 items-center px-3 py-1 text-sm text-white bg-green-400 rounded-xl shadow-md transition-all duration-300 hover:bg-green-500 hover:shadow-xl group"
                   onClick={() => handleUpdate(product)}
                 >
-                  <FcCheckmark className="text-xl transform group-hover:scale-110 transition-transform duration-300" />
+                  <FcCheckmark className="text-xl transition-transform duration-300 transform group-hover:scale-110" />
                   <span>Kích hoạt</span>
                 </button>
               )}
@@ -110,7 +110,7 @@ const GridViewProduct = ({ data, fetchData }) => {
           </div>
         </div>
       ))}
-      {loading && <Loading />}
+
     </div>
   );
 };

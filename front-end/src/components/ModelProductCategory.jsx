@@ -106,34 +106,34 @@ export default function ModelProductCategory({
   };
 
   return (
-    <div className="fixed inset-0 bg-slate-500 bg-opacity-55 flex items-center justify-center z-50 p-4">
-      <div className="bg-white p-6 shadow-2xl shadow-purple-100 rounded-2xl w-full max-w-4xl">
+    <div className="flex fixed inset-0 z-50 justify-center items-center p-4 bg-slate-500 bg-opacity-55">
+      <div className="p-6 w-full max-w-4xl bg-white rounded-2xl shadow-2xl shadow-purple-100">
         <div className="flex justify-between items-center mb-6">
           <p
-            className={`${colors.textColors.gradientLimeToPink} text-3xl font-bold`}
+            className={`${colors.textColors.gradientLimeToBlue} text-3xl font-bold`}
           >
             Thêm ngành hàng
           </p>
           <IoClose
-            className="text-red-400 text-3xl hover:text-red-600 cursor-pointer transition-colors"
+            className="text-3xl text-red-400 transition-colors cursor-pointer hover:text-red-600"
             onClick={onClose}
           />
         </div>
 
-        <div className="bg-pink-50 rounded-2xl p-6">
-          <div className="flex items-center gap-3 bg-white mb-6 rounded-xl py-3 px-4 shadow-sm">
+        <div className="p-6 bg-blue-50 rounded-2xl">
+          <div className="flex gap-3 items-center px-4 py-3 mb-6 bg-white rounded-xl shadow-sm">
             <BsFillSearchHeartFill className="text-2xl text-gray-400" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Tìm kiếm ngành hàng"
-              className="outline-none bg-transparent w-full text-lg"
+              className="w-full text-lg bg-transparent outline-none"
             />
           </div>
 
-          <div className="flex bg-white rounded-2xl overflow-hidden shadow-md">
-            <div className="w-1/2 border-r-2 border-gray-200 max-h-80 overflow-y-auto">
+          <div className="flex overflow-hidden bg-white rounded-2xl shadow-md">
+            <div className="overflow-y-auto w-1/2 max-h-80 border-r-2 border-gray-200">
               {filteredCategories.map((item) => (
                 <div
                   key={item.id}
@@ -149,7 +149,7 @@ export default function ModelProductCategory({
               ))}
             </div>
 
-            <div className="w-1/2 max-h-80 overflow-y-auto">
+            <div className="overflow-y-auto w-1/2 max-h-80">
               {subCategory.map((item) => (
                 <div
                   key={item.id}
@@ -164,7 +164,7 @@ export default function ModelProductCategory({
           </div>
         </div>
 
-        <div className="flex p-4 mt-6 justify-between items-center bg-gray-50 rounded-xl">
+        <div className="flex justify-between items-center p-4 mt-6 bg-gray-50 rounded-xl">
           <div>
             <p className="text-lg">
               Đã chọn:

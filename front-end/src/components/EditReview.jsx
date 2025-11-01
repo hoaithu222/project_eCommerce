@@ -106,10 +106,10 @@ export default function EditReview({ data, onClose, fetchData }) {
 
   return (
     <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center">
-      <div className="bg-pink-50 p-2 sm:p-3 md:p-4 lg:p-5 rounded-md shadow-xl w-[80%] lg:w-[60%]">
+      <div className="bg-blue-50 p-2 sm:p-3 md:p-4 lg:p-5 rounded-md shadow-xl w-[80%] lg:w-[60%]">
         <div className="flex items-center justify-between">
           <h2
-            className={`${colors.textColors.gradientPinkToYellow} text-base md:text-xl lg:text-2xl font-semibold`}
+            className={`${colors.textColors.gradientBlueToYellow} text-base md:text-xl lg:text-2xl font-semibold`}
           >
             Sửa đánh giá
           </h2>

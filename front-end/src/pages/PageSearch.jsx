@@ -51,7 +51,7 @@ export default function PageSearch() {
   return (
     <div className="container mx-auto px-4 py-2 lg:py-4">
       <div className="overflow-hidden">
-        <div className="bg-gradient-to-r from-blue-400 to-pink-400 p-1 md:p-3 lg:p-4 text-white flex items-center gap-2 rounded-lg">
+        <div className="bg-gradient-to-r from-blue-400 to-blue-400 p-1 md:p-3 lg:p-4 text-white flex items-center gap-2 rounded-lg">
           <MdOutlineLightbulb className="text-xl md:text-2xl lg:text-3xl" />
           <h3 className="text-lg md:text-xl lg:text-2xl font-bold">
             {searchTerm

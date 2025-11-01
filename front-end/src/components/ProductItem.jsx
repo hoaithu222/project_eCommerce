@@ -54,7 +54,7 @@ export default function ProductItem({ product, loading }) {
           </span>
         </div>
       </div>
-      <span className="text-red-600 bg-pink-200 rounded-md absolute top-0 right-0 p-1 font-medium text-xs lg:text-sm">
+      <span className="text-red-600 bg-blue-200 rounded-md absolute top-0 right-0 p-1 font-medium text-xs lg:text-sm">
         -50%
       </span>
     </div>

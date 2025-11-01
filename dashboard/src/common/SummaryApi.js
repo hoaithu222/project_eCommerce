@@ -31,6 +31,10 @@ const SummaryApi= {
         url:`${baseURL}/users`,
         method:'GET',
     },
+    updateUserRole:{
+        url:`${baseURL}/users/admin/update-role`,
+        method:'PATCH',
+    },
     //category 
     getCategory:{
         url:`${baseURL}/category`,

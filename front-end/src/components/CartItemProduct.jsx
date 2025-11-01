@@ -122,7 +122,7 @@ export default function CartItemProduct({
               type="checkbox"
               checked={isSelected}
               onChange={() => onSelectItem(data.id)}
-              className="w-4 h-4 rounded border-gray-300 text-pink-500 focus:ring-pink-400 cursor-pointer"
+              className="w-4 h-4 rounded border-gray-300 text-blue-500 focus:ring-blue-400 cursor-pointer"
             />
           </div>
 
@@ -172,7 +172,7 @@ export default function CartItemProduct({
             <button
               type="button"
               className={`w-6 h-6 flex items-center justify-center transition-colors
-                ${isUpdating ? "text-gray-300 cursor-not-allowed" : "text-gray-600 hover:text-pink-500"}`}
+                ${isUpdating ? "text-gray-300 cursor-not-allowed" : "text-gray-600 hover:text-blue-500"}`}
               onClick={handleDecrement}
               disabled={isUpdating}
             >
@@ -182,7 +182,7 @@ export default function CartItemProduct({
             <button
               type="button"
               className={`w-6 h-6 flex items-center justify-center transition-colors
-                ${isUpdating ? "text-gray-300 cursor-not-allowed" : "text-gray-600 hover:text-pink-500"}`}
+                ${isUpdating ? "text-gray-300 cursor-not-allowed" : "text-gray-600 hover:text-blue-500"}`}
               onClick={handleIncrement}
               disabled={isUpdating}
             >
@@ -190,7 +190,7 @@ export default function CartItemProduct({
             </button>
           </div>
 
-          <div className="text-sm sm:text-base font-medium text-pink-600">
+          <div className="text-sm sm:text-base font-medium text-blue-600">
             {formatPriceVND(totalPrice)}
           </div>
 
@@ -200,7 +200,7 @@ export default function CartItemProduct({
               setOpenConfirm(true);
               e.stopPropagation();
             }}
-            className="flex items-center gap-1 text-pink-300 hover:text-pink-500 transition-colors"
+            className="flex items-center gap-1 text-blue-300 hover:text-blue-500 transition-colors"
           >
             <span className="text-sm">Delete</span>
             <MdOutlineDeleteForever className="w-5 h-5" />

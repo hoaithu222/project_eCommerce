@@ -88,8 +88,8 @@ export default function ProductShopInfo({ data }) {
     <div className="bg-white p-3 lg:p-6 shadow-lg my-2 lg:my-4 rounded-lg hover:shadow-xl transition-shadow duration-300">
       <div className="flex flex-col md:flex-row items-center gap-3 lg:gap-6 md:gap-12">
         <div className="relative group">
-          <div className="absolute inset-0 bg-pink-100 rounded-full blur-md group-hover:blur-lg transition-all duration-300 opacity-50"></div>
-          <div className="relative w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full p-2 bg-gradient-to-r from-pink-50 to-rose-50 border-2 border-gray-100 overflow-hidden">
+          <div className="absolute inset-0 bg-blue-100 rounded-full blur-md group-hover:blur-lg transition-all duration-300 opacity-50"></div>
+          <div className="relative w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full p-2 bg-gradient-to-r from-blue-50 to-rose-50 border-2 border-gray-100 overflow-hidden">
             <img
               src={shop.logo_url}
               alt={shop.name}
@@ -104,7 +104,7 @@ export default function ProductShopInfo({ data }) {
           <div className="flex gap-2 lg:gap-3">
             {isFollower ? (
               <button
-                className="px-6 py-2 bg-pink-600 text-white rounded-full hover:bg-pink-700 transition-colors duration-200 flex items-center gap-2"
+                className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200 flex items-center gap-2"
                 onClick={handleUnfollower}
               >
                 <Heart className="w-4 h-4" />
@@ -112,7 +112,7 @@ export default function ProductShopInfo({ data }) {
               </button>
             ) : (
               <button
-                className="px-6 py-2 bg-pink-600 text-white rounded-full hover:bg-pink-700 transition-colors duration-200 flex items-center gap-2"
+                className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200 flex items-center gap-2"
                 onClick={handleFollower}
               >
                 <Heart className="w-4 h-4" />
@@ -121,7 +121,7 @@ export default function ProductShopInfo({ data }) {
             )}
 
             <button
-              className="px-6 py-2 border-2 border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition-colors duration-200 flex items-center gap-2"
+              className="px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition-colors duration-200 flex items-center gap-2"
               onClick={() => {
                 navigate(`/shop/${shop.id}`);
               }}

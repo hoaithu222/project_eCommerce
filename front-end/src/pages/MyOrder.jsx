@@ -72,7 +72,7 @@ export default function MyOrder() {
   };
 
   return (
-    <div className="w-full sm:max-w-4xl md:max-w-5xl lg:max-w-6xl mx-auto">
+    <div className="mx-auto w-full sm:max-w-4xl md:max-w-5xl lg:max-w-6xl">
       <StatusFilter
         selected={selected}
         onSelect={setSelected}
@@ -82,8 +82,8 @@ export default function MyOrder() {
       <div className="mt-2 md:mt-4">
         {data.length === 0 && (
           <div className="flex items-center min-h-screen justify-center mx-auto p-1.5 md:p-3">
-            <div className="flex items-center justify-center flex-col border-dotted bg-white shadow-xl border border-pink-200 w-[70%] lg:w-[50%] rounded-lg p-5">
-              <FaBoxOpen className="text-blue-200 text-5xl" />
+            <div className="flex items-center justify-center flex-col border-dotted bg-white shadow-xl border border-blue-200 w-[70%] lg:w-[50%] rounded-lg p-5">
+              <FaBoxOpen className="text-5xl text-blue-200" />
               <p className="text-rose-400">
                 Hiện tại bạn chưa có đơn hàng nào vui lòng mua sắm
               </p>
@@ -95,16 +95,16 @@ export default function MyOrder() {
             key={order.id}
             className="bg-white mb-1.5 md:mb-3 rounded-md shadow-md"
           >
-            <div className="flex items-center gap-1 p-1 lg:gap-1.5 lg:p-1.5 md:gap-3 md:p-3 bg-pink-50">
-              <div className="flex items-center gap-1 md:gap-2 lg:gap-3">
+            <div className="flex items-center gap-1 p-1 lg:gap-1.5 lg:p-1.5 md:gap-3 md:p-3 bg-blue-50">
+              <div className="flex gap-1 items-center md:gap-2 lg:gap-3">
                 <div className="h-8 w-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-full bg-sky-200 p-0.5 overflow-hidden">
                   <img
                     src={order.shop.logo_url}
                     alt={order.shop.name}
-                    className="w-full h-full object-cover rounded-full"
+                    className="object-cover w-full h-full rounded-full"
                   />
                 </div>
-                <p className="text-sm md:text-lg lg:text-xl font-semibold">
+                <p className="text-sm font-semibold md:text-lg lg:text-xl">
                   {order.shop.name}
                 </p>
                 <Link
@@ -117,7 +117,7 @@ export default function MyOrder() {
               {order.status === "delivered" ? (
                 order.is_review ? (
                   <div
-                    className={`ml-auto ${colors.button.gradientBlueToPink} ${colors.button.medium} cursor-pointer text-xs lg:text-base `}
+                    className={`ml-auto ${colors.button.gradientBlueToBlue} ${colors.button.medium} cursor-pointer text-xs lg:text-base `}
                     onClick={() => {
                       navigate("/account/view-review", {
                         state: {
@@ -130,7 +130,7 @@ export default function MyOrder() {
                   </div>
                 ) : (
                   <div
-                    className={`ml-auto ${colors.button.gradientBlueToPink} ${colors.button.medium} cursor-pointer text-xs lg:text-base`}
+                    className={`ml-auto ${colors.button.gradientBlueToBlue} ${colors.button.medium} cursor-pointer text-xs lg:text-base`}
                     onClick={() => {
                       navigate("/account/review", {
                         state: {
@@ -148,31 +148,31 @@ export default function MyOrder() {
               {order.order_items.map((item) => (
                 <Link
                   to={`/account/my-order/${order.id}`}
-                  className="space-y-1 lg:space-y-2 cursor-pointer"
+                  className="space-y-1 cursor-pointer lg:space-y-2"
                   key={item.id}
                 >
-                  <div className="flex items-center space-x-2 justify-between">
-                    <div className="w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-md overflow-hidden border-2 border-gray-200">
+                  <div className="flex justify-between items-center space-x-2">
+                    <div className="overflow-hidden w-16 h-16 rounded-md border-2 border-gray-200 md:w-24 md:h-24 lg:w-28 lg:h-28">
                       {item.product && (
                         <img
                           src={item.product.product_images[0].image_url}
                           alt={order.shop.name}
-                          className="w-full h-full object-cover rounded-md"
+                          className="object-cover w-full h-full rounded-md"
                         />
                       )}
                     </div>
                     <div>
-                      <h2 className="line-clamp-1 text-xs md:text-base">
+                      <h2 className="text-xs line-clamp-1 md:text-base">
                         {item.product.name}
                       </h2>
                       {item.product_variant && (
-                        <div className="flex items-center gap-1 my-1 md:gap-2 lg:gap-3 md:my-2 lg:my-3">
+                        <div className="flex gap-1 items-center my-1 md:gap-2 lg:gap-3 md:my-2 lg:my-3">
                           {Object.entries(
                             item.product_variant.combination || {},
                           ).map(([key, value]) => (
                             <span
                               key={key}
-                              className="inline-flex items-center text-xs md:text-sm px-2 py-1 rounded-full bg-red-100 text-gray-400"
+                              className="inline-flex items-center px-2 py-1 text-xs text-gray-400 bg-red-100 rounded-full md:text-sm"
                             >
                               {key}:{value}
                             </span>
@@ -184,8 +184,8 @@ export default function MyOrder() {
                         <p>{item.quantity}</p>
                       </div>
                     </div>
-                    <div className="flex justify-end flex-1">
-                      <p className="text-pink-500 font-semibold text-base md:text-lg lg:text-xl text-end">
+                    <div className="flex flex-1 justify-end">
+                      <p className="text-base font-semibold text-blue-500 md:text-lg lg:text-xl text-end">
                         {formatPriceVND(+item.unit_price)}
                       </p>
                     </div>
@@ -194,8 +194,8 @@ export default function MyOrder() {
                 </Link>
               ))}
             </div>
-            <div className="p-2 md:p-3 lg:p-4 mt-1 lg:mt-3 flex items-center justify-between">
-              <div className="flex items-center justify-between">
+            <div className="flex justify-between items-center p-2 mt-1 md:p-3 lg:p-4 lg:mt-3">
+              <div className="flex justify-between items-center">
                 <div>
                   {order.order_history.length > 0 && (
                     <p
@@ -212,9 +212,9 @@ export default function MyOrder() {
                   )}
                 </div>
               </div>
-              <div className="ml-auto flex gap-1 lg:gap-2 items-center">
+              <div className="flex gap-1 items-center ml-auto lg:gap-2">
                 <p className="text-base md:text-lg lg:text-xl">Thành tiền:</p>
-                <strong className="text-red-500 text-base md:text-lg lg:text-xl">
+                <strong className="text-base text-red-500 md:text-lg lg:text-xl">
                   {formatPriceVND(+order.total_amount)}
                 </strong>
               </div>
@@ -222,7 +222,7 @@ export default function MyOrder() {
           </div>
         ))}
       </div>
-      {loading && <Loading />}
+
     </div>
   );
 }

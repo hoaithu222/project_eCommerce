@@ -139,7 +139,7 @@ export default function Checkout() {
       {/* Header */}
       <div className="bg-white p-3 md:p-4 lg:p-5 shadow-xl rounded-xl flex items-center justify-between">
         <h2
-          className={`${colors.textColors.gradientLimeToPink} text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold`}
+          className={`${colors.textColors.gradientLimeToBlue} text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold`}
         >
           Thanh toán
         </h2>

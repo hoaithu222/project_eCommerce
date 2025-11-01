@@ -17,13 +17,13 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={`${colors.gradients.indigoToPink} text-gray-100`}>
+    <footer className={`${colors.gradients.indigoToBlue} text-gray-100`}>
       <div className="mx-auto py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden container">
         <div
-          className={`absolute top-0 left-0 w-32 h-32 ${colors.gradients.purpleToPinkBlur} rounded-full opacity-10 blur-xl transform -translate-x-1/2 -translate-y-1/2`}
+          className={`absolute top-0 left-0 w-32 h-32 ${colors.gradients.purpleToBlueBlur} rounded-full opacity-10 blur-xl transform -translate-x-1/2 -translate-y-1/2`}
         ></div>
         <div
-          className={`absolute bottom-0 right-0 w-40 h-40 ${colors.gradients.pinkToOrange} rounded-full opacity-10 blur-xl transform translate-x-1/2 translate-y-1/2`}
+          className={`absolute bottom-0 right-0 w-40 h-40 ${colors.gradients.blueToOrange} rounded-full opacity-10 blur-xl transform translate-x-1/2 translate-y-1/2`}
         ></div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
@@ -60,7 +60,7 @@ export default function Footer() {
 
           {/* Hỗ trợ khách hàng */}
           <div>
-            <h2 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-6">
+            <h2 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent mb-6">
               Hỗ Trợ Khách Hàng
             </h2>
             <nav className="space-y-4">
@@ -75,7 +75,7 @@ export default function Footer() {
                   key={link.to}
                   to={link.to}
                   className="block text-gray-300 hover:text-white p-2 rounded-lg transition-all duration-300
-                    hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-pink-500/20
+                    hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-blue-500/20
                     hover:translate-x-2 transform"
                 >
                   {link.text}
@@ -86,7 +86,7 @@ export default function Footer() {
 
           {/* Dành cho người bán */}
           <div>
-            <h2 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-6">
+            <h2 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent mb-6">
               Dành Cho Người Bán
             </h2>
             <nav className="space-y-4">
@@ -101,7 +101,7 @@ export default function Footer() {
                   key={link.to}
                   to={link.to}
                   className="block text-gray-300 hover:text-white p-2 rounded-lg transition-all duration-300
-                    hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-pink-500/20
+                    hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-blue-500/20
                     hover:translate-x-2 transform"
                 >
                   {link.text}
@@ -112,7 +112,7 @@ export default function Footer() {
 
           {/* Cam kết */}
           <div>
-            <h2 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-pink-400 to-rose-500 bg-clip-text text-transparent mb-6">
+            <h2 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-blue-400 to-rose-500 bg-clip-text text-transparent mb-6">
               Cam Kết Của Chúng Tôi
             </h2>
             <div className="space-y-6">
@@ -137,7 +137,7 @@ export default function Footer() {
                 </Link>
                 <Link
                   to="https://instagram.com"
-                  className="text-gray-300 hover:text-pink-400 transition-all duration-300 transform hover:scale-125 hover:-rotate-6"
+                  className="text-gray-300 hover:text-blue-400 transition-all duration-300 transform hover:scale-125 hover:-rotate-6"
                 >
                   <Instagram className="h-8 w-8" />
                 </Link>

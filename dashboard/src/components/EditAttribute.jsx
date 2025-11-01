@@ -168,15 +168,15 @@ export default function EditAttribute({ onClose, dataAttributeId, onSuccess }) {
     }
   };
   return (
-    <div className="fixed inset-0 bg-black/70 z-50 flex justify-center items-center px-4 md:px-52 lg:px-72">
-      <div className="bg-white w-full max-w-lg rounded-2xl shadow-xl p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="font-semibold text-2xl text-gray-800">
+    <div className="flex fixed inset-0 z-50 justify-center items-center px-4 bg-black/70 md:px-52 lg:px-72">
+      <div className="p-6 w-full max-w-lg bg-white rounded-2xl shadow-xl">
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-semibold text-gray-800">
             Sửa thuộc tính sản phẩm
           </h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            className="p-2 rounded-full transition-colors hover:bg-gray-100"
           >
             <IoClose size={24} className="text-gray-600" />
           </button>
@@ -204,7 +204,7 @@ export default function EditAttribute({ onClose, dataAttributeId, onSuccess }) {
               {selectedCategories?.map((category) => (
                 <div
                   key={category.id}
-                  className="flex items-center gap-1 px-3 py-1 bg-blue-100 rounded-full"
+                  className="flex gap-1 items-center px-3 py-1 bg-blue-100 rounded-full"
                 >
                   <span>{category.name}</span>
                   <button
@@ -218,9 +218,9 @@ export default function EditAttribute({ onClose, dataAttributeId, onSuccess }) {
               ))}
             </div>
 
-            <div className="border focus-within:border-pink-400 rounded-md">
+            <div className="rounded-md border focus-within:border-blue-400">
               <select
-                className="w-full bg-blue-50 border p-3 rounded-lg outline-none"
+                className="p-3 w-full bg-blue-50 rounded-lg border outline-none"
                 onChange={handleCategorySelect}
                 value=""
               >
@@ -253,7 +253,7 @@ export default function EditAttribute({ onClose, dataAttributeId, onSuccess }) {
                 <button
                   type="button"
                   onClick={() => removeValue(index)}
-                  className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                  className="p-2 text-red-500 rounded-lg transition-colors hover:bg-red-50"
                 >
                   <MdDelete size={24} />
                 </button>
@@ -262,7 +262,7 @@ export default function EditAttribute({ onClose, dataAttributeId, onSuccess }) {
             <button
               type="button"
               onClick={addValue}
-              className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
+              className="flex gap-2 items-center font-medium text-blue-600 hover:text-blue-700"
             >
               <MdAddCircle size={20} />
               Thêm giá trị
@@ -272,15 +272,14 @@ export default function EditAttribute({ onClose, dataAttributeId, onSuccess }) {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-3 px-4 font-medium text-white rounded-xl transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none ${
-              loading ? "bg-gray-400" : colors.button.gradientFrostToFlame
-            }`}
+            className={`w-full py-3 px-4 font-medium text-white rounded-xl transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none ${loading ? "bg-gray-400" : colors.button.gradientFrostToFlame
+              }`}
           >
             {loading ? <LoadingBtn /> : "Cập nhật thuộc tính"}
           </button>
         </form>
       </div>
-      {loading && <Loading />}
+
     </div>
   );
 }

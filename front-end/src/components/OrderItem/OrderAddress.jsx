@@ -49,7 +49,7 @@ export default function OrderAddress({ idAddress }) {
         {/* Header */}
         <div className="flex items-center gap-2 mb-4">
           <MapPin className="h-5 w-5 text-emerald-500" />
-          <h2 className="text-lg font-medium bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent">
+          <h2 className="text-lg font-medium bg-gradient-to-r from-blue-500 to-yellow-500 bg-clip-text text-transparent">
             Địa chỉ nhận hàng
           </h2>
         </div>

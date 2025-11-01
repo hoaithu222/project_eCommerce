@@ -32,14 +32,13 @@ export default function ProductDetails() {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="mx-auto  container my-4">
+    <div className="container mx-auto my-4">
       <div>
         <ProductGeneralInfo data={product} />
         <ProductShopInfo data={product} />
         <ProductDescription data={product} />
         <ProductReview data={product} />
       </div>
-      {loading && <Loading />}
     </div>
   );
 }

@@ -38,12 +38,12 @@ export default function Category() {
   }, [categoryId]);
 
   return (
-    <div className="container mx-auto p-4 mt-24 lg:mt-20">
-      <div className="w-full h-36 lg:h-96 rounded-2xl overflow-hidden">
+    <div className="container p-4 mx-auto mt-24 lg:mt-20">
+      <div className="overflow-hidden w-full h-36 rounded-2xl lg:h-96">
         <img
           src={categoryData?.img_banner}
           alt="hình ảnh"
-          className="w-full h-full object-contain rounded-2xl lg:object-cover "
+          className="object-contain w-full h-full rounded-2xl lg:object-cover"
         />
       </div>
       <div className="mt-6">
@@ -62,7 +62,7 @@ export default function Category() {
           subCategory={subCategory}
         />
       </div>
-      {loading && <Loading />}
+
     </div>
   );
 }

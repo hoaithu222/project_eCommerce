@@ -12,8 +12,8 @@ export default {
         "spin-slow": "spin 2s linear infinite",
         "spin-reverse": "spin 3s linear reverse infinite",
       },
-      screens:{
-        xs:"475px"
+      screens: {
+        xs: "475px"
       },
       colors: {
         gradients: colors.gradients,

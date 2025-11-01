@@ -60,24 +60,24 @@ export default function TableListProduct({ data, fetchData }) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+    <div className="overflow-hidden bg-white rounded-xl shadow-2xl">
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead className="bg-gradient-to-r from-blue-400 to-pink-400">
+          <thead className="bg-gradient-to-r from-blue-400 to-blue-400">
             <tr>
-              <th className="w-8 p-4"></th>
-              <th className="p-4 text-left text-white font-semibold">Image</th>
-              <th className="p-4 text-left text-white font-semibold">
+              <th className="p-4 w-8"></th>
+              <th className="p-4 font-semibold text-left text-white">Image</th>
+              <th className="p-4 font-semibold text-left text-white">
                 Tên sản phẩm
               </th>
-              <th className="p-4 text-left text-white font-semibold">Giá</th>
-              <th className="p-4 text-left text-white font-semibold">
+              <th className="p-4 font-semibold text-left text-white">Giá</th>
+              <th className="p-4 font-semibold text-left text-white">
                 Kho hàng
               </th>
-              <th className="p-4 text-left text-white font-semibold">
+              <th className="p-4 font-semibold text-left text-white">
                 Trạng thái
               </th>
-              <th className="p-4 text-left text-white font-semibold">
+              <th className="p-4 font-semibold text-left text-white">
                 Actions
               </th>
             </tr>
@@ -85,11 +85,11 @@ export default function TableListProduct({ data, fetchData }) {
           <tbody className="divide-y divide-gray-200">
             {data?.map((product) => (
               <React.Fragment key={product.id}>
-                <tr className="hover:bg-slate-50 transition-colors">
+                <tr className="transition-colors hover:bg-slate-50">
                   <td className="p-4">
                     <button
                       onClick={() => toggleRow(product.id)}
-                      className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+                      className="p-1 rounded-full transition-colors hover:bg-gray-100"
                     >
                       {expandedRows.has(product.id) ? (
                         <ChevronUp className="w-4 h-4" />
@@ -98,21 +98,21 @@ export default function TableListProduct({ data, fetchData }) {
                       )}
                     </button>
                   </td>
-                  <td className="p-4 text-left text-gray-400 font-semibold">
-                    <div className="relative group w-20 h-20 rounded-lg overflow-hidden border-2">
+                  <td className="p-4 font-semibold text-left text-gray-400">
+                    <div className="overflow-hidden relative w-20 h-20 rounded-lg border-2 group">
                       <img
                         src={
                           product?.product_images?.[0]?.image_url ||
                           "/default-image.jpg"
                         }
                         alt={product.name}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-30" />
                     </div>
                   </td>
                   <td className="p-4 w-[30%]">
-                    <p className="text-black font-semibold hover:text-blue-400 line-clamp-1">
+                    <p className="font-semibold text-black hover:text-blue-400 line-clamp-1">
                       {product.name}
                     </p>
                     <p>ID Sản phẩm: {product.id}</p>
@@ -123,35 +123,35 @@ export default function TableListProduct({ data, fetchData }) {
                   <td className="text-center">{product.stock_quantity}</td>
                   <td>
                     {product.is_active ? (
-                      <p className="text-green-300 text-sm">Đang hiển thị</p>
+                      <p className="text-sm text-green-300">Đang hiển thị</p>
                     ) : (
-                      <p className="text-red-400 text-sm">Đã ẩn</p>
+                      <p className="text-sm text-red-400">Đã ẩn</p>
                     )}
                   </td>
                   <td>
-                    <div className="flex items-center gap-4">
+                    <div className="flex gap-4 items-center">
                       {product.is_active ? (
                         <button
-                          className="flex items-center gap-2 px-3 py-1 bg-red-400 text-white rounded-xl hover:bg-red-500 transition-all duration-300 text-sm shadow-md hover:shadow-xl group"
+                          className="flex gap-2 items-center px-3 py-1 text-sm text-white bg-red-400 rounded-xl shadow-md transition-all duration-300 hover:bg-red-500 hover:shadow-xl group"
                           onClick={() => handleUpdate(product)}
                         >
-                          <FcCancel className="text-xl transform group-hover:rotate-12 transition-transform duration-300" />
+                          <FcCancel className="text-xl transition-transform duration-300 transform group-hover:rotate-12" />
                           <span>Ẩn</span>
                         </button>
                       ) : (
                         <button
-                          className="flex items-center gap-2 px-3 py-1 bg-green-400 text-white rounded-xl hover:bg-green-500 transition-all duration-300 text-sm shadow-md hover:shadow-xl group"
+                          className="flex gap-2 items-center px-3 py-1 text-sm text-white bg-green-400 rounded-xl shadow-md transition-all duration-300 hover:bg-green-500 hover:shadow-xl group"
                           onClick={() => handleUpdate(product)}
                         >
-                          <FcCheckmark className="text-xl transform group-hover:scale-110 transition-transform duration-300" />
+                          <FcCheckmark className="text-xl transition-transform duration-300 transform group-hover:scale-110" />
                           <span>Kích hoạt</span>
                         </button>
                       )}
                       <Link
                         to={`/shop-management/edit-product/${product.id}`}
-                        className="flex items-center gap-2 px-3 py-1 bg-indigo-400 text-white rounded-xl hover:bg-indigo-500 transition-all duration-300 text-sm shadow-md hover:shadow-xl group"
+                        className="flex gap-2 items-center px-3 py-1 text-sm text-white bg-indigo-400 rounded-xl shadow-md transition-all duration-300 hover:bg-indigo-500 hover:shadow-xl group"
                       >
-                        <CiEdit className="text-xl transform group-hover:scale-110 transition-transform duration-300" />
+                        <CiEdit className="text-xl transition-transform duration-300 transform group-hover:scale-110" />
                         <span>Sửa</span>
                       </Link>
                     </div>
@@ -159,7 +159,7 @@ export default function TableListProduct({ data, fetchData }) {
                 </tr>
                 {expandedRows.has(product.id) && (
                   <tr>
-                    <td colSpan="7" className="bg-gray-50 p-4">
+                    <td colSpan="7" className="p-4 bg-gray-50">
                       <div className="space-y-4">
                         <h3 className="font-semibold text-gray-700">
                           Biến thể sản phẩm
@@ -168,7 +168,7 @@ export default function TableListProduct({ data, fetchData }) {
                           {product.product_variants?.map((variant) => (
                             <div
                               key={variant.id}
-                              className="bg-white p-4 rounded-lg shadow-sm border border-gray-200"
+                              className="p-4 bg-white rounded-lg border border-gray-200 shadow-sm"
                             >
                               <div className="grid grid-cols-5 gap-4">
                                 <div className="space-y-1">
@@ -181,12 +181,12 @@ export default function TableListProduct({ data, fetchData }) {
                                   <p className="text-sm text-gray-500">
                                     Thuộc tính
                                   </p>
-                                  <div className="flex gap-2 flex-wrap">
+                                  <div className="flex flex-wrap gap-2">
                                     {Object.entries(variant.combination).map(
                                       ([key, value]) => (
                                         <span
                                           key={key}
-                                          className="px-2 py-1 bg-blue-100 text-blue-800 rounded-md text-sm"
+                                          className="px-2 py-1 text-sm text-blue-800 bg-blue-100 rounded-md"
                                         >
                                           {key}: {value}
                                         </span>
@@ -212,11 +212,11 @@ export default function TableListProduct({ data, fetchData }) {
                                     <img
                                       src={variant.image_url}
                                       alt={`${product.name} - ${variant.sku}`}
-                                      className="w-16 h-16 object-cover rounded-lg"
+                                      className="object-cover w-16 h-16 rounded-lg"
                                     />
                                   ) : (
-                                    <div className="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
-                                      <span className="text-gray-400 text-xs">
+                                    <div className="flex justify-center items-center w-16 h-16 bg-gray-200 rounded-lg">
+                                      <span className="text-xs text-gray-400">
                                         No image
                                       </span>
                                     </div>
@@ -235,7 +235,7 @@ export default function TableListProduct({ data, fetchData }) {
           </tbody>
         </table>
       </div>
-      {loading && <Loading />}
+
     </div>
   );
 }

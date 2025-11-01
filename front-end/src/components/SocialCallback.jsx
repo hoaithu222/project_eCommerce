@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchUser } from "../store/actions/fetchUser";
+import { useAuth } from "../context/AuthContext";
 
 export default function SocialCallback() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { login } = useAuth();
 
   useEffect(() => {
     const handleSocialLogin = async () => {
@@ -22,9 +24,11 @@ export default function SocialCallback() {
 
       if (accessToken && refreshToken) {
         try {
-          localStorage.setItem("accessToken", accessToken);
-          localStorage.setItem("refreshToken", refreshToken);
-
+          // Cập nhật authentication state ngay lập tức
+          login({
+            accessToken,
+            refreshToken,
+          });
           await dispatch(fetchUser());
 
           navigate("/");
@@ -42,7 +46,7 @@ export default function SocialCallback() {
     };
 
     handleSocialLogin();
-  }, [navigate, dispatch]);
+  }, [navigate, dispatch, login]);
 
   return null;
 }

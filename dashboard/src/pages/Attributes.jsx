@@ -110,30 +110,30 @@ export default function Attributes() {
 
   const totalPages = Math.ceil(count / itemsPerPage);
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="bg-white rounded-xl shadow-xl p-6 mb-4">
+    <div className="p-6 min-h-screen bg-gray-50">
+      <div className="p-6 mb-4 bg-white rounded-xl shadow-xl">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <h2 className="text-2xl font-bold text-gray-800">
             Attribute Management
           </h2>
           <button
             onClick={() => setOpeAttribute(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-lg hover:from-purple-700 hover:to-pink-600 transition-all shadow-md hover:shadow-lg"
+            className="flex gap-2 items-center px-4 py-2 text-white bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg shadow-md transition-all hover:from-purple-700 hover:to-blue-600 hover:shadow-lg"
           >
             <IoAddCircle className="text-xl" />
             Add Attributes
           </button>
         </div>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 mt-6 md:grid-cols-3">
           <div className="relative">
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search attribute..."
-              className="w-full pl-10 pr-4 py-2 border-2 border-blue-300 rounded-3xl focus:border-pink-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none shadow-md"
+              className="py-2 pr-4 pl-10 w-full rounded-3xl border-2 border-blue-300 shadow-md transition-all outline-none focus:border-blue-500 focus:ring-2 focus:ring-purple-200"
             />
-            <FaSearchengin className="absolute left-3 top-1/2 -translate-y-1/2 text-purple-400 text-xl" />
+            <FaSearchengin className="absolute left-3 top-1/2 text-xl text-purple-400 -translate-y-1/2" />
           </div>
           {/* Items per page */}
           <select
@@ -142,7 +142,7 @@ export default function Attributes() {
               setItemsPerPage(Number(e.target.value));
               setCurrentPage(1);
             }}
-            className="px-6  py-2 border-2  border-blue-300 rounded-3xl focus:border-pink-400 outline-none shadow-2xl"
+            className="px-6 py-2 rounded-3xl border-2 border-blue-300 shadow-2xl outline-none focus:border-blue-400"
           >
             <option value={8}>8 items</option>
             <option value={12}>12 items</option>
@@ -155,7 +155,7 @@ export default function Attributes() {
             <select
               value={sortItem}
               onChange={(e) => setSortItem(e.target.value)}
-              className="flex-1 px-4 py-2 border-2 border-blue-300 rounded-3xl focus:border-pink-400  outline-none"
+              className="flex-1 px-4 py-2 rounded-3xl border-2 border-blue-300 outline-none focus:border-blue-400"
             >
               <option value="id">Sort by ID</option>
               <option value="name">Sort by Name</option>
@@ -163,7 +163,7 @@ export default function Attributes() {
             </select>
             <button
               onClick={() => setOrder(order === "asc" ? "desc" : "asc")}
-              className={`px-2 py-2 border-2  border-gray-300 rounded-full  ${colors.gradients.pinkToPurple}`}
+              className={`px-2 py-2 border-2  border-gray-300 rounded-full  ${colors.gradients.blueToPurple}`}
             >
               {order === "asc" ? (
                 <RiArrowUpSFill size={24} className="text-white" />
@@ -177,7 +177,7 @@ export default function Attributes() {
       {/* Content Section */}
       {loading || loadingCategory ? (
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-purple-500 border-t-transparent"></div>
+          <div className="w-12 h-12 rounded-full border-4 border-purple-500 animate-spin border-t-transparent"></div>
         </div>
       ) : !displayedAttribute?.length ? (
         <NoData
@@ -185,23 +185,23 @@ export default function Attributes() {
           subMessage="Try adjusting your search or create a new sub category"
         />
       ) : (
-        <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+        <div className="overflow-hidden bg-white rounded-xl shadow-2xl">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gradient-to-r from-purple-400 to-pink-400">
+              <thead className="bg-gradient-to-r from-purple-400 to-blue-400">
                 <tr>
-                  <th className="p-4 text-left text-white font-semibold">ID</th>
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">ID</th>
+                  <th className="p-4 font-semibold text-left text-white">
                     Name
                   </th>
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">
                     Value
                   </th>
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">
                     Category
                   </th>
 
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">
                     Actions
                   </th>
                 </tr>
@@ -210,7 +210,7 @@ export default function Attributes() {
                 {displayedAttribute?.map((item, index) => (
                   <tr
                     key={`${item.id}-${index}`}
-                    className="hover:bg-gray-50 transition-colors"
+                    className="transition-colors hover:bg-gray-50"
                   >
                     <td className="p-4 text-gray-600">#{item.id}</td>
                     <td className="p-4">
@@ -239,10 +239,10 @@ export default function Attributes() {
                     </td>
 
                     <td className="p-4">
-                      <div className="flex items-center gap-2">
+                      <div className="flex gap-2 items-center">
                         <button
                           onClick={() => handleEditAttribute(item)}
-                          className="px-3 py-1 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors shadow-md hover:shadow-lg text-sm"
+                          className="px-3 py-1 text-sm text-white bg-purple-500 rounded-lg shadow-md transition-colors hover:bg-purple-600 hover:shadow-lg"
                         >
                           Edit
                         </button>
@@ -251,7 +251,7 @@ export default function Attributes() {
                             setDeleteAttribute(item);
                             setOpenConfirm(true);
                           }}
-                          className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-md hover:shadow-lg text-sm"
+                          className="px-3 py-1 text-sm text-white bg-red-500 rounded-lg shadow-md transition-colors hover:bg-red-600 hover:shadow-lg"
                         >
                           Delete
                         </button>
@@ -295,7 +295,7 @@ export default function Attributes() {
           close={() => setOpenConfirm(false)}
         />
       )}
-      {loadingDelete && <Loading />}
+
     </div>
   );
 }

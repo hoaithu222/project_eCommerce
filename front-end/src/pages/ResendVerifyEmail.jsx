@@ -71,7 +71,7 @@ export default function ResendVerifyEmail() {
           Nếu bạn không nhận được email, hãy kiểm tra hộp thư rác hoặc{" "}
           <Link
             to="https://mail.google.com"
-            className={`text-${colors.gradients.pinkToPurple} font-medium`}
+            className={`text-${colors.gradients.blueToPurple} font-medium`}
           >
             Truy cập Gmail
           </Link>

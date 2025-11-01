@@ -3,28 +3,32 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray-50;
-}
-.hidden-scrollbar::-webkit-scrollbar {
-  display: none; 
+  @apply bg-slate-50;
 }
 
+/* Ẩn scrollbar khi cần */
+.hidden-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Thanh cuộn */
 ::-webkit-scrollbar {
-  width: 8px; /* Độ rộng thanh cuộn */
+  width: 8px;
   cursor: pointer;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f0f0f0; 
+  background: #f0f0f0;
   border-radius: 10px;
 }
 
+/* Phần kéo có màu xanh đậm */
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #f8a2a2, #598bf7); 
-  border-radius: 10px; /* Bo góc */
-  transition: background 0.3s ease-in-out;
+  background-color: #1e3a8a; /* Xanh đậm Tailwind: blue-900 */
+  border-radius: 10px;
+  transition: background-color 0.3s ease-in-out;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #ecacb1, #91cbf8); 
+  background-color: #1d4ed8; /* Xanh sáng hơn một chút: blue-700 */
 }

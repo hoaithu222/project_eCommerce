@@ -56,14 +56,14 @@ export default function ShopProduct() {
     fetchData();
   }, [shop.id]);
   return (
-    <div className="max-h-screen bg-gray-50 p-6 overflow-x-auto">
-      <div className="bg-white rounded-xl shadow-xl p-6 mb-4">
+    <div className="overflow-x-auto p-6 max-h-screen bg-gray-50">
+      <div className="p-6 mb-4 bg-white rounded-xl shadow-xl">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <h2 className="text-2xl font-bold text-gray-800">
             Danh sách sản phẩm
           </h2>
-          <div className="flex items-center gap-3" title="Chế độ hiển thị">
-            <div className="flex bg-gray-100 p-2 rounded-md cursor-pointer">
+          <div className="flex gap-3 items-center" title="Chế độ hiển thị">
+            <div className="flex p-2 bg-gray-100 rounded-md cursor-pointer">
               <div
                 className={`${viewList && "bg-white"} p-2 rounded-md`}
                 onClick={() => setViewList(true)}
@@ -83,16 +83,16 @@ export default function ShopProduct() {
             </div>
           </div>
         </div>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 mt-6 md:grid-cols-3">
           <div className="relative">
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search product..."
-              className="w-full pl-10 pr-4 py-2 border-2 border-blue-300 rounded-3xl focus:border-pink-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none shadow-md"
+              className="py-2 pr-4 pl-10 w-full rounded-3xl border-2 border-blue-300 shadow-md transition-all outline-none focus:border-blue-500 focus:ring-2 focus:ring-purple-200"
             />
-            <FaSearchengin className="absolute left-3 top-1/2 -translate-y-1/2 text-purple-400 text-xl" />
+            <FaSearchengin className="absolute left-3 top-1/2 text-xl text-purple-400 -translate-y-1/2" />
           </div>
 
           <select
@@ -101,7 +101,7 @@ export default function ShopProduct() {
               setItemsPerPage(Number(e.target.value));
               setCurrentPage(1);
             }}
-            className="px-6  py-2 border-2  border-blue-300 rounded-3xl focus:border-pink-400 outline-none shadow-2xl"
+            className="px-6 py-2 rounded-3xl border-2 border-blue-300 shadow-2xl outline-none focus:border-blue-400"
           >
             <option value={8}>8 items</option>
             <option value={12}>12 items</option>
@@ -112,7 +112,7 @@ export default function ShopProduct() {
             <select
               value={sortItem}
               onChange={(e) => setSortItem(e.target.value)}
-              className="flex-1 px-4 py-2 border-2 border-blue-300 rounded-3xl focus:border-pink-400  outline-none"
+              className="flex-1 px-4 py-2 rounded-3xl border-2 border-blue-300 outline-none focus:border-blue-400"
             >
               <option value="id">Sort by ID</option>
               <option value="name">Sort by Name</option>
@@ -122,7 +122,7 @@ export default function ShopProduct() {
             </select>
             <button
               onClick={() => setOrder(order === "asc" ? "desc" : "asc")}
-              className={`px-2 py-2 border-2  border-gray-300 rounded-full  ${colors.gradients.pinkToPurple}`}
+              className={`px-2 py-2 border-2  border-gray-300 rounded-full  ${colors.gradients.blueToPurple}`}
             >
               {order === "asc" ? (
                 <RiArrowUpSFill size={24} className="text-white" />
@@ -133,7 +133,7 @@ export default function ShopProduct() {
           </div>
         </div>
       </div>
-      <div className="bg-white ">
+      <div className="bg-white">
         {viewList ? (
           <TableListProduct data={products} fetchData={fetchData} />
         ) : (
@@ -144,7 +144,7 @@ export default function ShopProduct() {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
-        {loading && <Loading />}
+
       </div>
     </div>
   );

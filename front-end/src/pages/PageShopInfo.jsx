@@ -174,7 +174,7 @@ export default function PageShopInfo() {
                   </span>
                 </div>
                 <div className=" items-center bg-black/30 px-1.5 py-0.5 lg:px-4 lg:py-2 rounded-full backdrop-blur-sm hidden md:flex">
-                  <ShoppingBag className="mr-1 lg:mr-2 text-lg md:text-xl lg:text-2xl text-pink-400" />
+                  <ShoppingBag className="mr-1 lg:mr-2 text-lg md:text-xl lg:text-2xl text-blue-400" />
                   <span className="text-sm md:text-lg lg:text-xl font-semibold">
                     {shop.products?.length} Sản phẩm
                   </span>

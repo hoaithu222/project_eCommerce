@@ -145,40 +145,39 @@ export default function ProductGeneralInfo({ data }) {
   };
 
   return (
-    <div className="bg-white mt-20 p-4 rounded-lg shadow-xl">
-      <div className="grid lg:grid-cols-2 gap-4 lg:gap-8">
+    <div className="p-4 mt-20 bg-white rounded-lg shadow-xl">
+      <div className="grid gap-4 lg:grid-cols-2 lg:gap-8">
         <div className="space-y-4">
           <div className="w-full  h-[300px] xs:h-[500px] sm:h-[600px] md:h-[600px] rounded-lg overflow-hidden">
             <img
               src={productImageActive}
               alt={data?.name}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
             />
           </div>
           <div className="relative">
             {canScrollLeft && (
               <button
                 onClick={handlePrevThumbnails}
-                className="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-lg p-2 rounded-full hover:bg-gray-100 z-10 transition-colors"
+                className="absolute left-0 top-1/2 z-10 p-2 bg-white rounded-full shadow-lg transition-colors -translate-y-1/2 hover:bg-gray-100"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
             )}
-            <div className="grid grid-cols-5 gap-2 lg:gap-4 px-5 lg:px-10">
+            <div className="grid grid-cols-5 gap-2 px-5 lg:gap-4 lg:px-10">
               {visibleImages.map((item, index) => (
                 <div
                   key={`${item?.id}-${index}`}
-                  className={`aspect-square rounded-md overflow-hidden cursor-pointer transition-all ${
-                    productImageActive === item?.image_url
+                  className={`aspect-square rounded-md overflow-hidden cursor-pointer transition-all ${productImageActive === item?.image_url
                       ? "ring-2 ring-blue-500"
                       : "hover:ring-2 hover:ring-gray-300"
-                  }`}
+                    }`}
                   onClick={() => handleImageClick(item?.image_url)}
                 >
                   <img
                     src={item?.image_url}
                     alt={data?.name}
-                    className="w-full h-full object-cover"
+                    className="object-cover w-full h-full"
                   />
                 </div>
               ))}
@@ -186,7 +185,7 @@ export default function ProductGeneralInfo({ data }) {
             {canScrollRight && (
               <button
                 onClick={handleNextThumbnails}
-                className="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-lg p-2 rounded-full hover:bg-gray-100 z-10 transition-colors"
+                className="absolute right-0 top-1/2 z-10 p-2 bg-white rounded-full shadow-lg transition-colors -translate-y-1/2 hover:bg-gray-100"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -194,12 +193,12 @@ export default function ProductGeneralInfo({ data }) {
           </div>
         </div>
 
-        <div className="space-y-2 md:space-x-4 lg:space-y-6 my-auto">
-          <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-800 leading-tight">
+        <div className="my-auto space-y-2 md:space-x-4 lg:space-y-6">
+          <h2 className="text-lg font-semibold leading-tight text-gray-800 md:text-xl lg:text-2xl">
             {data?.name}
           </h2>
 
-          <div className="flex items-center gap-4">
+          <div className="flex gap-4 items-center">
             <div className="flex items-center">
               <Rating rating={data?.rating} />
             </div>
@@ -208,20 +207,20 @@ export default function ProductGeneralInfo({ data }) {
             </span>
           </div>
 
-          <div className="text-xl md:text-2xl lg:text-3xl font-bold text-red-500">
+          <div className="text-xl font-bold text-red-500 md:text-2xl lg:text-3xl">
             {formatPriceVND(+price)}
           </div>
 
-          <div className="space-y-4 py-4 border-y border-gray-200">
-            <div className="flex items-center gap-4">
-              <span className="text-xs lg:text-sm text-gray-600">
+          <div className="py-4 space-y-4 border-gray-200 border-y">
+            <div className="flex gap-4 items-center">
+              <span className="text-xs text-gray-600 lg:text-sm">
                 Vận chuyển
               </span>
-              <span className="text-xs lg:text-sm text-green-600 font-medium">
+              <span className="text-xs font-medium text-green-600 lg:text-sm">
                 Miễn phí vận chuyển
               </span>
             </div>
-            <div className="text-xs lg:text-sm text-gray-500">
+            <div className="text-xs text-gray-500 lg:text-sm">
               An tâm mua sắm - Bảo hành chính hãng
             </div>
           </div>
@@ -233,11 +232,10 @@ export default function ProductGeneralInfo({ data }) {
                   <button
                     key={option}
                     onClick={() => handleOptionSelect(attribute, option)}
-                    className={`px-2 py-1 lg:px-4 lg:py-2 rounded-md border transition-all ${
-                      selectedOptions[attribute] === option
-                        ? "border-pink-400 bg-pink-50 text-pink-400"
-                        : "border-gray-300 hover:border-pink-300"
-                    }`}
+                    className={`px-2 py-1 lg:px-4 lg:py-2 rounded-md border transition-all ${selectedOptions[attribute] === option
+                        ? "border-blue-400 bg-blue-50 text-blue-400"
+                        : "border-gray-300 hover:border-blue-300"
+                      }`}
                   >
                     {option}
                   </button>
@@ -248,25 +246,25 @@ export default function ProductGeneralInfo({ data }) {
 
           <div className="space-y-3">
             <p className="font-medium text-gray-700">Số lượng</p>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center border border-gray-300 rounded-md">
+            <div className="flex gap-4 items-center">
+              <div className="flex items-center rounded-md border border-gray-300">
                 <button
                   onClick={() => handleQuantityChange("decrease")}
-                  className="px-3 py-1 hover:bg-gray-100 transition-colors"
+                  className="px-3 py-1 transition-colors hover:bg-gray-100"
                 >
                   -
                 </button>
-                <span className="px-4 py-1 border-x border-gray-300">
+                <span className="px-4 py-1 border-gray-300 border-x">
                   {quantity}
                 </span>
                 <button
                   onClick={() => handleQuantityChange("increase")}
-                  className="px-3 py-1 hover:bg-gray-100 transition-colors"
+                  className="px-3 py-1 transition-colors hover:bg-gray-100"
                 >
                   +
                 </button>
               </div>
-              <span className="text-xs lg:text-sm text-gray-500">
+              <span className="text-xs text-gray-500 lg:text-sm">
                 {stock} sản phẩm có sẵn
               </span>
             </div>
@@ -275,11 +273,10 @@ export default function ProductGeneralInfo({ data }) {
           <div className="flex gap-4 pt-2 lg:pt-4">
             <button
               disabled={variantAttributes?.length > 0 && !selectedVariant}
-              className={`flex-1 px-3 py-1 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-lg font-medium transition-colors ${
-                variantAttributes?.length === 0 || selectedVariant
-                  ? "bg-pink-100 text-pink-400 hover:bg-pink-200"
+              className={`flex-1 px-3 py-1 sm:px-4 sm:py-2 lg:px-6 lg:py-3 rounded-lg font-medium transition-colors ${variantAttributes?.length === 0 || selectedVariant
+                  ? "bg-blue-100 text-blue-400 hover:bg-blue-200"
                   : "bg-gray-100 text-gray-400 cursor-not-allowed"
-              }`}
+                }`}
               onClick={handleAddToCart}
             >
               Thêm vào giỏ hàng
@@ -288,7 +285,7 @@ export default function ProductGeneralInfo({ data }) {
               disabled={variantAttributes?.length > 0 && !selectedVariant}
               className={`flex-1 px-6 py-3 rounded-lg font-medium transition-colors ${
                 variantAttributes.length === 0 || selectedVariant
-                  ? "bg-pink-500 text-white hover:bg-pink-600"
+                  ? "bg-blue-500 text-white hover:bg-blue-600"
                   : "bg-gray-300 text-gray-500 cursor-not-allowed"
               }`}
               onClick={() => {

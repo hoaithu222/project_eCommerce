@@ -153,38 +153,38 @@ export default function SubCategory() {
   const totalPages = Math.ceil(count / itemsPerPage);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="p-6 min-h-screen bg-gray-50">
       {/* Header Section */}
-      <div className="bg-white rounded-xl shadow-xl p-6 mb-4">
+      <div className="p-6 mb-4 bg-white rounded-xl shadow-xl">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <h2 className="text-2xl font-bold text-gray-800">
             Sub Categories Management
           </h2>
           <button
             onClick={() => setOpenSubCategory(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-lg hover:from-purple-700 hover:to-pink-600 transition-all shadow-md hover:shadow-lg"
+            className="flex gap-2 items-center px-4 py-2 text-white bg-gradient-to-r from-purple-600 to-blue-500 rounded-lg shadow-md transition-all hover:from-purple-700 hover:to-blue-600 hover:shadow-lg"
           >
             <IoAddCircle className="text-xl" />
             Add Sub Category
           </button>
         </div>
 
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 mt-6 md:grid-cols-3">
           <div className="relative">
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search sub categories..."
-              className="w-full pl-10 pr-4 py-2 border-2 border-purple-300 rounded-3xl focus:border-pink-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none shadow-md"
+              className="py-2 pr-4 pl-10 w-full rounded-3xl border-2 border-purple-300 shadow-md transition-all outline-none focus:border-blue-500 focus:ring-2 focus:ring-purple-200"
             />
-            <FaSearchengin className="absolute left-3 top-1/2 -translate-y-1/2 text-purple-400 text-xl" />
+            <FaSearchengin className="absolute left-3 top-1/2 text-xl text-purple-400 -translate-y-1/2" />
           </div>
 
           <select
             onChange={handleCategorySelect}
             value={selectedCategory || ""}
-            className="px-4 py-2 border-2 border-purple-300 rounded-3xl focus:border-pink-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none shadow-md"
+            className="px-4 py-2 rounded-3xl border-2 border-purple-300 shadow-md transition-all outline-none focus:border-blue-500 focus:ring-2 focus:ring-purple-200"
           >
             <option value="">All Categories</option>
             {categories.map((category) => (
@@ -198,7 +198,7 @@ export default function SubCategory() {
             <select
               value={sortItem}
               onChange={(e) => setSortItem(e.target.value)}
-              className="flex-1 px-4 py-2 border-2 border-purple-300 rounded-3xl focus:border-pink-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none shadow-md"
+              className="flex-1 px-4 py-2 rounded-3xl border-2 border-purple-300 shadow-md transition-all outline-none focus:border-blue-500 focus:ring-2 focus:ring-purple-200"
             >
               <option value="id">Sort by ID</option>
               <option value="name">Sort by Name</option>
@@ -206,7 +206,7 @@ export default function SubCategory() {
             </select>
             <button
               onClick={() => setOrder(order === "asc" ? "desc" : "asc")}
-              className="p-2 border-2 border-purple-300 rounded-full hover:bg-purple-50 transition-colors shadow-md"
+              className="p-2 rounded-full border-2 border-purple-300 shadow-md transition-colors hover:bg-purple-50"
             >
               {order === "asc" ? (
                 <RiArrowUpSFill size={24} className="text-purple-500" />
@@ -220,7 +220,7 @@ export default function SubCategory() {
 
       {loading || loadingCategory ? (
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-purple-500 border-t-transparent"></div>
+          <div className="w-12 h-12 rounded-full border-4 border-purple-500 animate-spin border-t-transparent"></div>
         </div>
       ) : !displayedSubCategories?.length ? (
         <NoData
@@ -228,28 +228,28 @@ export default function SubCategory() {
           subMessage="Try adjusting your search or create a new sub category"
         />
       ) : (
-        <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+        <div className="overflow-hidden bg-white rounded-xl shadow-2xl">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gradient-to-r from-purple-400 to-pink-400">
+              <thead className="bg-gradient-to-r from-purple-400 to-blue-400">
                 <tr>
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">
                     Image
                   </th>
-                  <th className="p-4 text-left text-white font-semibold">ID</th>
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">ID</th>
+                  <th className="p-4 font-semibold text-left text-white">
                     Name
                   </th>
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">
                     Description
                   </th>
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">
                     Category
                   </th>
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">
                     Created At
                   </th>
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">
                     Actions
                   </th>
                 </tr>
@@ -258,16 +258,16 @@ export default function SubCategory() {
                 {displayedSubCategories.map((item) => (
                   <tr
                     key={item.id + "subcategory"}
-                    className="hover:bg-gray-50 transition-colors"
+                    className="transition-colors hover:bg-gray-50"
                   >
                     <td className="p-4">
-                      <div className="relative group w-16 h-16 rounded-lg overflow-hidden">
+                      <div className="overflow-hidden relative w-16 h-16 rounded-lg group">
                         <img
                           src={item.icon_url}
                           alt={item.name}
-                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                          className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-30" />
                       </div>
                     </td>
                     <td className="p-4 text-gray-600">#{item.id}</td>
@@ -277,7 +277,7 @@ export default function SubCategory() {
                       </div>
                     </td>
                     <td className="p-4">
-                      <div className="text-gray-600 max-w-xs truncate">
+                      <div className="max-w-xs text-gray-600 truncate">
                         {item.description}
                       </div>
                     </td>
@@ -291,10 +291,10 @@ export default function SubCategory() {
                       {new Date(item.created_at).toLocaleDateString()}
                     </td>
                     <td className="p-4">
-                      <div className="flex items-center gap-2">
+                      <div className="flex gap-2 items-center">
                         <button
                           onClick={() => handleEditSubCategory(item)}
-                          className="px-3 py-1 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors shadow-md hover:shadow-lg text-sm"
+                          className="px-3 py-1 text-sm text-white bg-purple-500 rounded-lg shadow-md transition-colors hover:bg-purple-600 hover:shadow-lg"
                         >
                           Edit
                         </button>
@@ -303,7 +303,7 @@ export default function SubCategory() {
                             setDeleteSubCategory(item);
                             setOpenConfirm(true);
                           }}
-                          className="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-md hover:shadow-lg text-sm"
+                          className="px-3 py-1 text-sm text-white bg-red-500 rounded-lg shadow-md transition-colors hover:bg-red-600 hover:shadow-lg"
                         >
                           Delete
                         </button>
@@ -360,7 +360,6 @@ export default function SubCategory() {
           close={() => setOpenConfirm(false)}
         />
       )}
-      {loadingDelete && <Loading />}
     </div>
   );
 }

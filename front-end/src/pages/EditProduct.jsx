@@ -156,9 +156,9 @@ export default function EditProduct() {
   return (
     <div className="p-5 min-h-screen bg-gray-50">
       <div className="bg-white rounded-lg shadow-xl p-8 max-h-[96vh] custom-scrollbar overflow-y-auto mx-auto transition-all duration-300 hover:shadow-2xl">
-        <div className="flex items-center space-x-4 mb-6">
-          <div className="rounded-full bg-orange-100 p-2">
-            <FaPencilAlt className="text-orange-400 text-2xl" />
+        <div className="flex items-center mb-6 space-x-4">
+          <div className="p-2 bg-orange-100 rounded-full">
+            <FaPencilAlt className="text-2xl text-orange-400" />
           </div>
           <h2
             className={`${colors.textColors.gradientRainbow} text-2xl font-bold`}
@@ -170,7 +170,7 @@ export default function EditProduct() {
         <form className="mt-6 space-y-6" onSubmit={handleSubmit}>
           <div className="h-0.5 bg-gradient-to-r from-purple-100 to-purple-300 my-6 shadow-lg shadow-purple-400/50 rounded-full" />
 
-          <h3 className="text-xl font-bold text-gray-800 mb-4">
+          <h3 className="mb-4 text-xl font-bold text-gray-800">
             Thông tin cơ bản
           </h3>
 
@@ -199,16 +199,14 @@ export default function EditProduct() {
                 Ngành hàng
               </label>
               <div
-                className="flex-1 p-3 border-2 rounded-lg bg-gray-50 flex items-center 
-                          hover:ring-2 hover:ring-pink-200 hover:border-pink-400 
-                          cursor-pointer transition-all duration-200"
+                className="flex flex-1 items-center p-3 bg-gray-50 rounded-lg border-2 transition-all duration-200 cursor-pointer hover:ring-2 hover:ring-blue-200 hover:border-blue-400"
                 onClick={() => setOpenCategory(true)}
               >
-                <MdCategory className="text-2xl text-pink-500 mr-3" />
+                <MdCategory className="mr-3 text-2xl text-blue-500" />
                 <p className="text-gray-600">
                   {selectedPath || "Vui lòng chọn ngành hàng"}
                 </p>
-                <TiPencil className="ml-auto text-2xl text-gray-400 hover:text-pink-500 transition-colors" />
+                <TiPencil className="ml-auto text-2xl text-gray-400 transition-colors hover:text-blue-500" />
               </div>
             </div>
 
@@ -223,7 +221,7 @@ export default function EditProduct() {
           </div>
 
           <div className="">
-            <div className="h-0.5 bg-gradient-to-r from-pink-100 to-pink-400 my-6 shadow-lg shadow-pink-200 rounded-full" />
+            <div className="h-0.5 bg-gradient-to-r from-blue-100 to-blue-400 my-6 shadow-lg shadow-blue-200 rounded-full" />
             <h3 className="text-xl font-bold text-gray-800">
               Thông tin chi tiết
             </h3>
@@ -235,9 +233,9 @@ export default function EditProduct() {
                 {attributes.map((attribute, index) => (
                   <div key={`${attribute.id}-${index}`} className="mb-4">
                     {attribute.name !== "Màu sắc" &&
-                    attribute.name !== "Kích thước" &&
-                    attribute.name !== "Giới tính" &&
-                    attribute.name !== "Size" ? (
+                      attribute.name !== "Kích thước" &&
+                      attribute.name !== "Giới tính" &&
+                      attribute.name !== "Size" ? (
                       <SelectAttribute
                         attribute={attribute}
                         setData={setData}
@@ -283,7 +281,7 @@ export default function EditProduct() {
             )}
           </div>
 
-          <div className="mt-3 flex gap-4 justify-end">
+          <div className="flex gap-4 justify-end mt-3">
             <button
               type="button"
               className={`${colors.button.medium} ${colors.button.danger}`}
@@ -318,7 +316,6 @@ export default function EditProduct() {
           initialCategoryId={data.subcategory_id}
         />
       )}
-      {loading && <Loading />}
     </div>
   );
 }

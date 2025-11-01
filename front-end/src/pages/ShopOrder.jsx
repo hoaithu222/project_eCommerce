@@ -97,7 +97,7 @@ export default function ShopOrder() {
 
   return (
     <div className="p-5 max-h-[96vh] overflow-y-auto hidden-scrollbar">
-      <div className="w-full max-w-6xl mx-auto">
+      <div className="mx-auto w-full max-w-6xl">
         <StatusFilter
           selected={selectedStatus}
           onSelect={setSelectedStatus}
@@ -105,9 +105,9 @@ export default function ShopOrder() {
         />
         <div className="mt-4">
           {orders.length === 0 ? (
-            <div className="flex items-center min-h-screen justify-center mx-auto p-3">
-              <div className="flex items-center justify-center flex-col border-dotted bg-white shadow-xl border border-pink-200 w-[50%] rounded-lg p-5">
-                <FaBoxOpen className="text-blue-200 text-5xl" />
+            <div className="flex justify-center items-center p-3 mx-auto min-h-screen">
+              <div className="flex items-center justify-center flex-col border-dotted bg-white shadow-xl border border-blue-200 w-[50%] rounded-lg p-5">
+                <FaBoxOpen className="text-5xl text-blue-200" />
                 <p className="text-rose-400">
                   Hiện tại bạn chưa có đơn hàng nào
                 </p>
@@ -125,7 +125,7 @@ export default function ShopOrder() {
             ))
           )}
         </div>
-        {(isLoading || isUpdating) && <Loading />}
+
       </div>
     </div>
   );

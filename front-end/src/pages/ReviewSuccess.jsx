@@ -51,7 +51,7 @@ export default function ReviewSuccess() {
         >
           <a
             href="/"
-            className="inline-block px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-pink-500 rounded-full hover:from-red-600 hover:to-pink-600 transition-colors duration-300 shadow-md hover:shadow-lg"
+            className="inline-block px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-blue-500 rounded-full hover:from-red-600 hover:to-blue-600 transition-colors duration-300 shadow-md hover:shadow-lg"
           >
             Tiếp tục mua sắm
           </a>

@@ -109,7 +109,7 @@ export default function Category() {
           </h1>
           <button
             onClick={() => setOpenCategory(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-lg hover:from-purple-700 hover:to-pink-600 transition-all shadow-md hover:shadow-lg"
+            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-lg hover:from-purple-700 hover:to-blue-600 transition-all shadow-md hover:shadow-lg"
           >
             <IoAddCircle className="text-xl" />
             Add Category
@@ -125,7 +125,7 @@ export default function Category() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search categories..."
-              className="w-full pl-10 pr-4 py-2 border-2 border-blue-300 rounded-3xl focus:border-pink-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none shadow-xl"
+              className="w-full pl-10 pr-4 py-2 border-2 border-blue-300 rounded-3xl focus:border-blue-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none shadow-xl"
             />
             <FaSearchengin className="absolute left-3 top-1/2 -translate-y-1/2 text-orange-300 text-xl" />
           </div>
@@ -137,7 +137,7 @@ export default function Category() {
               setItemsPerPage(Number(e.target.value));
               setCurrentPage(1);
             }}
-            className="px-6  py-2 border-2  border-blue-300 rounded-3xl focus:border-pink-400 outline-none shadow-2xl"
+            className="px-6  py-2 border-2  border-blue-300 rounded-3xl focus:border-blue-400 outline-none shadow-2xl"
           >
             <option value={8}>8 items</option>
             <option value={12}>12 items</option>
@@ -150,7 +150,7 @@ export default function Category() {
             <select
               value={sortItem}
               onChange={(e) => setSortItem(e.target.value)}
-              className="flex-1 px-4 py-2 border-2 border-blue-300 rounded-3xl focus:border-pink-400  outline-none"
+              className="flex-1 px-4 py-2 border-2 border-blue-300 rounded-3xl focus:border-blue-400  outline-none"
             >
               <option value="id">Sort by ID</option>
               <option value="name">Sort by Name</option>
@@ -158,7 +158,7 @@ export default function Category() {
             </select>
             <button
               onClick={() => setOrder(order === "asc" ? "desc" : "asc")}
-              className={`px-2 py-2 border-2  border-gray-300 rounded-full  ${colors.gradients.pinkToPurple}`}
+              className={`px-2 py-2 border-2  border-gray-300 rounded-full  ${colors.gradients.blueToPurple}`}
             >
               {order === "asc" ? (
                 <RiArrowUpSFill size={24} className="text-white" />

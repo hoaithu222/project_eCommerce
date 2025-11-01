@@ -42,7 +42,7 @@ const Search = () => {
         className={`
           relative overflow-hidden
           rounded-full border-2 border-dotted border-white
-          bg-gradient-to-r from-blue-500 to-pink-500
+          bg-gradient-to-r from-blue-500 to-blue-500
           transition-all duration-300 ease-in-out
           ${isHovered ? "shadow-lg scale-105" : ""}
         `}

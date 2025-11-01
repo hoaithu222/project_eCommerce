@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { FaSearchengin } from "react-icons/fa6";
+import { MdAdminPanelSettings } from "react-icons/md";
 
 import { RiArrowDownSFill, RiArrowUpSFill } from "react-icons/ri";
 import colors from "../style/colors";
 
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAttribute } from "../store/actions/fetchAttribute";
+import { useDispatch } from "react-redux";
+import { updateUserRole } from "../store/actions/updateUserRole";
 import SummaryApi from "../common/SummaryApi";
 import { toast } from "react-toastify";
 
@@ -14,9 +15,12 @@ import Loading from "./Loading";
 
 export default function Customer() {
   const [data, setData] = useState([]);
-  const [openConfirm, setOpenConfirm] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedRole, setSelectedRole] = useState("");
+  const [showRoleModal, setShowRoleModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
 
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -58,23 +62,23 @@ export default function Customer() {
   const totalPages = Math.ceil(count / itemsPerPage);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="bg-white rounded-xl shadow-xl p-6 mb-4">
+    <div className="p-6 min-h-screen bg-gray-50">
+      <div className="p-6 mb-4 bg-white rounded-xl shadow-xl">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <h2 className="text-2xl font-bold text-gray-800">
             Customer Management
           </h2>
         </div>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-4 mt-6 md:grid-cols-3">
           <div className="relative">
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search attribute..."
-              className="w-full pl-10 pr-4 py-2 border-2 border-blue-300 rounded-3xl focus:border-pink-500 focus:ring-2 focus:ring-purple-200 transition-all outline-none shadow-md"
+              className="py-2 pr-4 pl-10 w-full rounded-3xl border-2 border-blue-300 shadow-md transition-all outline-none focus:border-blue-500 focus:ring-2 focus:ring-purple-200"
             />
-            <FaSearchengin className="absolute left-3 top-1/2 -translate-y-1/2 text-purple-400 text-xl" />
+            <FaSearchengin className="absolute left-3 top-1/2 text-xl text-purple-400 -translate-y-1/2" />
           </div>
 
           <select
@@ -83,7 +87,7 @@ export default function Customer() {
               setItemsPerPage(Number(e.target.value));
               setCurrentPage(1);
             }}
-            className="px-6  py-2 border-2  border-blue-300 rounded-3xl focus:border-pink-400 outline-none shadow-2xl"
+            className="px-6 py-2 rounded-3xl border-2 border-blue-300 shadow-2xl outline-none focus:border-blue-400"
           >
             <option value={8}>8 items</option>
             <option value={12}>12 items</option>
@@ -96,7 +100,7 @@ export default function Customer() {
             <select
               value={sortItem}
               onChange={(e) => setSortItem(e.target.value)}
-              className="flex-1 px-4 py-2 border-2 border-blue-300 rounded-3xl focus:border-pink-400  outline-none"
+              className="flex-1 px-4 py-2 rounded-3xl border-2 border-blue-300 outline-none focus:border-blue-400"
             >
               <option value="id">Sort by ID</option>
               <option value="name">Sort by Name</option>
@@ -104,7 +108,7 @@ export default function Customer() {
             </select>
             <button
               onClick={() => setOrder(order === "asc" ? "desc" : "asc")}
-              className={`px-2 py-2 border-2  border-gray-300 rounded-full  ${colors.gradients.pinkToPurple}`}
+              className={`px-2 py-2 border-2  border-gray-300 rounded-full  ${colors.gradients.blueToPurple}`}
             >
               {order === "asc" ? (
                 <RiArrowUpSFill size={24} className="text-white" />
@@ -118,26 +122,29 @@ export default function Customer() {
       {/* Content Section */}
       {loading ? (
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-purple-500 border-t-transparent"></div>
+          <div className="w-12 h-12 rounded-full border-4 border-purple-500 animate-spin border-t-transparent"></div>
         </div>
       ) : (
-        <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
+        <div className="overflow-hidden bg-white rounded-xl shadow-2xl">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gradient-to-r from-purple-400 to-pink-400">
+              <thead className="bg-gradient-to-r from-purple-400 to-blue-400">
                 <tr>
-                  <th className="p-4 text-left text-white font-semibold">ID</th>
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">ID</th>
+                  <th className="p-4 font-semibold text-left text-white">
                     Name
                   </th>
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">
                     Email
                   </th>
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">
+                    Role
+                  </th>
+                  <th className="p-4 font-semibold text-left text-white">
                     Trạng thái
                   </th>
 
-                  <th className="p-4 text-left text-white font-semibold">
+                  <th className="p-4 font-semibold text-left text-white">
                     Actions
                   </th>
                 </tr>
@@ -146,7 +153,7 @@ export default function Customer() {
                 {data?.map((item, index) => (
                   <tr
                     key={`${item.id}-${index}`}
-                    className="hover:bg-gray-50 transition-colors"
+                    className="transition-colors hover:bg-gray-50"
                   >
                     <td className="p-4 text-gray-600">#{item.id}</td>
                     <td className="p-4">
@@ -159,23 +166,41 @@ export default function Customer() {
                     </td>
 
                     <td className="px-6 py-4">
-                      {item.status === "active" ? (
-                        <span className="px-4 py-1 text-sm text-green-600 bg-green-100 rounded-full font-medium">
+                      <span className={`px-4 py-1 text-sm font-medium rounded-full ${item.role === "Admin"
+                        ? "text-purple-600 bg-purple-100"
+                        : item.role === "Shop"
+                          ? "text-blue-600 bg-blue-100"
+                          : "text-gray-600 bg-gray-100"
+                        }`}>
+                        {item.role || "User"}
+                      </span>
+                    </td>
+
+                    <td className="px-6 py-4">
+                      {item.verifyEmail ? (
+                        <span className="px-4 py-1 text-sm font-medium text-green-600 bg-green-100 rounded-full">
                           Verified
                         </span>
                       ) : (
-                        <span className="px-4 py-1 text-sm text-red-600 bg-red-100 rounded-full font-medium">
+                        <span className="px-4 py-1 text-sm font-medium text-red-600 bg-red-100 rounded-full">
                           Unverified
                         </span>
                       )}
                     </td>
                     <td className="px-6 py-4">
-                      <button
-                        onClick={() => setOpenConfirm(true)}
-                        className="px-4 py-2 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg hover:shadow-lg transition-all duration-300 text-sm font-medium hover:scale-105"
-                      >
-                        Disable
-                      </button>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => {
+                            setSelectedUser(item);
+                            setSelectedRole(item.role || "User");
+                            setShowRoleModal(true);
+                          }}
+                          className="flex gap-2 items-center px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105"
+                        >
+                          <MdAdminPanelSettings className="text-lg" />
+                          Update Role
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -192,7 +217,74 @@ export default function Customer() {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
-      {loading && <Loading />}
+
+      {/* Role Update Modal */}
+      {showRoleModal && selectedUser && (
+        <div className="flex fixed inset-0 z-50 justify-center items-center bg-black bg-opacity-50">
+          <div className="p-8 mx-4 w-full max-w-md bg-white rounded-2xl shadow-2xl">
+            <h3 className="mb-4 text-2xl font-bold text-gray-800">
+              Cập nhật quyền người dùng
+            </h3>
+            <p className="mb-6 text-gray-600">
+              Chọn quyền mới cho <strong>{selectedUser.username}</strong>
+            </p>
+
+            <div className="mb-6">
+              <label className="block mb-2 text-sm font-medium text-gray-700">
+                Role hiện tại: <span className="text-blue-600">{selectedUser.role || "User"}</span>
+              </label>
+              <select
+                value={selectedRole}
+                onChange={(e) => setSelectedRole(e.target.value)}
+                className="px-4 py-3 w-full rounded-xl border-2 border-gray-300 transition-all outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+              >
+                <option value="User">User</option>
+                <option value="Shop">Shop</option>
+                <option value="Admin">Admin</option>
+              </select>
+            </div>
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => {
+                  setShowRoleModal(false);
+                  setSelectedUser(null);
+                  setSelectedRole("");
+                }}
+                className="flex-1 px-4 py-3 font-medium text-gray-700 bg-gray-100 rounded-xl transition-colors hover:bg-gray-200"
+              >
+                Hủy
+              </button>
+              <button
+                onClick={async () => {
+                  if (selectedRole === selectedUser.role) {
+                    toast.info("Role không thay đổi");
+                    setShowRoleModal(false);
+                    return;
+                  }
+
+                  const result = await dispatch(
+                    updateUserRole(selectedUser.id, selectedRole)
+                  );
+
+                  if (result.success) {
+                    toast.success(result.message || "Cập nhật role thành công!");
+                    setShowRoleModal(false);
+                    setSelectedUser(null);
+                    setSelectedRole("");
+                    fetchData(); // Refresh data
+                  } else {
+                    toast.error(result.message || "Có lỗi xảy ra khi cập nhật role");
+                  }
+                }}
+                className="flex-1 px-4 py-3 font-medium text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl transition-all hover:shadow-lg hover:scale-105"
+              >
+                Xác nhận
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

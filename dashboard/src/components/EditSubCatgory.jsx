@@ -145,7 +145,7 @@ export default function EditSubCategory({
             </label>
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-start pt-3 pointer-events-none">
-                <MdDescription className="h-6 w-6 text-pink-400 group-focus-within:text-pink-500 transition-colors duration-200" />
+                <MdDescription className="h-6 w-6 text-blue-400 group-focus-within:text-blue-500 transition-colors duration-200" />
               </div>
               <textarea
                 id="description"
@@ -156,8 +156,8 @@ export default function EditSubCategory({
                 required
                 rows={5}
                 className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl
-                focus:ring-2 focus:ring-pink-100 focus:border-pink-400
-                hover:border-pink-300
+                focus:ring-2 focus:ring-blue-100 focus:border-blue-400
+                hover:border-blue-300
                 outline-none transition-all duration-200
                 placeholder:text-gray-400 text-gray-700
                 resize-y min-h-[120px]"
@@ -168,7 +168,7 @@ export default function EditSubCategory({
             <label className="text-lg font-medium text-gray-700">
               Select Category
             </label>
-            <div className="border focus-within:border-pink-400 rounded-md">
+            <div className="border focus-within:border-blue-400 rounded-md">
               <select
                 className="w-full bg-blue-50 border p-3 rounded-lg outline-none"
                 onChange={(e) => {

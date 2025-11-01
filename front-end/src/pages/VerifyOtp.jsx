@@ -102,38 +102,51 @@ export default function VerifyOtp() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-100 flex justify-center items-center">
-      <div className="min-w-[30%] mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-            Enter OTP
-          </h2>
-        </div>
+    <section className="flex overflow-hidden relative justify-center items-center min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 right-0 w-1/2 h-96 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-20 mix-blend-multiply filter blur-3xl animate-blob"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-400 rounded-full opacity-20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-indigo-400 rounded-full opacity-20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-xl p-6">
+      <div className="relative mx-4 w-full max-w-2xl">
+        <div className="p-8 rounded-3xl border shadow-2xl backdrop-blur-lg transition-all duration-300 bg-white/90 border-white/20 md:p-12 lg:p-16 hover:shadow-3xl">
+          {/* Header */}
+          <div className="mb-10 text-center">
+            <div className="inline-flex justify-center items-center mb-6 w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl shadow-xl">
+              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+              </svg>
+            </div>
+            <h2 className="mb-3 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 md:text-4xl lg:text-5xl">
+              Nhập mã OTP
+            </h2>
+            <p className="text-base text-gray-600 md:text-lg">
+              Vui lòng nhập mã OTP đã được gửi đến email của bạn
+            </p>
+          </div>
+
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+            <div className="p-4 mb-6 text-red-700 bg-red-50 rounded-xl border-2 border-red-200">
               {error}
             </div>
           )}
 
           {success && (
-            <div className="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg">
+            <div className="p-4 mb-6 text-green-700 bg-green-50 rounded-xl border-2 border-green-200">
               {success}
             </div>
           )}
 
           <form className="space-y-6" onSubmit={handleSubmit} noValidate>
-            <div className="space-y-2">
+            <div className="space-y-3">
               <label
                 htmlFor="otp"
-                className={`block font-medium transition-colors duration-200 ${
-                  focusedField === "email" ? "text-pink-600" : "text-gray-700"
-                }`}
+                className={`block text-lg font-semibold transition-colors duration-200 ${focusedField === "email" ? "text-blue-600" : "text-gray-700"
+                  }`}
               >
-                OTP :
+                Mã OTP
               </label>
-              <div className="flex gap-2 justify-between mt-3">
+              <div className="flex gap-3 justify-center">
                 {data.map((element, index) => (
                   <input
                     key={index}
@@ -147,13 +160,12 @@ export default function VerifyOtp() {
                     onChange={(e) => handleChange(e, index)}
                     onKeyDown={(e) => handleKeyDown(e, index)}
                     onPaste={(e) => handlePaste(e, index)}
-                    className={`px-4 py-2 w-9 md:w-14 rounded-lg outline-none transition-all duration-300
-                      ${
-                        focusedField === "otp"
-                          ? "border-2 border-pink-400 ring-2 ring-pink-200"
-                          : "border border-gray-300 hover:border-pink-300"
+                    className={`w-14 h-16 text-center text-2xl font-bold rounded-xl outline-none transition-all duration-300 border-2 ${focusedField === "otp"
+                      ? "border-blue-500 ring-4 ring-blue-200"
+                      : "border-gray-300 hover:border-blue-400"
                       }
-                      ${error ? "border-red-300" : ""}
+                    ${error ? "border-red-400" : ""}
+                    focus:border-blue-500 focus:ring-4 focus:ring-blue-200
                     `}
                     onFocus={() => setFocusedField("email")}
                     onBlur={() => setFocusedField(null)}
@@ -165,32 +177,51 @@ export default function VerifyOtp() {
 
             <button
               type="submit"
-              className={`w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-lg font-medium
-                transform hover:-translate-y-0.5 transition-all duration-200 
-                ${
-                  isLoading
-                    ? "opacity-70 cursor-not-allowed"
-                    : "hover:opacity-90 hover:shadow-lg"
-                }
-              `}
+              className={`w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg transform transition-all duration-200 shadow-lg ${isLoading
+                ? "opacity-70 cursor-not-allowed"
+                : "hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
+                }`}
               disabled={isLoading}
             >
-              {isLoading ? <LoadingBtn /> : "Verify OTP"}
+              {isLoading ? <LoadingBtn /> : "Xác thực OTP"}
             </button>
           </form>
 
-          <p className="text-center mt-6 text-gray-600">
-            Remember your password?{" "}
+          <p className="mt-8 text-base text-center text-gray-600">
+            Nhớ mật khẩu?{" "}
             <Link
               to="/login"
-              className="text-green-500 font-semibold hover:text-green-600 transition-colors"
+              className="font-semibold text-blue-600 transition-colors hover:text-blue-700 hover:underline"
             >
-              Login
+              Đăng nhập
             </Link>
           </p>
         </div>
       </div>
       <ToastContainer />
-    </div>
+
+      <style>{`
+        @keyframes blob {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+          }
+          33% {
+            transform: translate(30px, -50px) scale(1.1);
+          }
+          66% {
+            transform: translate(-20px, 20px) scale(0.9);
+          }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+      `}</style>
+    </section>
   );
 }

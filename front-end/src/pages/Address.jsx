@@ -99,17 +99,17 @@ export default function Address() {
   }, []);
 
   return (
-    <section className="bg-white rounded-lg shadow-lg p-3 md:p-4 lg:p-6 min-h-screen">
-      <div className="flex justify-between items-center border-b border-gray-200 mb-3 md:mb-4 pb-3 md:pb-4 lg:pb-6 lg:mb-6">
-        <h2 className="text-base sm:text-xl md:text-2xl lg::text-3xl font-bold bg-gradient-to-r from-lime-500 to-pink-500 bg-clip-text text-transparent">
+    <section className="p-3 min-h-screen bg-white rounded-lg shadow-lg md:p-4 lg:p-6">
+      <div className="flex justify-between items-center pb-3 mb-3 border-b border-gray-200 md:mb-4 md:pb-4 lg:pb-6 lg:mb-6">
+        <h2 className="text-base font-bold text-transparent bg-clip-text bg-gradient-to-r from-lime-500 to-blue-500 sm:text-xl md:text-2xl lg::text-3xl">
           Địa chỉ của tôi
         </h2>
-        <div className="flex items-center gap-4">
+        <div className="flex gap-4 items-center">
           <button
             className="flex items-center gap-2 px-1.5 py-0.5 md:px-3 md:py-1.5 lg:px-4 lg:py-2 bg-gradient-to-r from-violet-500 to-yellow-500 text-white rounded-lg hover:opacity-90 transition-all duration-300"
             onClick={() => setOpenModelAdd(true)}
           >
-            <IoMdAddCircleOutline className="text-lg lg:text-xl animate-bounce" />
+            <IoMdAddCircleOutline className="text-lg animate-bounce lg:text-xl" />
             <span className="text-xs md:text-sm">Thêm địa chỉ mới</span>
           </button>
           <button
@@ -123,18 +123,18 @@ export default function Address() {
       </div>
 
       <div className="space-y-2 md:space-y-4 lg:space-y-6">
-        <h3 className="text-sm md:text-lg lg:text-xl font-semibold text-gray-800">
+        <h3 className="text-sm font-semibold text-gray-800 md:text-lg lg:text-xl">
           Địa chỉ
         </h3>
         <div className="space-y-4">
           {data?.map((address) => (
             <div
               key={address.id}
-              className="flex flex-col md:flex-row justify-between items-start md:items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow duration-300"
+              className="flex flex-col justify-between items-start p-4 rounded-lg border border-gray-200 transition-shadow duration-300 md:flex-row md:items-center hover:shadow-md"
             >
               <div className="space-y-2">
                 <div className="flex flex-wrap gap-4 items-center">
-                  <h2 className="font-semibold text-gray-800 pr-4 border-r border-gray-300">
+                  <h2 className="pr-4 font-semibold text-gray-800 border-r border-gray-300">
                     {address.recipient_name}
                   </h2>
                   <p className="text-gray-600">{address.phone}</p>
@@ -205,7 +205,6 @@ export default function Address() {
           confirm={handleDelete(idDelete)}
         />
       )}
-      {loading && <Loading />}
     </section>
   );
 }

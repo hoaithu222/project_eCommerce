@@ -93,11 +93,11 @@ export default function Shop() {
     <div className="m-5 ">
       {/* Header Section - Enhanced */}
       <div className="bg-white shadow-xl p-5 rounded-2xl flex items-center space-x-6 transform transition-all duration-300 mb-5">
-        <div className="p-3 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl">
+        <div className="p-3 bg-gradient-to-br from-purple-100 to-blue-100 rounded-xl">
           <FcShop className="text-4xl" />
         </div>
         <h2
-          className={`${colors.textColors.gradientPinkToYellow} text-2xl font-bold tracking-tight`}
+          className={`${colors.textColors.gradientBlueToYellow} text-2xl font-bold tracking-tight`}
         >
           Quản lý các shop
         </h2>
@@ -107,7 +107,7 @@ export default function Shop() {
       <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-gray-600">
-            <thead className="bg-gradient-to-r from-purple-500 via-purple-400 to-pink-500 text-white">
+            <thead className="bg-gradient-to-r from-purple-500 via-purple-400 to-blue-500 text-white">
               <tr>
                 <th className="px-6 py-5 text-left font-semibold">Logo</th>
                 <th className="px-6 py-5 text-left font-semibold">Tên shop</th>
@@ -215,7 +215,6 @@ export default function Shop() {
         />
       )}
       {openViewShop && <ViewShop close={handleClose} data={shopView} />}
-      {loading && <Loading />}
     </div>
   );
 }

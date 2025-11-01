@@ -37,7 +37,7 @@ export default function InfoCheckout({ data }) {
           <div key={`shop-${shopIndex}`} className="pb-2 lg:pb-4 ">
             {/* Shop header */}
             <div className="flex items-center gap-2 lg:gap-4 bg-sky-50 p-2 lg:p-4">
-              <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 p-0.5 bg-pink-300 rounded-full overflow-hidden flex-shrink-0">
+              <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 p-0.5 bg-blue-300 rounded-full overflow-hidden flex-shrink-0">
                 <img
                   src={shopOrder.shop.logo_url}
                   alt={shopOrder.shop.name}

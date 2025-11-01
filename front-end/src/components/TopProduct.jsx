@@ -37,7 +37,7 @@ export default function TopProduct() {
       <div className="bg-white shadow-xl rounded-md p-2 md:p-3 lg:p-5">
         <div className="flex items-center">
           <h2
-            className={`${colors.textColors.gradientLimeToPink} text-lg md:text-3xl lg:text-4xl font-semibold`}
+            className={`${colors.textColors.gradientLimeToBlue} text-lg md:text-3xl lg:text-4xl font-semibold`}
           >
             Top các sản phẩm bán chạy nhất
           </h2>

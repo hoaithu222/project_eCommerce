@@ -16,7 +16,7 @@ export default function OrderCard({
 
   return (
     <div className="bg-white mb-3 rounded-md shadow-md">
-      <div className="flex items-center gap-3 p-3 bg-pink-50">
+      <div className="flex items-center gap-3 p-3 bg-blue-50">
         {order.user.avatar_url ? (
           <div className="w-20 h-20 rounded-full bg-sky-200 p-0.5 overflow-hidden">
             <img

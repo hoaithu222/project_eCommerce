@@ -35,7 +35,7 @@ export default function OrderShopItem({ item }) {
           </div>
         </div>
         <div className="flex justify-end flex-1">
-          <p className="text-pink-500 font-semibold text-xl text-end">
+          <p className="text-blue-500 font-semibold text-xl text-end">
             {formatPriceVND(+item.unit_price)}
           </p>
         </div>

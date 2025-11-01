@@ -71,19 +71,19 @@ export default function VerifyEmail() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
-      <div className="max-w-md w-full mx-4 p-8 bg-white rounded-lg shadow-md">
+      <div className="p-8 mx-4 w-full max-w-md bg-white rounded-lg shadow-md">
         {verificationStatus === "verifying" && (
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">
+            <h2 className="mb-4 text-2xl font-bold text-gray-700">
               Đang xác thực...
             </h2>
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
+            <div className="mx-auto w-12 h-12 rounded-full border-b-2 border-blue-500 animate-spin"></div>
           </div>
         )}
 
         {verificationStatus === "success" && (
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-green-600 mb-4">
+            <h2 className="mb-4 text-2xl font-bold text-green-600">
               Xác thực thành công!
             </h2>
             <p className="text-gray-600">
@@ -94,15 +94,15 @@ export default function VerifyEmail() {
 
         {verificationStatus === "expired" && (
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-red-600 mb-4">
+            <h2 className="mb-4 text-2xl font-bold text-red-600">
               Link xác thực đã hết hạn
             </h2>
-            <p className="text-gray-600 mb-4">
+            <p className="mb-4 text-gray-600">
               Vui lòng yêu cầu gửi lại email xác thực.
             </p>
             <button
               onClick={handleResendVerification}
-              className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+              className="px-6 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
             >
               Gửi lại email xác thực
             </button>
@@ -111,7 +111,7 @@ export default function VerifyEmail() {
 
         {verificationStatus === "error" && (
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-red-600 mb-4">
+            <h2 className="mb-4 text-2xl font-bold text-red-600">
               Xác thực thất bại
             </h2>
             <p className="text-gray-600">
@@ -122,7 +122,7 @@ export default function VerifyEmail() {
 
         {verificationStatus === "invalid" && (
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-red-600 mb-4">
+            <h2 className="mb-4 text-2xl font-bold text-red-600">
               Link không hợp lệ
             </h2>
             <p className="text-gray-600">

@@ -57,49 +57,87 @@ export default function Login() {
   };
 
   return (
-    <section className="container  w-full h-screen mx-auto flex items-center justify-center ">
-      <div className="w-full flex items-center justify-center mt-10">
-        <form
-          className="min-w-[50%] shadow-2xl shadow-blue-100 rounded-md bg-white p-5 space-y-6 lg:p-10 lg:space-y-10"
-          onSubmit={handleSubmit}
-        >
-          <InputField
-            label="Nhập email"
-            name="email"
-            id="email"
-            type="email"
-            placeholder="Nhập email"
-            value={data.email}
-            onChange={handleChange}
-            required
-            icon={FcFeedback}
-          />
-          <InputField
-            label="Mật khẩu"
-            name="password"
-            id="password"
-            type="password"
-            placeholder="Nhập mật khẩu"
-            value={data.password}
-            onChange={handleChange}
-            required
-          />
+    <section className="relative flex overflow-hidden justify-center items-center w-full min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 right-0 w-1/2 h-96 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full opacity-20 mix-blend-multiply filter blur-3xl animate-blob"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-400 rounded-full opacity-20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-indigo-400 rounded-full opacity-20 mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
 
-          <button
-            type="submit"
-            className={`w-full ${
-              colors.gradients.pinkToPurple
-            } text-white py-3 rounded-lg font-medium transform hover:-translate-y-0.5 transition-all duration-200  ${
-              isLoading
-                ? "opacity-70 cursor-not-allowed"
-                : "hover:opacity-90 hover:shadow-lg"
-            }`}
-            disabled={isLoading}
-          >
-            {isLoading ? <LoadingBtn /> : "Login"}
-          </button>
-        </form>
+      <div className="relative mx-4 w-full max-w-2xl">
+        <div className="p-8 rounded-3xl border shadow-2xl backdrop-blur-lg transition-all duration-300 bg-white/90 border-white/20 md:p-12 lg:p-16 hover:shadow-3xl">
+          {/* Header */}
+          <div className="mb-10 text-center">
+            <div className="inline-flex justify-center items-center mb-6 w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl shadow-xl">
+              <FcFeedback className="text-4xl text-white" />
+            </div>
+            <h2 className="mb-3 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 md:text-4xl lg:text-5xl">
+              Admin Login
+            </h2>
+            <p className="text-base text-gray-600 md:text-lg">
+              Đăng nhập vào hệ thống quản trị
+            </p>
+          </div>
+
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <InputField
+              label="Nhập email"
+              name="email"
+              id="email"
+              type="email"
+              placeholder="Nhập email"
+              value={data.email}
+              onChange={handleChange}
+              required
+              icon={FcFeedback}
+            />
+            <InputField
+              label="Mật khẩu"
+              name="password"
+              id="password"
+              type="password"
+              placeholder="Nhập mật khẩu"
+              value={data.password}
+              onChange={handleChange}
+              required
+            />
+
+            <button
+              type="submit"
+              className={`w-full ${colors.gradients.pinkToPurple
+                } text-white py-4 rounded-xl font-semibold text-lg transform transition-all duration-200 shadow-lg ${isLoading
+                  ? "opacity-70 cursor-not-allowed"
+                  : "hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]"
+                }`}
+              disabled={isLoading}
+            >
+              {isLoading ? <LoadingBtn /> : "Đăng nhập"}
+            </button>
+          </form>
+        </div>
       </div>
+
+      <style>{`
+        @keyframes blob {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+          }
+          33% {
+            transform: translate(30px, -50px) scale(1.1);
+          }
+          66% {
+            transform: translate(-20px, 20px) scale(0.9);
+          }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+      `}</style>
     </section>
   );
 }
